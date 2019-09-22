@@ -4,13 +4,23 @@ A new Flutter application.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+ASSETS: https://1drv.ms/u/s!AnbxnB5ugF0ohrM89fJXIqFf8g-q9A?e=ZJD3N6
 
-A few resources to get you started if this is your first Flutter project:
+SPECS: https://xd.adobe.com/spec/ef7f1c29-d7fe-41c8-6fc6-d7e578fd9667-994e/
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+JPG FOLDER: https://1drv.ms/u/s!AnbxnB5ugF0ohrI6TKtlLndyYblqFg?e=kkDG5l
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+IMAGES: https://1drv.ms/u/s!AnbxnB5ugF0ohq5I1koms_klMJYrxg?e=96llFF
+
+FONT: https://1drv.ms/u/s!AnbxnB5ugF0ohrQNaYKBYx2T5otWnw?e=Ocqsp1
+
+FLOW: https://1drv.ms/u/s!AnbxnB5ugF0ohpd1NcDxr2z_BmnDkw?e=rtEECa
+
+
+## Adobe Xd Designs
+
+https://xd.adobe.com/spec/ef7f1c29-d7fe-41c8-6fc6-d7e578fd9667-994e/
+
+## Marvel App
+
+https://marvelapp.com/ah73ije
