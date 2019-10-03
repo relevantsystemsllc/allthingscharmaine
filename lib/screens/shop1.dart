@@ -75,7 +75,7 @@ class Shop1State extends State<Shop1>
                     padding: EdgeInsets.only(top: 10.0,bottom: 10.0),width: 120.0,
                     child: Text("books",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
                     :Text("books",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
-              ],controller: tabController,labelColor: Colors.transparent,indicatorColor: Colors.transparent,isScrollable: true,onTap: (val)=> _settingModalBottomSheet(context),),padding: EdgeInsets.only(left: 20.0),),
+              ],controller: tabController,labelColor: Colors.transparent,indicatorColor: Colors.transparent,isScrollable: true,onTap: (val)=> val ==2 ?_settingModalBottomSheet(context):null,),padding: EdgeInsets.only(left: 20.0),),
               GridView.count(
                   //primary: false,
                   padding: const EdgeInsets.only(left:20,right: 20.0),
