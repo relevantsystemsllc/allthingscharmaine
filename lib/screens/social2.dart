@@ -8,8 +8,7 @@ class Social2 extends StatefulWidget{
   Social2State createState() => Social2State();
 }
 
-class Social2State extends State<Social2>
-    with SingleTickerProviderStateMixin {
+class Social2State extends State<Social2> {
 
 
 

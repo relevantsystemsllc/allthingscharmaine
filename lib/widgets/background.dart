@@ -4,17 +4,20 @@ import 'package:allthingscharmaine/utils/arc_clipper.dart';
 
 class Base extends StatelessWidget {
   final Widget body;
+  final int topFlex;
+  final Color color;
 
-  Base({this.body});
+
+  Base({this.body,@required this.topFlex,this.color});
 
   Widget topHalf(BuildContext context) {
     return new Flexible(
-      flex: 3,
+      flex: topFlex,
       child: ClipPath(
         clipper: new ArcClipper(),
         child: new Container(
               decoration: new BoxDecoration(
-                  color: Colors.green[200]),
+                  color: color??Colors.green[200]),
             ),
 
       ),

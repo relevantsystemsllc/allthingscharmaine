@@ -41,6 +41,26 @@ flutter:
   uses-material-design: true
   assets:
     - assets/blur-breakfast-close-up-376464.jpg
+    - assets/approns 2.png
+    - assets/approns 1.png
+    - assets/approns 3.png
+    - assets/approns 4.png
+    - assets/ic-home.png
+    - assets/chat.png
+    - assets/shopping-bag.png
+    - assets/017-microphone-2.png
+    - assets/shopping-cart.png
+    - assets/notification.png
+    - assets/hamb menu.png
+    - assets/attachment.png
+    - assets/gallery.png
+    - assets/ICON 2.png
+    - assets/ICON 4.png
+    - assets/ICON 3.png
+    - assets/android pay.png
+    - assets/apple pay logo.png
+    - assets/book 2.png
+    - assets/book.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -13,7 +13,6 @@ class Social1 extends StatelessWidget{
           heightFactor: 0.8,
           child: Container(decoration: BoxDecoration(color: Colors.cyan),
           child: Image.asset("assets/blur-breakfast-close-up-376464.jpg",fit: BoxFit.cover,)
-         // Image.asset("assets/blur-breakfast-close-up-376464.jpg",fit: BoxFit.cover,),
           )),
           Column(
             children: <Widget>[ Padding(child:Align(child:Icon(Icons.keyboard_backspace,color: Colors.white),alignment: Alignment.topLeft),padding: EdgeInsets.only(top: 50.0,left: 25.0),),
@@ -52,13 +51,6 @@ class Social1 extends StatelessWidget{
           )
         ])
     );
-
-
-// children: <Widget>[AppBar(leading: Icon(Icons.keyboard_backspace,color: Colors.white),backgroundColor: Colors.transparent,)],
-/*
-
-
- */
   }
 
 

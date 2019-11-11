@@ -4,10 +4,14 @@ class Shop {
   final String image;
   final String cost;
   final String info;
+  final String detail;
+  final String category;
 
   Shop({
     @required this.cost,
     @required this.info,
     @required this.image,
+    @required this.category,
+    this.detail
   }):assert(cost!=null),assert(info!=null),assert(image!=null);
 }

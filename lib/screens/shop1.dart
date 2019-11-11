@@ -4,6 +4,7 @@ import 'package:allthingscharmaine/widgets/background.dart';
 import 'package:allthingscharmaine/widgets/shopCards.dart';
 import 'package:allthingscharmaine/services/shopData.dart';
 import 'package:allthingscharmaine/widgets/bottomNavBar.dart';
+import 'package:allthingscharmaine/model/shop.dart';
 import 'package:allthingscharmaine/widgets/shopBottomSheet.dart';
 
 class Shop1 extends StatefulWidget{
@@ -17,6 +18,8 @@ class Shop1State extends State<Shop1>
   TabController tabController;
   int active = 0;
   ShopData items;
+  Color color;
+  List<Shop> categories;
 
 
 
@@ -30,6 +33,33 @@ class Shop1State extends State<Shop1>
         });
       });
     items = ShopData();
+    categories = items.getMenuItems();
+    color= Colors.green[200];
+  }
+
+
+  Color getColor(int val){
+    switch(val){
+      case 0:
+        categories = items.getMenuItems();
+        return Colors.green[200];
+        break;
+      case 1:
+        categories = items.getBookItems();
+        return Colors.deepOrange[200];
+        break;
+      case 2:
+        categories = items.getMenuItems();
+        return Colors.pink[200];
+        break;
+      case 3:
+        categories = items.getBookItems();
+        return Colors.blue[200];
+        break;
+      default:
+        return Colors.green[200];
+    }
+
   }
 
   @override
@@ -38,13 +68,14 @@ class Shop1State extends State<Shop1>
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return
       Scaffold(
           body: Stack(
         children:[
-          Base(),
+          Base(topFlex: 3,color: color),
           SafeArea(child:Column(
             children: <Widget>[
               Row(
@@ -65,47 +96,44 @@ class Shop1State extends State<Shop1>
                       :Text("approns",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
                 tabController.index==1?Container(decoration: BoxDecoration(color: Colors.transparent,border: Border.all(color: Colors.white),borderRadius: BorderRadius.circular(20.0)),
                     padding: EdgeInsets.only(top: 10.0,bottom: 10.0),width: 120.0,
-                    child: Text("clothings",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
-                    :Text("clothings",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
+                    child: Text("books",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
+                    :Text("books",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
                 tabController.index==2?Container(decoration: BoxDecoration(color: Colors.transparent,border: Border.all(color: Colors.white),borderRadius: BorderRadius.circular(20.0)),
                     padding: EdgeInsets.only(top: 10.0,bottom: 10.0),width: 120.0,
-                    child: Text("books",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
-                    :Text("books",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
+                    child: Text("clothings",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
+                    :Text("clothings",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
                 tabController.index==3?Container(decoration: BoxDecoration(color: Colors.transparent,border: Border.all(color: Colors.white),borderRadius: BorderRadius.circular(20.0)),
                     padding: EdgeInsets.only(top: 10.0,bottom: 10.0),width: 120.0,
-                    child: Text("books",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
-                    :Text("books",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
-              ],controller: tabController,labelColor: Colors.transparent,indicatorColor: Colors.transparent,isScrollable: true,onTap: (val)=> val ==2 ?_settingModalBottomSheet(context):null,),padding: EdgeInsets.only(left: 20.0),),
-              GridView.count(
+                    child: Text("Jewelries",style: TextStyle(color: Colors.white,fontSize: 15.0),textAlign: TextAlign.center))
+                    :Text("Jewelries",style: TextStyle(color: Colors.white30,fontSize: 15.0),textAlign: TextAlign.center),
+              ],controller: tabController,labelColor: Colors.transparent,indicatorColor: Colors.transparent,isScrollable: true,onTap: (val)=> setState((){
+                color = getColor(val);
+              })),padding: EdgeInsets.only(left: 20.0),),
+              SizedBox(height:7.0),
+             Expanded(child:GridView.count(
                   //primary: false,
                   padding: const EdgeInsets.only(left:20,right: 20.0),
                   crossAxisSpacing: 0.5,
                   mainAxisSpacing: 1,
                   crossAxisCount: 2,
-                  childAspectRatio: 0.7,
-                  children: items.getMenuItems().map<ShopCard>((value)=> ShopCard(cost: value.cost, image: value.image, info: value.info)).toList()
+                  childAspectRatio: 0.65,
+                  children: categories.map<Widget>((value)=> GestureDetector(child:ShopCard(cost: value.cost, image: value.image, info: value.info,detail:value.detail,category: value.category,color: color),onTap:()=>_settingModalBottomSheet(context))).toList()
                 ,shrinkWrap: true,
               ),
-              Expanded(child:BottomNavBar())
+             ),
+              SizedBox(height: 50.0)
             ],crossAxisAlignment: CrossAxisAlignment.start,
-          ),bottom: false
-          )
+          ),bottom: true
+          ),BottomNavBar()
     ]),backgroundColor: Colors.white,
       );
-
-
-// children: <Widget>[AppBar(leading: Icon(Icons.keyboard_backspace,color: Colors.white),backgroundColor: Colors.transparent,)],
-/*
-
-
- */
   }
   void _settingModalBottomSheet(context){
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
           return Container(
-              child:ShopBottomSheet(),
+              child:ShopBottomSheet(color: color,),
             color: Colors.grey,
             padding: EdgeInsets.only(top: 3.0),
             );
