@@ -9,12 +9,13 @@ class PressTab extends StatelessWidget{
 
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("press", style: TextStyle(color: CustomColors.TITLE_COLOR, fontSize:30.0, fontFamily: 'Poppins', fontWeight: FontWeight.w600,),),
+            Padding(padding: EdgeInsets.only(left: 16.0),
+                child: Text("press", style: TextStyle(color: CustomColors.TITLE_COLOR, fontSize:30.0, fontFamily: 'Poppins', fontWeight: FontWeight.w600,),)),
+            SizedBox(height: 10.0,),
             MoreRecentVideos()
           ],
         ),

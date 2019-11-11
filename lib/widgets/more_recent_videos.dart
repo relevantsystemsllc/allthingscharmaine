@@ -6,7 +6,7 @@ class MoreRecentVideos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Row(
+        Padding( padding: EdgeInsets.symmetric(horizontal: 16.0), child: Row(
           children: <Widget>[
             Expanded(
               child: Row(children: [
@@ -34,7 +34,7 @@ class MoreRecentVideos extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ))
           ],
-        )
+        ),)
       ],
     );
   }

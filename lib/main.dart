@@ -25,10 +25,11 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          leading: Image.asset('assets/hamb-menu.png'),
           elevation: 0.0,
           actions: <Widget>[
             IconButton(
-              icon: const Icon(Icons.add_alert),
+              icon: Image.asset('assets/notification.png'),
               tooltip: 'Notification',
               onPressed: () {},
             ),
