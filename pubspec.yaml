@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   provider: 3.1.0
   snaplist: ^0.1.8
+  carousel_slider: ^1.3.1
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +46,13 @@ flutter:
     - assets/blur-breakfast-close-up-376464.jpg
     - assets/notification.png
     - assets/hamb-menu.png
+    - assets/icons/play.png
+    - assets/artboard.png
+    - assets/chicago.jpg
+    - assets/chicago-Illinois.jpg
+    - assets/adult-attractive-beautiful-871495.jpg
+    - assets/artboard–3.png
+    - assets/artboard–4.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
