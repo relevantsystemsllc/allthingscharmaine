@@ -1,9 +1,9 @@
-import 'package:allthingscharmaine/model/event.dart';
+import 'package:allthingscharmaine/model/article.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-import 'package:allthingscharmaine/widgets/press_event_item.dart';
+import 'package:allthingscharmaine/widgets/press_article_item.dart';
 import 'package:flutter/material.dart';
 
-class MoreRecentEvents extends StatelessWidget {
+class MoreRecentArticles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MoreRecentEvents extends StatelessWidget {
                   child: Row(children: [
                     Padding(
                         padding: EdgeInsets.only(right: 2.0),
-                        child: Text('most recent events',
+                        child: Text('most recent articles',
                             style: TextStyle(
                               color: CustomColors.TITLE_COLOR,
                               fontSize: 20.0,
@@ -44,25 +44,25 @@ class MoreRecentEvents extends StatelessWidget {
             SizedBox(
               height: 19,
             ),
-            PressEventItem(listData[0]),
+            PressArticleItem(listData[0]),
             SizedBox(height: 15, ),
-            PressEventItem(listData[1]),
+            PressArticleItem(listData[1]),
           ],
         ));
   }
 
-  List<Event> getEventData() {
-    List<Event> data = [];
-    data.add(Event(
+  List<Article> getEventData() {
+    List<Article> data = [];
+    data.add(Article(
       id: 1,
-      image: "assets/artboard–3.png",
-      title: "Event 1",
+      image: "assets/buffet-chicken-delicious-5916.jpg",
+      title: "Article 1",
       description: "Charmaine Neque porro quisquam est qui dolorem .",
     ));
-    data.add(Event(
+    data.add(Article(
       id: 2,
-      image: "assets/artboard–4.png",
-      title: "Event 2",
+      image: "assets/beach-daylight-fun-1430675.jpg",
+      title: "Article 2",
       description: "Charmaine Neque porro quisquam est qui dolorem .",
     ));
     return data;
