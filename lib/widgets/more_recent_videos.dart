@@ -1,6 +1,6 @@
 import 'package:allthingscharmaine/model/video.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-import 'package:allthingscharmaine/widgets/header_movie_item.dart';
+import 'package:allthingscharmaine/widgets/header_video_item.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentVideos extends StatelessWidget {
@@ -98,10 +98,10 @@ class MoreRecentVideos extends StatelessWidget {
 
   List<Video> getVideoData(){
     List<Video> data = [];
-    data.add(Video(id: 1,image: "assets/artboard.png", title: "Video 1", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: 20, duration: "9:59"));
-    data.add(Video(id: 2,image: "assets/chicago.jpg", title: "Video 2", description: "Video description 2 hhh jjjjjjjjj", viewCount: 50,  duration: "05:50"));
-    data.add(Video(id: 3,image: "assets/chicago-Illinois.jpg", title: "Video 3", description: "Video description 3", viewCount: 100,  duration: "10:50"));
-    data.add(Video(id: 4,image: "assets/blur-breakfast-close-up-376464.jpg", title: "Video 4", description: "Video description 4", viewCount: 25,  duration: "03:50"));
+    data.add(Video(id: 1,image: "assets/artboard.png", title: "Video 1", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '51K views', duration: "9:59"));
+    data.add(Video(id: 2,image: "assets/chicago.jpg", title: "Video 2", description: "Video description 2 hhh jjjjjjjjj", viewCount: '200K views',  duration: "05:50"));
+    data.add(Video(id: 3,image: "assets/chicago-Illinois.jpg", title: "Video 3", description: "Video description 3", viewCount: '78K views',  duration: "10:50"));
+    data.add(Video(id: 4,image: "assets/blur-breakfast-close-up-376464.jpg", title: "Video 4", description: "Video description 4", viewCount: '1M views',  duration: "03:50"));
 
 return data;
   }

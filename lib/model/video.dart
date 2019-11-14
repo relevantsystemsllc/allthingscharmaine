@@ -13,6 +13,6 @@ class Video {
   final String description;
   final String image;
   final String duration;
-  final int viewCount;
+  final String viewCount;
   final String time;
 }
