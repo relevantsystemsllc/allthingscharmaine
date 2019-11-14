@@ -4,45 +4,49 @@ import 'package:allthingscharmaine/widgets/header_video_item.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentVideos extends StatelessWidget {
-  PageController _pageController = PageController(initialPage: 0, viewportFraction: 0.83);
+  PageController _pageController = PageController(initialPage: 1, viewportFraction: 0.86);
   List listData;
   @override
   Widget build(BuildContext context) {
     listData = getVideoData();
-    return Column(
-      children: <Widget>[
-        Padding( padding: EdgeInsets.symmetric(horizontal: 16.0), child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Row(children: [
-                Padding(
-                    padding: EdgeInsets.only(right: 2.0),
-                    child: Text('most recent videos',
-                        style: TextStyle(
+    return Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(children: [
+                        Padding(
+                            padding: EdgeInsets.only(right: 2.0),
+                            child: Text('most recent videos',
+                                style: TextStyle(
+                                  color: CustomColors.TITLE_COLOR,
+                                  fontSize: 20.0,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                ))),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 12.0,
                           color: CustomColors.TITLE_COLOR,
-                          fontSize: 20.0,
+                        )
+                      ]),
+                    ),
+                    Text('view all',
+                        style: TextStyle(
+                          color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                          fontSize: 12.0,
                           fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                        ))),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12.0,
-                  color: CustomColors.TITLE_COLOR,
-                )
-              ]),
-            ),
-            Text('view all',
-                style: TextStyle(
-                  color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                  fontSize: 12.0,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ))
-          ],
-        ),),
-         Container(margin: EdgeInsets.symmetric(horizontal: 16.0),
-         child: HeaderMovieItem(listData[0]),),
-       /* CarouselSlider(
+                          fontWeight: FontWeight.w400,
+                        ))
+                  ],
+                )),
+
+            /* CarouselSlider(
 
           items: listData.map((item){
             return  Container(
@@ -65,25 +69,24 @@ class MoreRecentVideos extends StatelessWidget {
 
           scrollDirection: Axis.horizontal,
         ),*/
-        SizedBox(
-          height: 0,
-        ),
-    SizedBox.fromSize(
-    size: const Size.fromHeight(280.0),
-    child: PageView.builder(
-            scrollDirection: Axis.horizontal,
-            controller: _pageController,
-            itemCount: listData.length,
-            itemBuilder: (context, position){
-              return imageSlider(position);
-            }),)
-      ],
-    );
+            SizedBox(
+              height: 19,
+            ),
+            SizedBox.fromSize(
+              size: const Size.fromHeight(260.0),
+              child: PageView.builder(
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  itemCount: listData.length,
+                  itemBuilder: (context, position){
+                    return imageSlider(position);
+                  }),)
+          ],
+        ));
   }
   Widget imageSlider(int index){
     return AnimatedBuilder(
-        child: Container(margin: EdgeInsets.only(left: 5.0, right:5.0),
-            child: HeaderMovieItem(listData[index])),
+        child: HeaderMovieItem(listData[index]),
         animation: _pageController,
         builder: (context, widget){
           double bias = 1;
@@ -92,17 +95,17 @@ class MoreRecentVideos extends StatelessWidget {
             bias = (1 - (bias.abs()*0.25)).clamp(0.0, 1.0);
           }
           return Center(child:
-          SizedBox(width: Curves.easeInOut.transform(bias)*325, height: Curves.easeInOut.transform(bias)*270, child: widget,));
+          SizedBox(width: Curves.easeInOut.transform(bias)*330, height: Curves.easeInOut.transform(bias)*260, child: widget,));
         });
   }
 
   List<Video> getVideoData(){
     List<Video> data = [];
     data.add(Video(id: 1,image: "assets/artboard.png", title: "Video 1", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '51K views', duration: "9:59"));
-    data.add(Video(id: 2,image: "assets/chicago.jpg", title: "Video 2", description: "Video description 2 hhh jjjjjjjjj", viewCount: '200K views',  duration: "05:50"));
-    data.add(Video(id: 3,image: "assets/chicago-Illinois.jpg", title: "Video 3", description: "Video description 3", viewCount: '78K views',  duration: "10:50"));
-    data.add(Video(id: 4,image: "assets/blur-breakfast-close-up-376464.jpg", title: "Video 4", description: "Video description 4", viewCount: '1M views',  duration: "03:50"));
+    data.add(Video(id: 2,image: "assets/chicago.jpg", title: "Video 2", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '200K views',  duration: "05:50"));
+    data.add(Video(id: 3,image: "assets/chicago-Illinois.jpg", title: "Video 3", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '78K views',  duration: "10:50"));
+    data.add(Video(id: 4,image: "assets/blur-breakfast-close-up-376464.jpg", title: "Video 4", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '1M views',  duration: "03:50"));
 
-return data;
+    return data;
   }
 }

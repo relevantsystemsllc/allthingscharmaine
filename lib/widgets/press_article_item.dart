@@ -9,10 +9,10 @@ class PressArticleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    var screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
         height: 211.0,
-        width: 302,
+        width: screenWidth,
         child: Card(
             clipBehavior: Clip.antiAliasWithSaveLayer,
             elevation: 3.0,
@@ -26,7 +26,7 @@ class PressArticleItem extends StatelessWidget {
                   Image.asset(
                     article?.image,
                     height: 133.0,
-                    width: 302,
+                    width: screenWidth,
                     fit: BoxFit.cover,
                   ),
                   Padding(

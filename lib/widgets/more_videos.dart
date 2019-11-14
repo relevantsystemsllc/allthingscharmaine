@@ -9,7 +9,7 @@ class MoreVideos extends StatelessWidget {
   Widget build(BuildContext context) {
     List listData = getVideoData();
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 30.0),
+        margin: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: <Widget>[
             Row(

@@ -9,9 +9,10 @@ class PressVideoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 90.0,
-      width: 302,
+      width: screenWidth,
       child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           elevation: 3.0,

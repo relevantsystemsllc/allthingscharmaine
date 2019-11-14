@@ -9,69 +9,11 @@ class HeaderMovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   /* return  ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
-       *//* child: Container(
-            color: Colors.white,*//*
-        *//*decoration: BoxDecoration(
-          color: Colors.green,
-
-        ),*//*
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              *//*Stack(
-                children: <Widget>[*//*
-                  Image.asset(
-                    video?.image,
-                    height: 180.0,
-                    width: 325,
-                    fit: BoxFit.cover,
-                  ),
-                  //Center(child: Image.asset("assets/icons/play.png")),
-                  *//*Positioned(
-                    child: Icon(Icons.play_arrow),
-                    left: .5,
-                    right: .5,
-                    top: .5,
-                    bottom: .5,
-                  )*//*
-                *//*],
-              ),*//*
-              Padding(
-                  padding:
-                  EdgeInsets.only(left: 23.0, right: 23.0, top: 10.0, bottom: 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-                      Text(
-                        video?.duration,
-                        style: TextStyle(
-                          color: CustomColors.TEXT_COLOR,
-                          fontSize: 14.0,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-
-                      Text(
-                        video?.description,
-                        style: TextStyle(
-                          color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                          fontSize: 11.0,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ))
-            ]));*/
-    return SizedBox(height: 270.0,
-        width: 325,child:Card(
+    var screenWidth = MediaQuery.of(context).size.width;
+    return SizedBox(height: 260.0,
+        width: screenWidth,child:Card(
             clipBehavior: Clip.antiAliasWithSaveLayer,
-          elevation: 2.0,
+          elevation: 3.0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -80,21 +22,23 @@ class HeaderMovieItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-
-        Image.asset(
+        Flexible(
+            flex:2,
+            child: Image.asset(
           video?.image,
-          height: 180.0,
-          width: 325,
+          height: 171.0,
+          width: screenWidth,
           fit: BoxFit.cover,
-        ),
-        Padding(
+        )),
+        Flexible(flex:1, child: Padding(
             padding:
             EdgeInsets.only(left: 23.0, right: 23.0, top: 10.0, bottom: 10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                Text(
+                Flexible(
+                    child: Text(
                   video?.duration,
                   style: TextStyle(
                     color: CustomColors.TEXT_COLOR,
@@ -102,9 +46,10 @@ class HeaderMovieItem extends StatelessWidget {
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                   ),
-                ),
+                )),
 
-                Text(
+            Flexible(
+              child: Text(
                   video?.description,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -114,9 +59,9 @@ class HeaderMovieItem extends StatelessWidget {
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
-                ),
+                ),),
               ],
-            ))
+            )))
           ])
     ));
   }

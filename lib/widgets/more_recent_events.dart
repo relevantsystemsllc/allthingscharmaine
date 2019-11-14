@@ -9,7 +9,7 @@ class MoreRecentEvents extends StatelessWidget {
   Widget build(BuildContext context) {
     List listData = getEventData();
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 30.0),
+        margin: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: <Widget>[
             Row(
