@@ -2,6 +2,13 @@
 
 A new Flutter application.
 
+![shop1](assets/screenshots/shop1.png). ![social1](assets/screenshots/social1.png).
+![shopBottomSheet](assets/screenshots/shopBottomSheet.png).
+![social2](assets/screenshots/social2.png).![social2](assets/screenshots/social3.png).
+![shop1](assets/screenshots/shop2.png). ![shop1](assets/screenshots/shop11.png).
+![shop1](assets/screenshots/shop3.png).
+![shop1](assets/screenshots/shop4.png).  ![shop1](assets/screenshots/shop5.png).
+![shop1](assets/screenshots/shop6.png).  ![shop1](assets/screenshots/shop7.png).  
 ## Getting Started
 
 ASSETS: https://1drv.ms/u/s!AnbxnB5ugF0ohrM89fJXIqFf8g-q9A?e=ZJD3N6
