@@ -1,13 +1,15 @@
-import 'package:allthingscharmaine/model/event.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/widgets/press_event_item.dart';
 import 'package:flutter/material.dart';
+
+import 'press_event_list_page.dart';
+
 
 class MoreRecentEvents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List listData = getEventData();
+    List listData = Data.getEventData();
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
@@ -44,27 +46,14 @@ class MoreRecentEvents extends StatelessWidget {
             SizedBox(
               height: 19,
             ),
-            PressEventItem(listData[0]),
+            GestureDetector(child: PressEventItem(listData[0]),
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => PressEventList()));},),
             SizedBox(height: 15, ),
-            PressEventItem(listData[1]),
+            GestureDetector(child: PressEventItem(listData[1]),
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => PressEventList()));},),
           ],
         ));
   }
 
-  List<Event> getEventData() {
-    List<Event> data = [];
-    data.add(Event(
-      id: 1,
-      image: "assets/artboard–3.png",
-      title: "Event 1",
-      description: "Charmaine Neque porro quisquam est qui dolorem .",
-    ));
-    data.add(Event(
-      id: 2,
-      image: "assets/artboard–4.png",
-      title: "Event 2",
-      description: "Charmaine Neque porro quisquam est qui dolorem .",
-    ));
-    return data;
-  }
+
 }
