@@ -11,10 +11,17 @@ class PressEventList extends StatefulWidget{
 }
 
 class _PressEventListSate extends State<PressEventList>{
-
+  ScrollController _scrollController =
+  ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
   List listData;
   @override
   Widget build(BuildContext context) {
+      _scrollController.addListener(() {
+      if (_scrollController.offset == _scrollController.position.maxScrollExtent ) {
+// We may load more if the list reaches the end
+
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -44,9 +51,20 @@ class _PressEventListSate extends State<PressEventList>{
                 fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
             SizedBox(height: 10.0,),
             Expanded(child: ListView.builder(
-                itemCount: listData.length,
+                //controller: _scrollController,
+                itemCount: listData.isNotEmpty? listData.length+1 : 0,
                 itemBuilder: (context, index){
-                  return Container(child: PressEventItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),);
+                  if((listData.length == index)){
+                    return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
+                      child: Center(child: Text('view more',
+                      style: TextStyle(
+                        color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                        fontSize: 12.0,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,),),),);
+                  }else{
+                    return Container(child: PressEventItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),);
+                  }
                 })),
           ],
         ),
