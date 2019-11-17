@@ -29,7 +29,6 @@ class _PressEventListSate extends State<PressEventList>{
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,
         ),
-        leading: Icon(Icons.arrow_back),
         title: Text('press', style: TextStyle(color: CustomColors.TITLE_COLOR),),
         elevation: 0.0,
         actions: <Widget>[

@@ -30,7 +30,7 @@ class _PressArticleListState extends State<PressArticleList>{
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,
         ),
-        leading: Icon(Icons.arrow_back),
+        automaticallyImplyLeading: true,
         title: Text('press', style: TextStyle(color: CustomColors.TITLE_COLOR),),
         elevation: 0.0,
         actions: [
