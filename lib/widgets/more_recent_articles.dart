@@ -1,13 +1,13 @@
-import 'package:allthingscharmaine/model/article.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/widgets/press_article_item.dart';
+import 'package:allthingscharmaine/widgets/press_article_list_page.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentArticles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List listData = getEventData();
+    List listData = Data.getArticleData();
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
@@ -44,27 +44,12 @@ class MoreRecentArticles extends StatelessWidget {
             SizedBox(
               height: 19,
             ),
-            PressArticleItem(listData[0]),
+            GestureDetector(child: PressArticleItem(listData[0],),
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> PressArticleList()));},),
             SizedBox(height: 15, ),
-            PressArticleItem(listData[1]),
+            GestureDetector(child: PressArticleItem(listData[1]),
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> PressArticleList()));},),
           ],
         ));
-  }
-
-  List<Article> getEventData() {
-    List<Article> data = [];
-    data.add(Article(
-      id: 1,
-      image: "assets/buffet-chicken-delicious-5916.jpg",
-      title: "Article 1",
-      description: "Charmaine Neque porro quisquam est qui dolorem .",
-    ));
-    data.add(Article(
-      id: 2,
-      image: "assets/beach-daylight-fun-1430675.jpg",
-      title: "Article 2",
-      description: "Charmaine Neque porro quisquam est qui dolorem .",
-    ));
-    return data;
   }
 }

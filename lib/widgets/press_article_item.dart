@@ -33,7 +33,7 @@ class PressArticleItem extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: 17.0, right: 17.0, top: 15.0, bottom: 10.0),
                     child: Text(
-                      article?.description,
+                      article?.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
