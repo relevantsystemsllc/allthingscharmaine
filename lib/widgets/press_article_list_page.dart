@@ -2,6 +2,8 @@ import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/widgets/press_article_item.dart';
 import 'package:flutter/material.dart';
 
+import 'press_article_detail_page.dart';
+
 class PressArticleList extends StatefulWidget{
 
   @override
@@ -64,7 +66,7 @@ class _PressArticleListState extends State<PressArticleList>{
                         fontWeight: FontWeight.w400,),),),);
                   }else{
                     return GestureDetector(child: Container(child: PressArticleItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
-                    onTap: (){/*Navigator.push(context, MaterialPageRoute(builder: (context) => EventDetail(listData[index])));*/},);
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => ArticleDetail(listData[index])));},);
                   }
                 })),
           ],

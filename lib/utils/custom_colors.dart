@@ -41,18 +41,21 @@ class Data {
       id: 1,
       image: "assets/buffet-chicken-delicious-5916.jpg",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
+      date: "January 18, 2019",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
     data.add(Article(
       id: 2,
       image: "assets/beach-daylight-fun-1430675.jpg",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
+      date: "January 18, 2019",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
     data.add(Article(
       id: 3,
       image: "assets/artboard–4.png",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
+      date: "January 18, 2019",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
     return data;
