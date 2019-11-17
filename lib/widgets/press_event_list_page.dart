@@ -1,4 +1,5 @@
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:allthingscharmaine/widgets/press_event_detail_page.dart';
 import 'package:allthingscharmaine/widgets/press_event_item.dart';
 import 'package:flutter/material.dart';
 
@@ -63,7 +64,8 @@ class _PressEventListSate extends State<PressEventList>{
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,),),),);
                   }else{
-                    return Container(child: PressEventItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),);
+                    return GestureDetector(child: Container(child: PressEventItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => EventDetail(listData[index])));},);
                   }
                 })),
           ],
