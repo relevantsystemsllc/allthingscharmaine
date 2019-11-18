@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/ui/screens/shop2.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop2.dart';
 import 'package:flutter/material.dart';
 
 
