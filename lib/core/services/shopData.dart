@@ -1,4 +1,6 @@
-import'package:allthingscharmaine/model/shop.dart';
+
+
+import 'package:allthingscharmaine/core/model/shop.dart';
 
 class ShopData {
   List<Shop> items;

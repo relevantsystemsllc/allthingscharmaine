@@ -1,9 +1,10 @@
 
+import 'package:allthingscharmaine/core/services/shopData.dart';
+import 'package:allthingscharmaine/ui/widgets/background.dart';
+
+import 'package:allthingscharmaine/ui/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/widgets/background.dart';
-import 'package:allthingscharmaine/services/shopData.dart';
-import 'package:allthingscharmaine/widgets/bottomNavBar.dart';
-import 'package:allthingscharmaine/widgets/bookCard.dart';
+
 
 class Shop7 extends StatefulWidget{
 
@@ -56,8 +57,8 @@ class Shop7State extends State<Shop7> {
                                   child: ListView(
                                     scrollDirection: Axis.horizontal,
                                     children: [
-                                      BookCard(),
-                                      BookCard(category: "print",)
+                                      // BookCard(),
+                                      // BookCard(category: "print",)
                                     ],shrinkWrap: true,padding: EdgeInsets.only(left: 40.0)
                                   ),height: 170.0,
                                 )

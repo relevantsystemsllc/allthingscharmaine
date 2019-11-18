@@ -1,6 +1,6 @@
-import 'package:allthingscharmaine/screens/social3.dart';
+import 'package:allthingscharmaine/ui/screens/shop2.dart';
 import 'package:flutter/material.dart';
-import 'screens/shop2.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Shop2()
+      
     );
   }
 }
