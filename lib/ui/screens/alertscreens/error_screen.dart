@@ -24,7 +24,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Spacer(),
-              SvgPicture.asset("images/error.svg"),
+              SvgPicture.asset("assets/error.svg"),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
