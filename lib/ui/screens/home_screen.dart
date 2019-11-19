@@ -7,6 +7,7 @@ import 'package:allthingscharmaine/ui/screens/tabarscreens/press_tab_screen.dart
 import 'package:allthingscharmaine/ui/screens/tabarscreens/social_tab_screen.dart';
 
 import 'package:allthingscharmaine/utils/margin_utils.dart';
+import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -51,11 +52,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   child: Container(
+                    height: 60,
                     child: TabBar(
                       tabs: [
                         Tab(icon: SvgPicture.asset("assets/ic-home.svg")),
                         Tab(icon: SvgPicture.asset("assets/chat.svg")),
-                        Tab(icon: SvgPicture.asset("assets/shopping-bag.svg")),
+                        Tab(
+                            icon: Container(
+                          child: Center(
+                              child:
+                                  SvgPicture.asset("assets/shopping-bag.svg")),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: MyColors().pinkActive),
+                            shape: BoxShape.circle)
+                        )),
                         Tab(
                             icon: SvgPicture.asset(
                                 "assets/017-microphone-2.svg")),
@@ -67,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          
         ]),
         drawer: Drawer(
           child: ListView(
