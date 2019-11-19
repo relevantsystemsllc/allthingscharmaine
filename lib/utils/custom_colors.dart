@@ -1,5 +1,6 @@
 import 'package:allthingscharmaine/model/article.dart';
 import 'package:allthingscharmaine/model/event.dart';
+import 'package:allthingscharmaine/model/video.dart';
 import 'package:flutter/material.dart';
 
 class CustomColors {
@@ -58,6 +59,15 @@ class Data {
       date: "January 18, 2019",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
+    return data;
+  }
+
+  static List<Video> getVideoData(){
+    List<Video> data = [];
+    data.add(Video(id: 1,image: "assets/artboard.png", title: "Video 1", description: 'Chaimaine Neque porro quisquam est qui dolorem', viewCount: '51K views', duration: '9:59', time: '3 hours ago'));
+    data.add(Video(id: 2,image: "assets/chicago.jpg", title: "Video 2", description: 'Video description 2 hhh jjjjjjjjj', viewCount: '200K views',  duration: '05:50', time: '3 hours ago'));
+    data.add(Video(id: 3,image: "assets/chicago-Illinois.jpg", title: "Video 3", description: 'Video description 3', viewCount: '78K views',  duration: '10:50', time: '3 hours ago'));
+    data.add(Video(id: 4,image: "assets/blur-breakfast-close-up-376464.jpg", title: 'Video 4', description: 'Video description 4', viewCount: '1M views',  duration: '03:50', time: '3 hours ago'));
     return data;
   }
 }

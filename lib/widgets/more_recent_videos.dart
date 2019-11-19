@@ -1,4 +1,3 @@
-import 'package:allthingscharmaine/model/video.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/widgets/header_video_item.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,7 @@ class MoreRecentVideos extends StatelessWidget {
   List listData;
   @override
   Widget build(BuildContext context) {
-    listData = getVideoData();
+    listData = Data.getVideoData();
     return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,29 +45,6 @@ class MoreRecentVideos extends StatelessWidget {
                   ],
                 )),
 
-            /* CarouselSlider(
-
-          items: listData.map((item){
-            return  Container(
-                width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 7.0),
-
-            child: HeaderMovieItem(item));
-          }).toList(),
-          //aspectRatio: 4/3,
-          viewportFraction: 0.9,
-          initialPage: 0,
-          enableInfiniteScroll: true,
-          reverse: false,
-          autoPlay: false,
-          autoPlayInterval: Duration(seconds: 2),
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
-
-          pauseAutoPlayOnTouch: Duration(seconds: 10),
-          enlargeCenterPage: true,
-
-          scrollDirection: Axis.horizontal,
-        ),*/
             SizedBox(
               height: 19,
             ),
@@ -99,13 +75,5 @@ class MoreRecentVideos extends StatelessWidget {
         });
   }
 
-  List<Video> getVideoData(){
-    List<Video> data = [];
-    data.add(Video(id: 1,image: "assets/artboard.png", title: "Video 1", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '51K views', duration: "9:59"));
-    data.add(Video(id: 2,image: "assets/chicago.jpg", title: "Video 2", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '200K views',  duration: "05:50"));
-    data.add(Video(id: 3,image: "assets/chicago-Illinois.jpg", title: "Video 3", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '78K views',  duration: "10:50"));
-    data.add(Video(id: 4,image: "assets/blur-breakfast-close-up-376464.jpg", title: "Video 4", description: "Chaimaine Neque porro quisquam est qui dolorem", viewCount: '1M views',  duration: "03:50"));
 
-    return data;
-  }
 }
