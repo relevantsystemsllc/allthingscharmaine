@@ -25,7 +25,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Spacer(),
-              SvgPicture.asset("images/success.svg"),
+              SvgPicture.asset("assets/success.svg"),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
