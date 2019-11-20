@@ -10,7 +10,7 @@ class CreditCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 8.0),
       child: Card(
         margin: EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0, bottom: 5.0),
         elevation: 2,
@@ -18,7 +18,7 @@ class CreditCardWidget extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         clipBehavior: Clip.antiAlias,
         child: Container(
-          height: 225,
+          height: 230,
           decoration: BoxDecoration(color: MyColors().pinkActive),
           child: Center(
             child: Padding(

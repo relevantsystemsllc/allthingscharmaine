@@ -233,10 +233,10 @@ class Shop2State extends State<Shop2> {
                   )),
                   flex: 9,
                 ),
-                Flexible(
-                  child: BottomNavBar(),
-                  flex: 1,
-                )
+                // Flexible(
+                //   child: BottomNavBar(),
+                //   flex: 1,
+                // )
               ],
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
