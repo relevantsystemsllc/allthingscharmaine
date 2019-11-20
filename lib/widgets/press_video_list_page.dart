@@ -1,4 +1,5 @@
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:allthingscharmaine/widgets/press_video_detail_page.dart';
 import 'package:allthingscharmaine/widgets/press_video_item.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +80,7 @@ class _PressVideoListState extends State<PressVideoList>{
                         fontWeight: FontWeight.w400,),),),);
                 }else{
                   return GestureDetector(child: Container(child: PressVideoItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
-                    onTap: (){/*Navigator.push(context, MaterialPageRoute(builder: (context) => ArticleDetail(listData[index])));*/},);
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(listData[index])));},);
                 }
               }),
         )],)

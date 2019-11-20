@@ -1,5 +1,6 @@
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/widgets/header_video_item.dart';
+import 'package:allthingscharmaine/widgets/press_video_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentVideos extends StatelessWidget {
@@ -55,7 +56,8 @@ class MoreRecentVideos extends StatelessWidget {
                   controller: _pageController,
                   itemCount: listData.length,
                   itemBuilder: (context, position){
-                    return imageSlider(position);
+                    return GestureDetector(child: imageSlider(position),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(listData[position])));},);
                   }),)
           ],
         ));

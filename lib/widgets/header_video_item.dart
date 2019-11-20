@@ -58,7 +58,7 @@ class HeaderMovieItem extends StatelessWidget {
 
                           Flexible(
                             child: Text(
-                              video?.description,
+                              video?.title,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

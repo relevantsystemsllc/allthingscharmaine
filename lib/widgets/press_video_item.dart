@@ -35,17 +35,18 @@ class PressVideoItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                Flexible(child: Container(width: 185,child: Text(
                     video?.title,
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
+                    softWrap: false,
                     style: TextStyle(
                       color: CustomColors.TEXT_COLOR,
                       fontSize: 13.0,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
                     ),
-                ),
+                ),),),
                 Text(
                   video?.viewCount,
                   maxLines: 1,
