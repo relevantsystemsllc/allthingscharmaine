@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomHomeAppbar extends StatelessWidget with PreferredSizeWidget {
+class CustomCartAppbar extends StatelessWidget with PreferredSizeWidget {
   final double height;
   final Color bgColor;
-  
+  String title = " ";
 
-
-  CustomHomeAppbar({Key key, @required this.height, @required this.bgColor})
+  CustomCartAppbar(
+      {Key key, @required this.height, @required this.bgColor, this.title})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,16 +21,13 @@ class CustomHomeAppbar extends StatelessWidget with PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/hambmenu.svg",
-                  color: bgColor,
-                ),
+                icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  Scaffold.of(context).openDrawer();
+                  Navigator.pop(context);
                 },
               ),
               Spacer(),
-              Text(" "),
+              Text(title),
               Spacer(),
               IconButton(
                 icon: SvgPicture.asset(

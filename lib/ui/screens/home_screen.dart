@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import 'otherscreens /order_history.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -59,13 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Tab(icon: SvgPicture.asset("assets/chat.svg")),
                         Tab(
                             icon: Container(
-                          child: Center(
-                              child:
-                                  SvgPicture.asset("assets/shopping-bag.svg")),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: MyColors().pinkActive),
-                            shape: BoxShape.circle)
-                        )),
+                                child: Center(
+                                    child: SvgPicture.asset(
+                                        "assets/shopping-bag.svg")),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: MyColors().pinkActive),
+                                    shape: BoxShape.circle))),
                         Tab(
                             icon: SvgPicture.asset(
                                 "assets/017-microphone-2.svg")),
@@ -133,8 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ListTile(
                 title: Text('purchases'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OrderHistory()));
                 },
               ),
               ListTile(
