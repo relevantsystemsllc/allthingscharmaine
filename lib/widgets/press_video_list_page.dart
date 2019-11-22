@@ -33,7 +33,7 @@ class _PressVideoListState extends State<PressVideoList>{
           color: CustomColors.TITLE_COLOR,
         ),
         automaticallyImplyLeading: true,
-        title: Text('press', style: TextStyle(color: CustomColors.TITLE_COLOR),),
+        title: Text('press', style: TextStyle(fontWeight: FontWeight.w500, fontFamily: 'Poppins', fontSize:15.0, color: CustomColors.TITLE_COLOR),),
         elevation: 0.0,
         actions: [
           IconButton(
