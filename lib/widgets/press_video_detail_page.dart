@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
 class VideoDetail extends StatelessWidget {
-  VideoDetail(this._video);
+  VideoDetail(@required this._video): assert(_video != null);
 
   final Video _video;
   ScrollController _scrollController =
@@ -144,12 +144,18 @@ class VideoDetail extends StatelessWidget {
       ),
     );
   }
+
+  /*void _getColorPalette(String imagePath) async{
+    PaletteGenerator generator = await PaletteGenerator
+        .fromImageProvider(AssetImage(imagePath), size: Size(200,200));
+    if(generator.darkMutedColor != null) _playerColor = generator.darkMutedColor;
+
+  }*/
 }
 
 class MoreVideoItem extends StatelessWidget {
   final Video video;
-
-  MoreVideoItem({@required this.video}) : assert(video != null);
+  MoreVideoItem({@required this.video, Key key}) : assert(video != null);
 
   @override
   Widget build(BuildContext context) {

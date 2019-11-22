@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'widgets/drawer_widget.dart';
 import 'widgets/pressTab.dart';
 
 void main() => runApp(MyApp());
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
+        drawer: Drawer(child: NavigationDrawer(),),
         body: PressTab(),
       ),
     );
