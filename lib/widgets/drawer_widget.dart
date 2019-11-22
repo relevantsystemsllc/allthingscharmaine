@@ -1,3 +1,4 @@
+import 'package:allthingscharmaine/widgets/charmaine_tv_list.dart';
 import 'package:flutter/material.dart';
 
 class NavigationDrawer extends StatelessWidget{
@@ -20,6 +21,7 @@ class NavigationDrawer extends StatelessWidget{
               // ...
               // Then close the drawer
               Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CharmaineTv()));
             },
           ),
           ListTile(
