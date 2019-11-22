@@ -5,10 +5,18 @@ import 'widgets/pressTab.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+  class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return MaterialApp(
       title: 'Charmaine',debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -26,18 +34,19 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       home: Scaffold(
+        key: _scaffoldKey,
+        drawer: Drawer(child: NavigationDrawer(),),
         appBar: AppBar(
-          leading: Image.asset('assets/hamb-menu.png'),
+          leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),
           elevation: 0.0,
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/notification.png'),
               tooltip: 'Notification',
-              onPressed: () {},
+              onPressed: () { _scaffoldKey.currentState.openDrawer();},
             ),
           ],
         ),
-        drawer: Drawer(child: NavigationDrawer(),),
         body: PressTab(),
       ),
     );

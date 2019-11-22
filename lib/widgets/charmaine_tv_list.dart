@@ -1,17 +1,26 @@
 import 'package:allthingscharmaine/model/charmainetv.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/widgets/charmaine_tv_item.dart';
+import 'package:allthingscharmaine/widgets/drawer_widget.dart';
+import 'package:allthingscharmaine/widgets/press_video_list_page.dart';
 import 'package:flutter/material.dart';
 
-class CharmaineTv extends StatelessWidget{
+class CharmaineTv extends StatefulWidget{
 
+  @override
+  State createState() => _CharmaineTvState();
+}
+
+class _CharmaineTvState extends State<CharmaineTv>{
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     List<Charmainetv> data = Data.getTVData();
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Image.asset('assets/hamb-menu.png'),
+        leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,
@@ -26,6 +35,7 @@ class CharmaineTv extends StatelessWidget{
           ),
         ],
       ),
+      drawer: Drawer(child: NavigationDrawer(),),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +55,10 @@ class CharmaineTv extends StatelessWidget{
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index){
-                return Container(child: CharmaineTvItem(imagePath: data[index].imagePath, name: data[index].name), padding: EdgeInsets.only(bottom: 10.0),);
+                return GestureDetector(child: Container(child: CharmaineTvItem(imagePath: data[index].imagePath, name: data[index].name), padding: EdgeInsets.only(bottom: 10.0),),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'charmaine tv', category: data[index].name,)));
+                },);
               },),
 
           ],

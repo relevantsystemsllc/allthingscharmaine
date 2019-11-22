@@ -50,7 +50,7 @@ class MoreVideos extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index){
                   return GestureDetector(child: Container(child: PressVideoItem(listData[index]), margin: EdgeInsets.only(bottom: 10.0),),
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList()));},);
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'press', category: 'videos',)));},);
                 })
           ],
         ));

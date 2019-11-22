@@ -7,6 +7,11 @@ import 'more_recent_videos.dart';
 
 class PressVideoList extends StatefulWidget{
 
+  PressVideoList({@required this.title, @required this.category});
+
+  String title;
+  String category;
+
   @override
   State createState() {
     return _PressVideoListState();
@@ -33,7 +38,7 @@ class _PressVideoListState extends State<PressVideoList>{
           color: CustomColors.TITLE_COLOR,
         ),
         automaticallyImplyLeading: true,
-        title: Text('press', style: TextStyle(fontWeight: FontWeight.w500, fontFamily: 'Poppins', fontSize:15.0, color: CustomColors.TITLE_COLOR),),
+        title: Text(widget.title, style: TextStyle(fontWeight: FontWeight.w500, fontFamily: 'Poppins', fontSize:15.0, color: CustomColors.TITLE_COLOR),),
         elevation: 0.0,
         actions: [
           IconButton(
@@ -54,7 +59,7 @@ class _PressVideoListState extends State<PressVideoList>{
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: 5.0,),
-              Text('videos', style: TextStyle(color: CustomColors.TITLE_COLOR,
+              Text(widget.category, maxLines: 1,overflow: TextOverflow.ellipsis, style: TextStyle(color: CustomColors.TITLE_COLOR,
                   fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
               SizedBox(height: 10.0,),
 

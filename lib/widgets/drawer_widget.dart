@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class NavigationDrawer extends StatelessWidget{
 
+  NavigationDrawer({Key key}):super(key:key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +13,7 @@ class NavigationDrawer extends StatelessWidget{
         children: <Widget>[
           SizedBox(height: 40.0,),
         Row(mainAxisAlignment: MainAxisAlignment.end,
-        children: [Icon(Icons.close)],),
+        children: [IconButton(icon: Icon(Icons.close), onPressed: (){ Navigator.pop(context);}) ],),
         Expanded(child: ListView(children: [
           ListTile(
             title: Text('charmaine tv', style: TextStyle(fontSize: 18.0),),
