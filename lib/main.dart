@@ -1,7 +1,6 @@
+import 'package:allthingscharmaine/screens/press/pressTab.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'widgets/drawer_widget.dart';
-import 'widgets/pressTab.dart';
 
 void main() => runApp(MyApp());
 

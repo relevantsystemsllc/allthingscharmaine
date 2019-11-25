@@ -1,9 +1,8 @@
+import 'package:allthingscharmaine/screens/press/press_video_detail_page.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-import 'package:allthingscharmaine/widgets/press_video_detail_page.dart';
-import 'package:allthingscharmaine/widgets/press_video_item.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/more_recent_videos.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/press_video_item.dart';
 import 'package:flutter/material.dart';
-
-import 'more_recent_videos.dart';
 
 class PressVideoList extends StatefulWidget{
 

@@ -1,17 +1,18 @@
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-import 'package:allthingscharmaine/widgets/press_event_detail_page.dart';
-import 'package:allthingscharmaine/widgets/press_event_item.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/press_article_item.dart';
 import 'package:flutter/material.dart';
 
-class PressEventList extends StatefulWidget{
+import 'press_article_detail_page.dart';
+
+class PressArticleList extends StatefulWidget{
 
   @override
   State createState() {
-    return _PressEventListSate();
+    return _PressArticleListState();
   }
 }
 
-class _PressEventListSate extends State<PressEventList>{
+class _PressArticleListState extends State<PressArticleList>{
   ScrollController _scrollController =
   ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
   List listData;
@@ -29,9 +30,10 @@ class _PressEventListSate extends State<PressEventList>{
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,
         ),
+        automaticallyImplyLeading: true,
         title: Text('press', style: TextStyle(fontWeight: FontWeight.w500, fontFamily: 'Poppins', fontSize:15.0, color: CustomColors.TITLE_COLOR),),
         elevation: 0.0,
-        actions: <Widget>[
+        actions: [
           IconButton(
             icon: Image.asset('assets/notification.png'),
             tooltip: 'Notification',
@@ -47,7 +49,7 @@ class _PressEventListSate extends State<PressEventList>{
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 5.0,),
-            Text('events', style: TextStyle(color: CustomColors.TITLE_COLOR,
+            Text('articles', style: TextStyle(color: CustomColors.TITLE_COLOR,
                 fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
             SizedBox(height: 10.0,),
             Expanded(child: ListView.builder(
@@ -63,8 +65,8 @@ class _PressEventListSate extends State<PressEventList>{
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,),),),);
                   }else{
-                    return GestureDetector(child: Container(child: PressEventItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => EventDetail(listData[index])));},);
+                    return GestureDetector(child: Container(child: PressArticleItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => ArticleDetail(listData[index])));},);
                   }
                 })),
           ],
@@ -75,6 +77,6 @@ class _PressEventListSate extends State<PressEventList>{
 
   @override
   void initState() {
-    listData = Data.getEventData();
+    listData = Data.getArticleData();
   }
 }

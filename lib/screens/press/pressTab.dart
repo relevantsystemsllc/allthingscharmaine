@@ -1,10 +1,9 @@
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/more_recent_articles.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/more_recent_events.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/more_recent_videos.dart';
+import 'package:allthingscharmaine/widgets/tourewidgets/more_videos.dart';
 import 'package:flutter/material.dart';
-
-import 'more_recent_articles.dart';
-import 'more_recent_events.dart';
-import 'more_recent_videos.dart';
-import 'more_videos.dart';
 
 class PressTab extends StatelessWidget{
 
