@@ -1,4 +1,3 @@
-
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,22 +11,28 @@ class QACharmaineView extends StatelessWidget {
       height: 190,
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Text(
-                "q/a by charmaine ",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w500,
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0,bottom: 8.0),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "q/a by charmaine ",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              Spacer(),
-              Text(
-                "view all",
-                style: TextStyle(color: MyColors().pinkInactive),
-              )
-            ],
+                Spacer(),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "view all"
+                    ,style: TextStyle(color: Colors.grey[700]),
+                  ),
+                )
+              ],
+            ),
           ),
           QACharmanineCard(),
           QACharmanineCard()

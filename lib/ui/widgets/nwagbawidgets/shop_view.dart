@@ -8,17 +8,27 @@ class ShopViewWidget extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0),
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Text(
-                "shop >",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w500,
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "shop ",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),Spacer(),
+                Text(
+                  "view all",
+                  style: TextStyle(color: Colors.grey[700]),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Container(
             height: 190,
@@ -27,26 +37,40 @@ class ShopViewWidget extends StatelessWidget {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    SvgPicture.asset("assets/ICON 8.svg"),
-                    Text("some text"),
+                    SvgPicture.asset(
+                      "assets/ICON 8.svg",
+                    ),
+                    Text(
+                      "some text",
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
                   ],
                 ),
                 Column(
                   children: <Widget>[
-                    SvgPicture.asset("assets/ICON5.svg"),
-                    Text("some text"),
+                    SvgPicture.asset("assets/ICON 5.svg"),
+                    Text(
+                      "some text",
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
                   ],
                 ),
                 Column(
                   children: <Widget>[
-                    SvgPicture.asset("assets/ICON6.svg"),
-                    Text("some text"),
+                    SvgPicture.asset("assets/ICON 6.svg"),
+                    Text(
+                      "some text",
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
                   ],
                 ),
                 Column(
                   children: <Widget>[
-                    SvgPicture.asset("assets/ICON7.svg"),
-                    Text("some text"),
+                    SvgPicture.asset("assets/ICON 7.svg"),
+                    Text(
+                      "some text",
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
                   ],
                 )
               ],
