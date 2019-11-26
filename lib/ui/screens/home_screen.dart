@@ -5,14 +5,13 @@ import 'package:allthingscharmaine/ui/screens/tabarscreens/cart_tab_screen.dart'
 import 'package:allthingscharmaine/ui/screens/tabarscreens/home_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/press_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/social_tab_screen.dart';
-
 import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import 'otherscreens /order_history.dart';
+import 'otherscreens/order_history.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

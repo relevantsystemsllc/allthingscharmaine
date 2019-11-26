@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/ui/screens/otherscreens%20/contact_info_screen.dart';
+import 'package:allthingscharmaine/ui/screens/otherscreens/contact_info_screen.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/carditem.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_home_appbar.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
