@@ -1,12 +1,16 @@
+import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
 import 'package:allthingscharmaine/ui/screens/charmainetv/charmaine_tv_list_page.dart';
+import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NavigationDrawer extends StatelessWidget{
 
   NavigationDrawer({Key key}):super(key:key);
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<LoginViewmodel>(context);
     return Container(
       padding: EdgeInsets.only(right: 20.0, left: 20.0),
       child: Column(
@@ -114,6 +118,11 @@ class NavigationDrawer extends StatelessWidget{
               // ...
               // Then close the drawer
               Navigator.pop(context);
+              userProvider.signUserOut();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NameRegScreen()));
             },
           ),
       ],
