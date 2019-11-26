@@ -8,15 +8,28 @@ class CharmaineTV extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Text("charmaine tv >",style: TextStyle(color: Colors.black,fontSize: 20.0,fontWeight: FontWeight.w500,),),
-              Spacer(),
-              Text(
-                "view all",
-                style: TextStyle(color: MyColors().pinkInactive),
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "charmaine tv ",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Spacer(),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "view all",
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                )
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10.0),
@@ -31,7 +44,14 @@ class CharmaineTV extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Text("cooking",style: TextStyle(color: Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500,),),
+                child: Text(
+                  "cooking",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
             ),
           ),
@@ -48,7 +68,14 @@ class CharmaineTV extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Text("beauty",style: TextStyle(color: Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500,),),
+                child: Text(
+                  "beauty",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
             ),
           ),
@@ -65,7 +92,14 @@ class CharmaineTV extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Text("WGCI",style: TextStyle(color: Colors.white,fontSize: 15.0,fontWeight: FontWeight.w500,),),
+                child: Text(
+                  "WGCI",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
             ),
           ),

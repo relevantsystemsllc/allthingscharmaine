@@ -1,16 +1,17 @@
 import 'package:allthingscharmaine/utils/bg_containers.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class ErrorScreen extends StatelessWidget {
+class PeachErrorScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: Stack(children: <Widget>[
         Clipbody2(),
         Clipbody1(
-          myColor: MyColors().pinkActive,
+          myColor: MyColors().iThinkItsPeach,
         ),
         Container(
           child: Center(
@@ -71,4 +72,6 @@ class ErrorScreen extends StatelessWidget {
       ]),
     );
   }
+
+  
 }

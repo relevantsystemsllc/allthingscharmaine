@@ -13,7 +13,7 @@ class Forum extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                "forum >",
+                "forum ",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,
@@ -21,17 +21,18 @@ class Forum extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              Text(
-                "view all",
-                style: TextStyle(color: MyColors().pinkInactive),
+              InkWell(
+                onTap: () {},
+                child: Text(
+                  "view all",
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
               )
             ],
           ),
-          
           ForumItem(),
           ForumItem(),
           ForumItem()
-
         ],
       ),
     );
