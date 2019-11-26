@@ -32,6 +32,7 @@ class _PressVideoListState extends State<PressVideoList>{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,

@@ -25,6 +25,7 @@ class _PressEventListSate extends State<PressEventList>{
     });
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,

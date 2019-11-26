@@ -26,6 +26,7 @@ class _PressArticleListState extends State<PressArticleList>{
     });
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,

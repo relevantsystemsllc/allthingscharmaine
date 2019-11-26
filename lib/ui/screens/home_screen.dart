@@ -1,17 +1,14 @@
 import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
 import 'package:allthingscharmaine/ui/screens/shopscreens/shop2.dart';
-import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/cart_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/home_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/press_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/social_tab_screen.dart';
-import 'package:allthingscharmaine/utils/margin_utils.dart';
+import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-
-import 'otherscreens/order_history.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -27,6 +24,29 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          brightness: Brightness.dark,
+          backgroundColor: MyColors().pinkActive,
+          leading: IconButton(icon: SvgPicture.asset(
+            "assets/hambmenu.svg",
+            color: Colors.white,
+          ), onPressed: () { _scaffoldKey.currentState.openDrawer();}),
+          elevation: 0.0,
+          actions: <Widget>[
+            IconButton(
+              icon: SvgPicture.asset(
+                "assets/notification.svg",
+                color: Colors.white,
+              ),
+              tooltip: 'Notification',
+              onPressed: () { _scaffoldKey.currentState.openDrawer();},
+            ),
+          ],
+        ),
         // appBar: CustomHomeAppbar(height: 100,),
         body: Stack(children: <Widget>[
           Container(
@@ -79,96 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ]),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.fromLTRB(30.0, 26.0, 8.0, 8.0),
-            children: <Widget>[
-              Align(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8.0, 26.0, 8.0, 8.0),
-                  child: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                alignment: Alignment.topRight,
-              ),
-              customYMargin(30),
-              ListTile(
-                title: Text('charmaine tv'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('forum'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('Q/A'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('library'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('my account'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('purchases'),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OrderHistory()));
-                },
-              ),
-              ListTile(
-                title: Text('billing information'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('contact us'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              customYMargin(50),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: ListTile(
-                  title: Text('logout'),
-                  onTap: () {
-                    userProvider.signUserOut();
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NameRegScreen()));
-                  },
-                ),
-              )
-            ],
-          ),
-        ),
+        drawer: Drawer(child: NavigationDrawer(),),
       ),
     );
   }
