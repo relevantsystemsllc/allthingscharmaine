@@ -1,11 +1,11 @@
-import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/more_recent_articles.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/more_recent_events.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/more_recent_videos.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/more_videos.dart';
+import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
-class PressTab extends StatelessWidget{
+class PressTabScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {

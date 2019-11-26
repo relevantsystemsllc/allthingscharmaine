@@ -1,8 +1,5 @@
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/press_list_card.dart';
-
 import 'package:flutter/material.dart';
-
-import 'carousel_card_view.dart';
 
 class PressView extends StatelessWidget {
   final _controller = PageController(initialPage: 1);

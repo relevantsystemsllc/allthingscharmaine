@@ -1,4 +1,3 @@
-import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 
 class CharmaineTV extends StatelessWidget {

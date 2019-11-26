@@ -1,5 +1,5 @@
-import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
+
 import 'bg_clip_path.dart';
 
 class Clipbody1 extends StatelessWidget {

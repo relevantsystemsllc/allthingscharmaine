@@ -1,6 +1,6 @@
+import 'package:allthingscharmaine/ui/screens/press/press_article_list_page.dart';
+import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_article_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-import 'package:allthingscharmaine/widgets/tourewidgets/press_article_item.dart';
-import 'package:allthingscharmaine/screens/press/press_article_list_page.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentArticles extends StatelessWidget {

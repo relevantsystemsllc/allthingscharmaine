@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/screens/charmainetv/charmaine_tv_list_page.dart';
+import 'package:allthingscharmaine/ui/screens/charmainetv/charmaine_tv_list_page.dart';
 import 'package:flutter/material.dart';
 
 class NavigationDrawer extends StatelessWidget{

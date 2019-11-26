@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/utils/arc_clipper.dart';
+import 'package:flutter/material.dart';
 
 
 class Base extends StatelessWidget {
