@@ -1,9 +1,10 @@
 import 'package:allthingscharmaine/ui/screens/home_screen.dart';
 import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
-import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'core/viewmodels/loginviewmodel.dart';
 import 'core/viewmodels/user_creditcard_viewmodel.dart';
 import 'core/viewmodels/userviewmodel.dart';

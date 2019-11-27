@@ -1,9 +1,9 @@
 import 'package:allthingscharmaine/core/viewmodels/user_creditcard_viewmodel.dart';
 import 'package:allthingscharmaine/ui/screens/signupscreens/security_questions_screen.dart';
-import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/round_checkbox.dart';
-import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/credit_card.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_appbar.dart';
+import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/round_checkbox.dart';
+import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

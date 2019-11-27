@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/ui/screens/otherscreens%20/pick_card_sceen.dart';
+import 'package:allthingscharmaine/ui/screens/otherscreens/pick_card_sceen.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_cart_appbar.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';

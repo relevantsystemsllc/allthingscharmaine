@@ -36,6 +36,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  snaplist: ^0.1.8
+  photo_view: ^0.8.0
+  palette_generator: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -53,8 +56,26 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/blur-breakfast-close-up-376464.jpg
+    - assets/notification.png
+    - assets/hamb-menu.png
+    - assets/icons/play.png
+    - assets/artboard.png
+    - assets/chicago.jpg
+    - assets/chicago-Illinois.jpg
+    - assets/adult-attractive-beautiful-871495.jpg
+    - assets/artboard–3.png
+    - assets/artboard–4.png
+    - assets/beach-daylight-fun-1430675.jpg
+    - assets/buffet-chicken-delicious-5916.jpg
+    - assets/assortment-autumn-background-1400172.jpg
+    - assets/assorted-beauty-blur-457702.jpg
+    - assets/behind-the-scenes-camera.png
+    - assets/headshot1.jpg
+    - assets/dogs_french_bulldog_bench_black.jpg
+    - assets/blur-bokeh-community-5156.jpg
     - assets/
-    
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
@@ -72,24 +93,33 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-  - family: Poppins
-    fonts:
-      - asset: fonts/Poppins-Bold.ttf
-        weight: 100
-      - asset: fonts/Poppins-Bold(25143).ttf
-        weight: 200
-      - asset: fonts/Poppins-Light.ttf
-        weight: 300
-      - asset: fonts/Poppins-Light(25142).ttf
-        weight: 400
-      - asset: fonts/Poppins-Medium.ttf
-        weight: 500
-      - asset: fonts/Poppins-Medium(25141).ttf
-        weight: 600
-        style: normal
-  - family: OCRAEXT
-    fonts:
-      - asset: fonts/OCRAEXT.TTF
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+      - family: Poppins
+        fonts:
+          - asset: assets/fonts/Poppins-Bold.ttf
+            weight: 700
+          - asset: assets/fonts/Poppins-Light.ttf
+            weight: 300
+          - asset: assets/fonts/Poppins-Medium.ttf
+            weight: 500
+          - asset: assets/fonts/Poppins-Regular.ttf
+            weight: 400
+          - asset: assets/fonts/Poppins-SemiBold.ttf
+            weight: 600
+
+      - family: OCRAEXT
+        fonts:
+          - asset: fonts/OCRAEXT.TTF
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,7 +1,8 @@
 import 'dart:io';
-import 'package:allthingscharmaine/utils/imageClipper.dart';
+
 import 'package:allthingscharmaine/core/viewmodels/userviewmodel.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_appbar.dart';
+import 'package:allthingscharmaine/utils/imageClipper.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

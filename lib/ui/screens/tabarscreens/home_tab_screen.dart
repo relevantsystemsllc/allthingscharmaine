@@ -1,7 +1,6 @@
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/carousel_view.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/charmaine_radio.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/charmaine_tv.dart';
-import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_home_appbar.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/forum.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/press_view.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/qa_charmaine_view.dart';
@@ -21,10 +20,10 @@ class HomeTabScreen extends StatelessWidget {
         ),
         ListView(
           children: <Widget>[
-            CustomHomeAppbar(
+           /* CustomHomeAppbar(
               height: 10,
               bgColor: Colors.white,
-            ),
+            ),*/
             Padding(
               padding: const EdgeInsets.only(top: 10, right: 16),
               child: Row(

@@ -1,7 +1,6 @@
 
 import 'package:allthingscharmaine/core/services/shopData.dart';
 import 'package:allthingscharmaine/ui/widgets/background.dart';
-
 import 'package:allthingscharmaine/ui/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 

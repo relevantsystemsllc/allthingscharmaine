@@ -1,5 +1,5 @@
-import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/round_checkbox.dart';
+import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

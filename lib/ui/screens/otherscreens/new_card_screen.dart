@@ -1,5 +1,5 @@
 
-import 'package:allthingscharmaine/ui/screens/otherscreens%20/address_screen.dart';
+import 'package:allthingscharmaine/ui/screens/otherscreens/address_screen.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/credit_card.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_appbar.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/round_checkbox.dart';

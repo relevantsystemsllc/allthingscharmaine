@@ -1,7 +1,7 @@
-import 'package:allthingscharmaine/locator.dart';
 import 'package:allthingscharmaine/core/model/user_credit_card.dart';
 import 'package:allthingscharmaine/core/model/user_signup_dto.dart';
 import 'package:allthingscharmaine/core/services/API.dart';
+import 'package:allthingscharmaine/locator.dart';
 import 'package:flutter/widgets.dart';
 
 class LoginViewmodel extends ChangeNotifier {

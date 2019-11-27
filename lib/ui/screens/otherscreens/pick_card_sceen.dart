@@ -1,10 +1,9 @@
-import 'package:allthingscharmaine/ui/screens/otherscreens%20/address_screen.dart';
+import 'package:allthingscharmaine/ui/screens/otherscreens/address_screen.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/credit_card.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_appbar.dart';
-import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/round_checkbox.dart';
+import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:page_indicator/page_indicator.dart';
 
 import 'new_card_screen.dart';
