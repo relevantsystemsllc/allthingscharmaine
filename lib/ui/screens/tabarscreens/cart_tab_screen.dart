@@ -1,6 +1,5 @@
 import 'package:allthingscharmaine/ui/screens/otherscreens/contact_info_screen.dart';
 import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/carditem.dart';
-import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_home_appbar.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -8,13 +7,13 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 class CartTabScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(children: <Widget>[
+    return Container(color: Colors.white, child: ListView(children: <Widget>[
       Column(
         children: <Widget>[
-          CustomHomeAppbar(
+          /*CustomHomeAppbar(
             height: 10,
             bgColor: Colors.black,
-          ),
+          ),*/
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -131,6 +130,6 @@ class CartTabScreen extends StatelessWidget {
           ),
         ],
       ),
-    ]);
+    ]),);
   }
 }
