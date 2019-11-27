@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  provider: ^3.1.0+1
+  intl: ^0.15.8
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -61,6 +63,14 @@ flutter:
     - assets/apple pay logo.png
     - assets/book 2.png
     - assets/book.png
+    - assets/Charmaine.png
+
+  fonts:
+     - family: Poppins
+       fonts:
+        - asset: assets/FONT/Poppins-Light.ttf
+        - asset: assets/FONT/Poppins-SemiBold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

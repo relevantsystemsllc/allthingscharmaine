@@ -5,6 +5,7 @@ class Shop {
   final String cost;
   final String info;
   final String detail;
+  final String description;
   final String category;
 
   Shop({
@@ -12,6 +13,7 @@ class Shop {
     @required this.info,
     @required this.image,
     @required this.category,
+    this.description,
     this.detail
   }):assert(cost!=null),assert(info!=null),assert(image!=null);
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 
 class BottomNavBar extends StatelessWidget {
+  final color;
+  BottomNavBar({this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +13,9 @@ class BottomNavBar extends StatelessWidget {
     ImageIcon(AssetImage("assets/ic-home.png"),color: Colors.grey),
     ImageIcon(AssetImage("assets/chat.png"),color:Colors.grey),
     Column(children:[
-      Container(child:ImageIcon(AssetImage("assets/shopping-bag.png"),color: Colors.pink[300]),decoration: BoxDecoration(border: Border.all(color: Colors.pink[200]),shape: BoxShape.circle),padding: EdgeInsets.all(5.0),),
+      Container(child:ImageIcon(AssetImage("assets/shopping-bag.png"),color: color??Colors.pink[300]),decoration: BoxDecoration(border: Border.all(color: color??Colors.pink[200]),shape: BoxShape.circle),padding: EdgeInsets.all(5.0),),
       SizedBox(height: 8.0),
-      Container(color: Colors.pink[200],height: 5.0,width: 60.0,)
+      Container(color: color??Colors.pink[200],height: 5.0,width: 60.0,)
     ],mainAxisAlignment: MainAxisAlignment.center,),
     ImageIcon(AssetImage("assets/017-microphone-2.png"),color: Colors.grey),
     ImageIcon(AssetImage("assets/shopping-cart.png"),color: Colors.grey)
