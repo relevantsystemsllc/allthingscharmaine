@@ -1,16 +1,20 @@
 import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
-import 'package:allthingscharmaine/ui/screens/shopscreens/shop2.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/cart_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/home_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/press_tab_screen.dart';
+import 'package:allthingscharmaine/ui/screens/tabarscreens/shop_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/social_tab_screen.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
+import 'package:allthingscharmaine/utils/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
+  final int index;
+
+  HomeScreen({this.index=0});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -23,11 +27,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     super.initState();
     _tabController = TabController(vsync: this, length: 5);
     _tabController.addListener(_select);
-    _appBarColor = appBarColors[0];
+    _tabController.index = widget.index;
+    _appBarColor = appBarColors[widget.index];
   }
   void _select(){
     setState((){
-      _appBarColor = appBarColors[_tabController.index];
+        _appBarColor = appBarColors[_tabController.index];
     });
   }
 
@@ -41,9 +46,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<LoginViewmodel>(context);
+    SizeConfig().init(context);
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(
+        appBar: _tabController.index==2?null:AppBar(
           iconTheme: IconThemeData(
             color: Colors.white,
           ),
@@ -77,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     children: [
                       HomeTabScreen(),
                       SocialTabScreen(),
-                      Shop2(),
+                      ShopTabScreen(),
                       PressTabScreen(),
                       CartTabScreen(),
                     ],
@@ -108,8 +114,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                         color: MyColors().pinkActive),
                                     shape: BoxShape.circle))),
                         Tab(
-                            icon: SvgPicture.asset(
-                                "assets/017-microphone-2.svg",)),
+                            icon: SvgPicture.asset("assets/017-microphone-2.svg",)),
                         Tab(icon: SvgPicture.asset("assets/shopping-cart.svg")),
                       ],
                     ),
@@ -133,7 +138,7 @@ class AppBarColor{
 const List<AppBarColor> appBarColors = const<AppBarColor>[
   const AppBarColor(bgColor: Color(0xffED9B9D), iconColor: Colors.white, brightness: Brightness.dark),
   const AppBarColor(bgColor: Colors.white, iconColor: Color(0xff656B6E), brightness: Brightness.light),
-  const AppBarColor(bgColor: Color(0xFFAACC96), iconColor: Colors.white, brightness: Brightness.dark),
+  const AppBarColor(bgColor: Color(0xFFAACC96), iconColor: Colors.white, brightness: Brightness.light),
   const AppBarColor(bgColor: Colors.white, iconColor: Color(0xff656B6E), brightness: Brightness.light),
   const AppBarColor(bgColor: Colors.white, iconColor: Color(0xff656B6E), brightness: Brightness.light),
 ];

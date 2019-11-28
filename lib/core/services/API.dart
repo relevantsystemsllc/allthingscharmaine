@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:allthingscharmaine/core/model/user_signup_dto.dart';
@@ -53,3 +54,4 @@ class Api {
     await FirebaseAuth.instance.signOut();
   }
 }
+
