@@ -10,7 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import 'tabarscreens/shop_tab_screen.dart';
+
 class HomeScreen extends StatefulWidget {
+  final int index;
+
+  HomeScreen({this.index = 0});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -25,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen>
     _tabController = TabController(vsync: this, length: 5);
     _tabController.addListener(_select);
     _appBarColor = appBarColors[0];
+    _tabController.index = widget.index;
+    _appBarColor = appBarColors[widget.index];
   }
 
   void _select() {
@@ -44,10 +52,10 @@ class _HomeScreenState extends State<HomeScreen>
     final userProvider = Provider.of<LoginViewmodel>(context);
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.white,
-        ),
+      appBar: _tabController.index==2?null:AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
         brightness: _appBarColor.brightness,
         backgroundColor: _appBarColor.bgColor,
         leading: IconButton(
@@ -84,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     HomeTabScreen(),
                     SocialTabScreen(),
-                    Shop2(),
+                    ShopTabScreen(),
                     PressTabScreen(),
                     CartTabScreen(),
                   ],
