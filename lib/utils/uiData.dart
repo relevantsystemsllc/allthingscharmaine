@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class UIData {
   //routes
+  static const String homeRoute = "/home";
   static const String shopRoute = "/shop";
   static const String shopItemRoute = "/shopItem";
   static const String shopBookRoute = "/shopBook";
@@ -24,7 +25,7 @@ class UIData {
   //fonts
 
   //images
-  static const String hambMenu = "assets/hamb menu.png";
+  static const String hambMenu = "assets/hamb-menu.png";
   static const String notification = "assets/notification.png";
   static const String apron1 = "assets/approns 1.png";
   static const String apron2 = "assets/approns 2.png";

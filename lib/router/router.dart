@@ -1,15 +1,16 @@
 
-import 'package:allthingscharmaine/screens/notfound/notfound_page.dart';
-import 'package:allthingscharmaine/screens/shop1.dart';
-import 'package:allthingscharmaine/screens/shop2.dart';
-import 'package:allthingscharmaine/screens/shop3.dart';
-import 'package:allthingscharmaine/screens/shop4.dart';
-import 'package:allthingscharmaine/screens/shop5.dart';
-import 'package:allthingscharmaine/screens/shop6.dart';
-import 'package:allthingscharmaine/screens/shop7.dart';
-import 'package:allthingscharmaine/screens/social1.dart';
-import 'package:allthingscharmaine/screens/social2.dart';
-import 'package:allthingscharmaine/screens/social3.dart';
+import 'package:allthingscharmaine/ui/screens/home_screen.dart';
+import 'package:allthingscharmaine/ui/screens/notfound/notfound_page.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop1.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop2.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop3.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop4.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop5.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop6.dart';
+import 'package:allthingscharmaine/ui/screens/shopscreens/shop7.dart';
+import 'package:allthingscharmaine/ui/screens/socialscreens/social1.dart';
+import 'package:allthingscharmaine/ui/screens/socialscreens/social2.dart';
+import 'package:allthingscharmaine/ui/screens/socialscreens/social3.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,9 @@ class Router {
 
     static Route<dynamic> generateRoute(settings) {
       switch (settings.name) {
+        case UIData.homeRoute:
+          return MaterialPageRoute(builder: (_) => HomeScreen(index:settings.arguments));
+          break;
         case UIData.shopRoute:
           return MaterialPageRoute(builder: (_) => Shop1());
           break;
