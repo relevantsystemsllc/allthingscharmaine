@@ -29,13 +29,13 @@ class CartTabScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: 350,
+            height: MediaQuery.of(context).size.height * 0.45,
             padding: EdgeInsets.only(left: 16, right: 16),
             child: ListView.separated(
               separatorBuilder: (context, index) => Divider(
                 color: Colors.grey,
               ),
-              itemCount: 2,
+              itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
                 return Slidable(
                   actionPane: SlidableDrawerActionPane(),
