@@ -15,18 +15,20 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   TabController _tabController;
   AppBarColor _appBarColor;
-  initState(){
+  initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: 5);
     _tabController.addListener(_select);
     _appBarColor = appBarColors[0];
   }
-  void _select(){
-    setState((){
+
+  void _select() {
+    setState(() {
       _appBarColor = appBarColors[_tabController.index];
     });
   }
@@ -37,105 +39,127 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<LoginViewmodel>(context);
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-          brightness: _appBarColor.brightness,
-          backgroundColor: _appBarColor.bgColor,
-          leading: IconButton(icon: SvgPicture.asset(
-            "assets/hambmenu.svg",
-            color: _appBarColor.iconColor,
-          ), onPressed: () { _scaffoldKey.currentState.openDrawer();}),
-          elevation: 0.0,
-          actions: <Widget>[
-            IconButton(
-              icon: SvgPicture.asset(
-                "assets/notification.svg",
-                color: _appBarColor.iconColor,
-              ),
-              tooltip: 'Notification',
-              onPressed: () { _scaffoldKey.currentState.openDrawer();},
-            ),
-          ],
+      key: _scaffoldKey,
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
         ),
-        // appBar: CustomHomeAppbar(height: 100,),
-        body: Stack(children: <Widget>[
-          Container(
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: TabBarView(
+        brightness: _appBarColor.brightness,
+        backgroundColor: _appBarColor.bgColor,
+        leading: IconButton(
+            icon: SvgPicture.asset(
+              "assets/hambmenu.svg",
+              color: _appBarColor.iconColor,
+            ),
+            onPressed: () {
+              _scaffoldKey.currentState.openDrawer();
+            }),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset(
+              "assets/notification.svg",
+              color: _appBarColor.iconColor,
+            ),
+            tooltip: 'Notification',
+            onPressed: () {
+              _scaffoldKey.currentState.openDrawer();
+            },
+          ),
+        ],
+      ),
+      // appBar: CustomHomeAppbar(height: 100,),
+      body: Stack(children: <Widget>[
+        Container(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    HomeTabScreen(),
+                    SocialTabScreen(),
+                    Shop2(),
+                    PressTabScreen(),
+                    CartTabScreen(),
+                  ],
+                ),
+              ),
+              Material(
+                elevation: 20.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(20.0),
+                    topRight: const Radius.circular(20.0),
+                  ),
+                ),
+                child: Container(
+                  height: 60,
+                  child: TabBar(
                     controller: _tabController,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      HomeTabScreen(),
-                      SocialTabScreen(),
-                      Shop2(),
-                      PressTabScreen(),
-                      CartTabScreen(),
+                    tabs: [
+                      Tab(icon: SvgPicture.asset("assets/ic-home.svg")),
+                      Tab(icon: SvgPicture.asset("assets/chat.svg")),
+                      Tab(
+                          icon: Container(
+                              child: Center(
+                                  child: SvgPicture.asset(
+                                      "assets/shopping-bag.svg")),
+                              decoration: BoxDecoration(
+                                  border:
+                                      Border.all(color: MyColors().pinkActive),
+                                  shape: BoxShape.circle))),
+                      Tab(
+                          icon: SvgPicture.asset(
+                        "assets/017-microphone-2.svg",
+                      )),
+                      Tab(icon: SvgPicture.asset("assets/shopping-cart.svg")),
                     ],
                   ),
                 ),
-                Material(
-                  elevation: 20.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(20.0),
-                      topRight: const Radius.circular(20.0),
-                    ),
-                  ),
-                  child: Container(
-                    height: 60,
-                    child: TabBar(
-                      controller: _tabController,
-                      tabs: [
-                        Tab(icon: SvgPicture.asset("assets/ic-home.svg")),
-                        Tab(icon: SvgPicture.asset("assets/chat.svg")),
-                        Tab(
-                            icon: Container(
-                                child: Center(
-                                    child: SvgPicture.asset(
-                                        "assets/shopping-bag.svg")),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: MyColors().pinkActive),
-                                    shape: BoxShape.circle))),
-                        Tab(
-                            icon: SvgPicture.asset(
-                                "assets/017-microphone-2.svg",)),
-                        Tab(icon: SvgPicture.asset("assets/shopping-cart.svg")),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ]),
-        drawer: Drawer(child: NavigationDrawer(),),
-      );
+        ),
+      ]),
+      drawer: Drawer(
+        child: NavigationDrawer(),
+      ),
+    );
   }
 }
 
-class AppBarColor{
-  const AppBarColor({ this.bgColor, this.iconColor, this.brightness});
+class AppBarColor {
+  const AppBarColor({this.bgColor, this.iconColor, this.brightness});
   final Color bgColor;
   final Color iconColor;
   final Brightness brightness;
 }
-const List<AppBarColor> appBarColors = const<AppBarColor>[
-  const AppBarColor(bgColor: Color(0xffED9B9D), iconColor: Colors.white, brightness: Brightness.dark),
-  const AppBarColor(bgColor: Colors.white, iconColor: Color(0xff656B6E), brightness: Brightness.light),
-  const AppBarColor(bgColor: Color(0xFFAACC96), iconColor: Colors.white, brightness: Brightness.dark),
-  const AppBarColor(bgColor: Colors.white, iconColor: Color(0xff656B6E), brightness: Brightness.light),
-  const AppBarColor(bgColor: Colors.white, iconColor: Color(0xff656B6E), brightness: Brightness.light),
+
+const List<AppBarColor> appBarColors = const <AppBarColor>[
+  const AppBarColor(
+      bgColor: Color(0xffED9B9D),
+      iconColor: Colors.white,
+      brightness: Brightness.dark),
+  const AppBarColor(
+      bgColor: Colors.white,
+      iconColor: Color(0xff656B6E),
+      brightness: Brightness.light),
+  const AppBarColor(
+      bgColor: Color(0xFFAACC96),
+      iconColor: Colors.white,
+      brightness: Brightness.dark),
+  const AppBarColor(
+      bgColor: Colors.white,
+      iconColor: Color(0xff656B6E),
+      brightness: Brightness.light),
+  const AppBarColor(
+      bgColor: Colors.white,
+      iconColor: Color(0xff656B6E),
+      brightness: Brightness.light),
 ];
-
-
