@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import 'create_password_reg_screen.dart';
+import 'login_screen.dart';
 
 class EmailRegScreen extends StatefulWidget {
   @override
@@ -63,7 +64,14 @@ class _EmailRegScreenState extends State<EmailRegScreen> {
                           "Skip",
                           style: TextStyle(color: MyColors().pinkInactive),
                         ),
-                        onTap: null,
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                       ),
                     ),
                     Spacer(),

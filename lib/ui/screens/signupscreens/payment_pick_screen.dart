@@ -8,6 +8,8 @@ import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'login_screen.dart';
+
 class PickPaymentMethodScreen extends StatefulWidget {
   @override
   _PickPaymentMethodScreenState createState() =>
@@ -259,7 +261,14 @@ class _PickPaymentMethodScreenState extends State<PickPaymentMethodScreen> {
                         "Skip",
                         style: TextStyle(color: MyColors().pinkInactive),
                       ),
-                      onTap: null,
+                      onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                     ),
                   ),
                   Spacer(),
