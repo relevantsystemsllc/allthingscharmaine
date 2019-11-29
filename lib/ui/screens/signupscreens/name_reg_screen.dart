@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'email_reg_screen.dart';
+import 'login_screen.dart';
 
 class NameRegScreen extends StatefulWidget {
   @override
@@ -82,7 +83,14 @@ class _NameRegScreen extends State<NameRegScreen> {
                           "skip",
                           style: TextStyle(color: MyColors().pinkInactive),
                         ),
-                        onTap: () {},
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                       ),
                     ),
                     Spacer(),

@@ -1,4 +1,3 @@
-
 import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
 import 'package:allthingscharmaine/core/viewmodels/userviewmodel.dart';
 import 'package:allthingscharmaine/ui/screens/alertscreens/success_screen.dart';
@@ -6,6 +5,8 @@ import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_appbar.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'login_screen.dart';
 
 class SecurityQuestionScreen extends StatefulWidget {
   @override
@@ -80,7 +81,14 @@ class _SecurityQuestionScreenState extends State<SecurityQuestionScreen> {
                           "Skip",
                           style: TextStyle(color: MyColors().pinkInactive),
                         ),
-                        onTap: null,
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                       ),
                     ),
                     Spacer(),
@@ -96,9 +104,11 @@ class _SecurityQuestionScreenState extends State<SecurityQuestionScreen> {
                                 firstAnswer, secAnswer);
                             loginProvider.signUpUserNSaveData();
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SuccessScreen()));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SuccessScreen(),
+                              ),
+                            );
                           }
                         },
                       ),
