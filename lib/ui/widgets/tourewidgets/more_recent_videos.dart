@@ -1,11 +1,17 @@
 import 'package:allthingscharmaine/ui/screens/press/press_video_detail_page.dart';
+import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/header_video_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentVideos extends StatelessWidget {
+  MoreRecentVideos(this._hLoad);
+
+  bool _hLoad;
+
   PageController _pageController = PageController(initialPage: 1, viewportFraction: 0.86);
   List listData;
+
   @override
   Widget build(BuildContext context) {
     listData = Data.getVideoData();
@@ -36,13 +42,21 @@ class MoreRecentVideos extends StatelessWidget {
                         )
                       ]),
                     ),
-                    Text('view all',
-                        style: TextStyle(
-                          color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                          fontSize: 12.0,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                        ))
+                    _hLoad ? GestureDetector(child: Padding(
+                      padding: EdgeInsets.only(
+                          top: 3.0, bottom: 3.0, left: 3.0),
+                      child: Text('view all',
+                          style: TextStyle(
+                            color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                            fontSize: 12.0,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          )),), onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) =>
+                              PressVideoList(
+                                title: 'press', category: 'videos',)));
+                    },) : Container()
                   ],
                 )),
 
@@ -57,11 +71,12 @@ class MoreRecentVideos extends StatelessWidget {
                   itemCount: listData.length,
                   itemBuilder: (context, position){
                     return GestureDetector(child: imageSlider(position),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(listData[position])));},);
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(listData[position])));},);
                   }),)
           ],
         ));
   }
+
   Widget imageSlider(int index){
     return AnimatedBuilder(
         child: HeaderMovieItem(listData[index]),
