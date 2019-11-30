@@ -1,3 +1,4 @@
+import 'package:allthingscharmaine/ui/screens/press/press_article_detail_page.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_article_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_article_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
@@ -32,23 +33,35 @@ class MoreRecentArticles extends StatelessWidget {
                     )
                   ]),
                 ),
-                Text('view all',
-                    style: TextStyle(
-                      color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                      fontSize: 12.0,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ))
+                GestureDetector(child: Padding(
+                    padding: EdgeInsets.only(top: 3.0, bottom: 3.0, left: 3.0),
+                    child: Text('view all',
+                        style: TextStyle(
+                          color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                          fontSize: 12.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                        ))),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => PressArticleList()));
+                  },)
               ],
             ),
             SizedBox(
               height: 19,
             ),
             GestureDetector(child: PressArticleItem(listData[0],),
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> PressArticleList()));},),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => ArticleDetail(listData[0])));
+              },),
             SizedBox(height: 15, ),
             GestureDetector(child: PressArticleItem(listData[1]),
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> PressArticleList()));},),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => ArticleDetail(listData[1])));
+              },),
           ],
         ));
   }
