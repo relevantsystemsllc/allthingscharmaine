@@ -35,7 +35,7 @@ class _PickPaymentMethodScreenState extends State<PickPaymentMethodScreen> {
       body: Form(
         key: _formkey,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(24.0),
           child: ListView(
             children: <Widget>[
               Column(

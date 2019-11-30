@@ -24,7 +24,7 @@ class _SecurityQuestionScreenState extends State<SecurityQuestionScreen> {
       body: Form(
         key: _formkey,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(24.0),
           child: Stack(
             children: <Widget>[
               Column(
