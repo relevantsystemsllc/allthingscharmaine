@@ -52,34 +52,36 @@ class _HomeScreenState extends State<HomeScreen>
     final userProvider = Provider.of<LoginViewmodel>(context);
     return Scaffold(
       key: _scaffoldKey,
-      appBar: _tabController.index==2?null:AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-        brightness: _appBarColor.brightness,
-        backgroundColor: _appBarColor.bgColor,
-        leading: IconButton(
-            icon: SvgPicture.asset(
-              "assets/hambmenu.svg",
-              color: _appBarColor.iconColor,
+      appBar: _tabController.index == 2
+          ? null
+          : AppBar(
+              iconTheme: IconThemeData(
+                color: Colors.white,
+              ),
+              brightness: _appBarColor.brightness,
+              backgroundColor: _appBarColor.bgColor,
+              leading: IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/hambmenu.svg",
+                    color: _appBarColor.iconColor,
+                  ),
+                  onPressed: () {
+                    _scaffoldKey.currentState.openDrawer();
+                  }),
+              elevation: 0.0,
+              actions: <Widget>[
+                IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/notification.svg",
+                    color: _appBarColor.iconColor,
+                  ),
+                  tooltip: 'Notification',
+                  onPressed: () {
+                    _scaffoldKey.currentState.openDrawer();
+                  },
+                ),
+              ],
             ),
-            onPressed: () {
-              _scaffoldKey.currentState.openDrawer();
-            }),
-        elevation: 0.0,
-        actions: <Widget>[
-          IconButton(
-            icon: SvgPicture.asset(
-              "assets/notification.svg",
-              color: _appBarColor.iconColor,
-            ),
-            tooltip: 'Notification',
-            onPressed: () {
-              _scaffoldKey.currentState.openDrawer();
-            },
-          ),
-        ],
-      ),
       // appBar: CustomHomeAppbar(height: 100,),
       body: Stack(children: <Widget>[
         Container(
