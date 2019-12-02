@@ -1,3 +1,4 @@
+import 'package:allthingscharmaine/ui/screens/press/press_video_detail_page.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_video_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
@@ -32,13 +33,19 @@ class MoreVideos extends StatelessWidget {
                     )
                   ]),
                 ),
-                Text('view all',
-                    style: TextStyle(
-                      color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                      fontSize: 12.0,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ))
+                GestureDetector(child: Padding(
+                  padding: EdgeInsets.only(top: 3.0, bottom: 3.0, left: 3.0),
+                  child: Text('view all',
+                      style: TextStyle(
+                        color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                        fontSize: 12.0,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      )),), onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) =>
+                          PressVideoList(title: 'press', category: 'videos',)));
+                })
               ],
             ),
             SizedBox(
@@ -50,7 +57,10 @@ class MoreVideos extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index){
                   return GestureDetector(child: Container(child: PressVideoItem(listData[index]), margin: EdgeInsets.only(bottom: 10.0),),
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'press', category: 'videos',)));},);
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => VideoDetail(listData[index])));
+                    },);
                 })
           ],
         ));

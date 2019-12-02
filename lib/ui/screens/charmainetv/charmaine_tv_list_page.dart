@@ -1,7 +1,6 @@
 import 'package:allthingscharmaine/model/charmainetv.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/charmaine_tv_item.dart';
-import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +18,16 @@ class _CharmaineTvState extends State<CharmaineTv> {
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
+
         leading: IconButton(
             icon: Image.asset('assets/hamb-menu.png'),
             onPressed: () {
               _scaffoldKey.currentState.openDrawer();
             }),
+
+        backgroundColor: Colors.white,
+        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
+
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,
@@ -45,9 +49,11 @@ class _CharmaineTvState extends State<CharmaineTv> {
           ),
         ],
       ),
+
       drawer: Drawer(
         child: NavigationDrawer(),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

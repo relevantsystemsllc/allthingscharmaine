@@ -65,7 +65,7 @@ class _PressVideoListState extends State<PressVideoList>{
 
             ],
           ),),
-        MoreRecentVideos(),
+        MoreRecentVideos(false),
         SizedBox(height: 46, ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.0),
