@@ -2,8 +2,9 @@ import 'package:allthingscharmaine/model/charmainetv.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/charmaine_tv_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CharmaineTv extends StatefulWidget{
 
@@ -30,7 +31,7 @@ class _CharmaineTvState extends State<CharmaineTv>{
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/notification.png'),
+            icon: SvgPicture.asset('assets/notification.svg', color: CustomColors.TITLE_COLOR,),
             tooltip: 'Notification',
             onPressed: () {},
           ),

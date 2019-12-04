@@ -8,22 +8,26 @@ class CharmaineTvItem extends StatefulWidget {
   final DocumentSnapshot snapShot;
 
   @override
-  State createState() => _CharmaineTvItemState();
+  _CharmaineTvItemState createState() => _CharmaineTvItemState();
 
 }
   class _CharmaineTvItemState extends State<CharmaineTvItem>{
+  String _imageUrl;
   @override
-  Widget build(BuildContext context) {
-    String _imageUrl;
-    var screenWidth = MediaQuery.of(context).size.width; print(widget.snapShot['image']);
-    StorageReference storageReference = FirebaseStorage.instance.ref().child('assortment-autumn-background-1400172.jpg');
-
+  void initState() {
+    super.initState();
+    StorageReference storageReference = FirebaseStorage.instance.ref().child(widget.snapShot['image']);
     storageReference.getDownloadURL().then((loc) {
       if (!mounted) return;
       setState((){
         _imageUrl = loc;
       });
     } );
+  }
+  @override
+  Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+
     return SizedBox(
       height: 105.0,
       width: screenWidth,
@@ -35,7 +39,7 @@ class CharmaineTvItem extends StatefulWidget {
         ),
       child: Stack(
         children: [
-          (_imageUrl!=null)? CachedNetworkImage(
+          (_imageUrl!= null)? CachedNetworkImage(
               imageUrl:_imageUrl,
               height: 105.0,
               width: screenWidth,
