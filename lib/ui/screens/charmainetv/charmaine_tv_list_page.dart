@@ -3,6 +3,7 @@ import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/charmaine_tv_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CharmaineTv extends StatefulWidget{
 
@@ -49,17 +50,21 @@ class _CharmaineTvState extends State<CharmaineTv>{
                   fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
             ),
             SizedBox(height: 10.0,),
-            ListView.builder(
-              padding: EdgeInsets.only(left: 16.0, right: 16.0),
-              itemCount: data.length,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index){
-                return GestureDetector(child: Container(child: CharmaineTvItem(imagePath: data[index].imagePath, name: data[index].name), padding: EdgeInsets.only(bottom: 10.0),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'charmaine tv', category: data[index].name,)));
-                },);
-              },),
+            StreamBuilder(stream: Firestore.instance.collection('charmainetv').orderBy('position').snapshots(),
+              builder: (context, snapShot){
+                if(!snapShot.hasData)return const Center(child: Text('loading'),);
+                return ListView.builder(
+                  padding: EdgeInsets.only(left: 16.0, right: 16.0),
+                  itemCount: snapShot.data.documents.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index){
+                    return GestureDetector(child: Container(child: CharmaineTvItem(snapShot: snapShot.data.documents[index]), padding: EdgeInsets.only(bottom: 10.0),),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'charmaine tv', category: data[index].name,)));
+                      },);
+                  },);
+              },)
 
           ],
         ),
