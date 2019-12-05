@@ -44,7 +44,7 @@ class CharmaineTvItem extends StatefulWidget {
               height: 105.0,
               width: screenWidth,
               fit: BoxFit.cover):
-          Image.asset('assets/charmainetv.png',
+          Image.asset('assets/placeholder.png',
               height: 105.0,
               width: screenWidth,
               fit: BoxFit.cover),

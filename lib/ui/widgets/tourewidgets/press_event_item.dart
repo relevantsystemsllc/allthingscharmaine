@@ -1,11 +1,33 @@
-import 'package:allthingscharmaine/model/event.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
-class PressEventItem extends StatelessWidget {
-  final Event event;
+class PressEventItem extends StatefulWidget {
+  final DocumentSnapshot eventSnapShot;
 
-  PressEventItem(this.event);
+  PressEventItem(this.eventSnapShot);
+
+  @override
+  _PressEventItemState createState() => _PressEventItemState();
+}
+
+  class _PressEventItemState extends State<PressEventItem>{
+    String _imageUrl;
+
+    @override
+    void initState() {
+      super.initState();
+      StorageReference storageReference = FirebaseStorage.instance.ref().child(
+          widget.eventSnapShot['image']);
+      storageReference.getDownloadURL().then((loc) {
+        if (!mounted) return;
+        setState(() {
+          _imageUrl = loc;
+        });
+      });
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +45,13 @@ class PressEventItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  (_imageUrl!= null)? CachedNetworkImage(
+                      imageUrl:_imageUrl,
+                      height: 133.0,
+                      width: screenWidth,
+                      fit: BoxFit.cover):
                   Image.asset(
-                    event?.image,
+                    'assets/placeholder.png',
                     height: 133.0,
                     width: screenWidth,
                     fit: BoxFit.cover,
@@ -33,7 +60,7 @@ class PressEventItem extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: 17.0, right: 17.0, top: 15.0, bottom: 10.0),
                     child: Text(
-                      event?.title,
+                      widget.eventSnapShot['title']??'',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

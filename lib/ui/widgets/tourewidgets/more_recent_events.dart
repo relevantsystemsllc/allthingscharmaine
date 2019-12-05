@@ -2,8 +2,8 @@ import 'package:allthingscharmaine/ui/screens/press/press_event_detail_page.dart
 import 'package:allthingscharmaine/ui/screens/press/press_event_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_event_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 
 class MoreRecentEvents extends StatelessWidget {
 
@@ -51,7 +51,7 @@ class MoreRecentEvents extends StatelessWidget {
             SizedBox(
               height: 19,
             ),
-            GestureDetector(child: PressEventItem(listData[0]),
+            /*GestureDetector(child: PressEventItem(listData[0]),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                     builder: (context) => EventDetail(listData[0])));
@@ -61,7 +61,23 @@ class MoreRecentEvents extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                     builder: (context) => EventDetail(listData[1])));
-              },),
+              },),*/
+            StreamBuilder(stream: Firestore.instance.collection('event').where('eventDate', isGreaterThanOrEqualTo: DateTime.now()).orderBy('eventDate').limit(2).snapshots(),
+                builder: (context, snapShot){
+                  if(!snapShot.hasData)return const Center(child: Text('No Event'),);
+                  return ListView.builder(
+                      itemCount: snapShot.data.documents.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index){
+                        return GestureDetector(child: PressEventItem(snapShot.data.documents[index]),
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => EventDetail(listData[0])));
+                          },);
+                      }
+                  );
+                }),
           ],
         ));
   }
