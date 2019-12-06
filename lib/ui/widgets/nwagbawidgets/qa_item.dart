@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CharmaineTvItem extends StatelessWidget {
-  CharmaineTvItem({@required this.imagePath, @required this.name})
-      : assert(imagePath != null),
-        assert(name != null);
+class QAItem extends StatelessWidget {
   final String imagePath;
   final String name;
 
+  QAItem({@required this.imagePath, @required this.name})
+      : assert(imagePath != null),
+        assert(name != null);
+        
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;

@@ -1,4 +1,5 @@
 import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
+import 'package:allthingscharmaine/ui/screens/QA/qascreen.dart';
 import 'package:allthingscharmaine/ui/screens/charmainetv/charmaine_tv_list_page.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/category_screen.dart';
 import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart';
@@ -90,6 +91,8 @@ class NavigationDrawer extends StatelessWidget {
                   // ...
                   // Then close the drawer
                   Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => QAScreen()));
                 },
               ),
               ListTile(
