@@ -8,8 +8,8 @@ class PressVideoList extends StatefulWidget{
 
   PressVideoList({@required this.title, @required this.category});
 
-  String title;
-  String category;
+  final String title;
+  final String category;
 
   @override
   State createState() {

@@ -1,34 +1,34 @@
-import 'package:allthingscharmaine/model/charmainetv.dart';
-import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
-import 'package:allthingscharmaine/ui/widgets/tourewidgets/charmaine_tv_item.dart';
+import 'package:allthingscharmaine/model/QA.dart';
+import 'package:allthingscharmaine/ui/screens/QA/qa_by_charmaine.dart';
+import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/qa_item.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
-class CharmaineTv extends StatefulWidget {
+import 'ask_question_screen.dart';
+import 'asked_questions_screen.dart';
+import 'my_questions.dart';
+
+class QAScreen extends StatefulWidget {
   @override
-  State createState() => _CharmaineTvState();
+  _QAScreenState createState() => _QAScreenState();
 }
 
-class _CharmaineTvState extends State<CharmaineTv> {
+class _QAScreenState extends State<QAScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  List<QA> data = Data.getQAData();
   @override
   Widget build(BuildContext context) {
-    List<Charmainetv> data = Data.getTVData();
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
-
         leading: IconButton(
             icon: Image.asset('assets/hamb-menu.png'),
             onPressed: () {
               _scaffoldKey.currentState.openDrawer();
             }),
-
         backgroundColor: Colors.white,
-        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
-
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,
@@ -50,16 +50,14 @@ class _CharmaineTvState extends State<CharmaineTv> {
           ),
         ],
       ),
-
       drawer: Drawer(
         child: NavigationDrawer(),
       ),
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
+          children: <Widget>[
             SizedBox(
               height: 5.0,
             ),
@@ -67,7 +65,7 @@ class _CharmaineTvState extends State<CharmaineTv> {
               color: Colors.white,
               margin: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                'charmaine tv',
+                'Q/A',
                 style: TextStyle(
                     color: CustomColors.TITLE_COLOR,
                     fontFamily: 'Poppins',
@@ -76,7 +74,7 @@ class _CharmaineTvState extends State<CharmaineTv> {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 50.0,
             ),
             ListView.builder(
               padding: EdgeInsets.only(left: 16.0, right: 16.0),
@@ -86,23 +84,44 @@ class _CharmaineTvState extends State<CharmaineTv> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   child: Container(
-                    child: CharmaineTvItem(
+                    child: QAItem(
                         imagePath: data[index].imagePath,
                         name: data[index].name),
                     padding: EdgeInsets.only(bottom: 10.0),
                   ),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PressVideoList(
-                                  title: 'charmaine tv',
-                                  category: data[index].name,
-                                )));
+                    if (index == 0) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (contex) => QAByCharmaine()));
+                    }
+                    if (index == 1) {
+                      // open questions asked
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AskedQuestion()));
+                    }
+                    if (index == 2) {
+                      // open ask a question
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (contex) => AskQuestion()));
+                    }
+                    if (index == 3) {
+                      // open my questions
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (contex) => MyQuestions()));
+                    }
                   },
                 );
               },
-            ),
+            )
           ],
         ),
       ),

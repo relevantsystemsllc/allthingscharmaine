@@ -20,7 +20,7 @@ class HomeTabScreen extends StatelessWidget {
         ),
         ListView(
           children: <Widget>[
-           /* CustomHomeAppbar(
+            /* CustomHomeAppbar(
               height: 10,
               bgColor: Colors.white,
             ),*/
@@ -30,13 +30,14 @@ class HomeTabScreen extends StatelessWidget {
                 children: <Widget>[
                   Spacer(),
                   ClipOval(
-                      clipper: ImageClipper(),
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: NetworkImage(
-                            "https://pbs.twimg.com/media/EGJJnGaVAAcbGch?format=jpg&name=small"),
-                        backgroundColor: Colors.transparent,
-                      ))
+                    clipper: ImageClipper(),
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundImage: NetworkImage(
+                          "https://pbs.twimg.com/media/EGJJnGaVAAcbGch?format=jpg&name=small"),
+                      backgroundColor: Colors.transparent,
+                    ),
+                  ),
                 ],
               ),
             ),

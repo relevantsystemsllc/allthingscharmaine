@@ -1,6 +1,8 @@
+import 'package:allthingscharmaine/model/QA.dart';
 import 'package:allthingscharmaine/model/article.dart';
 import 'package:allthingscharmaine/model/charmainetv.dart';
 import 'package:allthingscharmaine/model/event.dart';
+import 'package:allthingscharmaine/model/questions_asked.dart';
 import 'package:allthingscharmaine/model/video.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +25,7 @@ class Data {
     ));
     data.add(Event(
       id: 2,
-      image: "assets/artboard–4.png",
+      image: "assets/girlinkitchen.png",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
       date: "January 18, 2019",
       description:
@@ -31,7 +33,7 @@ class Data {
     ));
     data.add(Event(
       id: 2,
-      image: "assets/artboard.png",
+      image: "assets/finegirl.png",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
       date: "January 18, 2019",
       description:
@@ -60,7 +62,7 @@ class Data {
     ));
     data.add(Article(
       id: 3,
-      image: "assets/artboard–4.png",
+      image: "assets/girlinkitchen.png",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
       date: "January 18, 2019",
       description:
@@ -73,7 +75,7 @@ class Data {
     List<Video> data = [];
     data.add(Video(
         id: 1,
-        image: "assets/artboard.png",
+        image: "assets/finegirl.png",
         title: "Charmaine Neque porro quisquam est qui dolorem .",
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.',
@@ -124,10 +126,43 @@ class Data {
     data.add(Charmainetv(
         imagePath: 'assets/blur-bokeh-community-5156.jpg',
         name: 'specials events'));
-    data.add(Charmainetv(imagePath: 'assets/headshot1.jpg', name: 'bey talk'));
+    data.add(Charmainetv(imagePath: 'assets/headshot1.JPG', name: 'bey talk'));
     data.add(Charmainetv(
         imagePath: 'assets/dogs_french_bulldog_bench_black.jpg',
         name: 'seven & eleven'));
     return data;
+  }
+
+  static List<QA> getQAData() {
+    List<QA> data = [];
+
+    data.add(QA(imagePath: "assets/finegirl.png", name: "Q/A by CHarmaine"));
+    data.add(QA(imagePath: "assets/girlinkitchen.png", name: "questions asked"));
+    data.add(QA(
+        imagePath: "assets/adult-afro-black-woman-texting.jpg",
+        name: "ask a question"));
+    data.add(
+        QA(imagePath: "assets/woman-on-smartphone.jpg", name: "my questions"));
+
+    return data;
+  }
+
+  static List<QuestionsAsked> getAskedQuestions(){
+    List<QuestionsAsked> data = [];
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite movie"));
+    data.add(QuestionsAsked(imagePath: "assets/girlinkitchen.png", question: "what's your favorite food"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
+    return data;
+
+  }
+
+  static List<QuestionsAsked> getMyAskedQuestions(){
+    List<QuestionsAsked> data = [];
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite movie"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite food"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
+    return data;
+
   }
 }
