@@ -1,6 +1,6 @@
-import 'package:allthingscharmaine/ui/screens/press/press_event_detail_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_event_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PressEventList extends StatefulWidget{
@@ -17,9 +17,10 @@ class _PressEventListSate extends State<PressEventList>{
   List listData;
   @override
   Widget build(BuildContext context) {
-      _scrollController.addListener(() {
+    _scrollController.addListener(() {
       if (_scrollController.offset == _scrollController.position.maxScrollExtent ) {
 // We may load more if the list reaches the end
+      //TODO
 
       }
     });
@@ -51,23 +52,27 @@ class _PressEventListSate extends State<PressEventList>{
             Text('events', style: TextStyle(color: CustomColors.TITLE_COLOR,
                 fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
             SizedBox(height: 10.0,),
-            Expanded(child: ListView.builder(
-                //controller: _scrollController,
-                itemCount: listData.isNotEmpty? listData.length+1 : 0,
-                itemBuilder: (context, index){
-                  if((listData.length == index)){
-                    return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
-                      child: Center(child: Text('view more',
-                      style: TextStyle(
-                        color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                        fontSize: 12.0,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,),),),);
-                  }else{
-                    return GestureDetector(child: Container(child: PressEventItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => EventDetail(listData[index])));},);
-                  }
-                })),
+            Expanded(child:
+            StreamBuilder(stream: Firestore.instance.collection('event').where('eventDate', isGreaterThanOrEqualTo: DateTime.now()).orderBy('eventDate').limit(10).snapshots(),
+                builder: (context, snapShot){
+                  if(!snapShot.hasData)return const Center(child: Text('No Event'),);
+                  return ListView.builder(
+                    //controller: _scrollController,
+                      itemCount: snapShot.data.documents.length!=0? snapShot.data.documents.length+1 : 0,
+                      itemBuilder: (context, index){
+                        if(snapShot.data.documents.length == index){
+                          return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
+                            child: Center(child: Text('view more',
+                              style: TextStyle(
+                                color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                                fontSize: 12.0,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,),),),);
+                        }else{
+                          return Container(child: PressEventItem(snapShot.data.documents[index]), margin: EdgeInsets.only(bottom: 15.0),);
+                        }
+                      });}),
+            ),
           ],
         ),
       ),
