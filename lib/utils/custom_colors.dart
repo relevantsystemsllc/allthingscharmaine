@@ -14,26 +14,26 @@ class Data {
   static List<Event> getEventData() {
     List<Event> data = [];
     data.add(Event(
-      id: 1,
+      id: '1',
       image: "assets/artboard–3.png",
-      date: "January 18, 2019",
+      date: DateTime.now(),//"January 18, 2019",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
     data.add(Event(
-      id: 2,
+      id: '2',
       image: "assets/artboard–4.png",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
-      date: "January 18, 2019",
+      date: DateTime.now(),//"January 18, 2019",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
     data.add(Event(
-      id: 2,
+      id: '2',
       image: "assets/artboard.png",
       title: "Charmaine Neque porro quisquam est qui dolorem .",
-      date: "January 18, 2019",
+      date: DateTime.now(),//"January 18, 2019",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.",
     ));
