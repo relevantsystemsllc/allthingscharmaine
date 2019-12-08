@@ -171,18 +171,18 @@ class CurveProfileContainerClipPath extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     var path = Path();
-    path.lineTo(0.0, size.height * 0.3);
+    path.lineTo(0.0, size.height * 0.2);
 
 // TODO: The wavy clipping magic happens here, between the bottom left and bottom right points.
 
 // The bottom right point also isn't at the same level as its left counterpart,
 // so we'll adjust that one too.
     var firstControlPoint = new Offset(size.width * 0.5, size.height * 0.4);
-    var firstEndPoint = new Offset(size.width, size.height * 0.3);
+    var firstEndPoint = new Offset(size.width, size.height * 0.2);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-    path.lineTo(size.width, size.height * 0.3);
+    path.lineTo(size.width, size.height * 0.2);
     path.lineTo(size.width, 0.0);
     return path;
   }
