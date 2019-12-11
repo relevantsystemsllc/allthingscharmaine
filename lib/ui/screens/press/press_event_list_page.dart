@@ -14,7 +14,7 @@ class PressEventList extends StatefulWidget{
 class _PressEventListSate extends State<PressEventList>{
   ScrollController _scrollController =
   ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
-  List listData;
+
   @override
   Widget build(BuildContext context) {
     _scrollController.addListener(() {
@@ -77,10 +77,5 @@ class _PressEventListSate extends State<PressEventList>{
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    listData = Data.getEventData();
   }
 }

@@ -1,14 +1,13 @@
-import 'package:allthingscharmaine/ui/screens/press/press_article_detail_page.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_article_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_article_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentArticles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List listData = Data.getArticleData();
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
@@ -51,7 +50,19 @@ class MoreRecentArticles extends StatelessWidget {
             SizedBox(
               height: 19,
             ),
-            GestureDetector(child: PressArticleItem(listData[0],),
+            StreamBuilder(stream: Firestore.instance.collection('article').orderBy('createdAt').limit(2).snapshots(),
+                builder: (context, snapShot){
+                  if(!snapShot.hasData)return const Center(child: Text('No Article'),);
+                  return ListView.builder(
+                      itemCount: snapShot.data.documents.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index){
+                        return PressArticleItem(snapShot.data.documents[index]);
+                      }
+                  );
+                }),
+            /*GestureDetector(child: PressArticleItem(listData[0],),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                     builder: (context) => ArticleDetail(listData[0])));
@@ -61,7 +72,7 @@ class MoreRecentArticles extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                     builder: (context) => ArticleDetail(listData[1])));
-              },),
+              },),*/
           ],
         ));
   }

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Article {
   Article({
     this.id,
@@ -7,9 +9,16 @@ class Article {
     this.date,
   });
 
-  final int id;
+  final String id;
   final String title;
   final String description;
   final String image;
-  final String date;
+  final DateTime date;
+
+  Article.fromSnapShot(DocumentSnapshot snapshot, String imageUrl):
+        id = snapshot.documentID,
+        title = snapshot['title'],
+        description = snapshot['description'],
+        date = DateTime.parse(snapshot['createdAt'].toDate().toString()),
+        image = imageUrl;
 }

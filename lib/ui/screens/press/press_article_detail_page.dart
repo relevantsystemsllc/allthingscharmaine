@@ -1,6 +1,8 @@
 import 'package:allthingscharmaine/model/article.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ArticleDetail extends StatelessWidget{
@@ -18,7 +20,7 @@ class ArticleDetail extends StatelessWidget{
           children: <Widget>[
             SizedBox(
                 width:screenWidth, height: 400,child: PhotoView(customSize: Size.fromHeight(400),
-              imageProvider: AssetImage(_article.image,), initialScale: PhotoViewComputedScale.contained *1.6, minScale: PhotoViewComputedScale.contained *1.6, maxScale: PhotoViewComputedScale.contained *2.0, basePosition: Alignment.topCenter,
+              imageProvider: CachedNetworkImageProvider(_article.image,), initialScale: PhotoViewComputedScale.contained *1.6, minScale: PhotoViewComputedScale.contained *1.6, maxScale: PhotoViewComputedScale.contained *2.0, basePosition: Alignment.topCenter,
             )),
             AppBar(
               brightness: Brightness.dark,
@@ -58,12 +60,12 @@ class ArticleDetail extends StatelessWidget{
                  children: <Widget>[
                    Icon(Icons.access_time, color: Colors.black38,),
                    SizedBox(width: 5.0),
-                   Text(_article.date,style:TextStyle(
+                   Text(DateFormat.yMMMMd().add_jm().format(_article.date),style:TextStyle(
                        color: CustomColors.TEXT_COLOR.withOpacity(0.5),
                        fontFamily: 'Poppins',
                        fontSize: 12.0,
                        fontWeight: FontWeight.w300,
-                       height: 1.5))
+                       height: 1.5)),
                  ],
                ),
                SizedBox(height: 25.0),
