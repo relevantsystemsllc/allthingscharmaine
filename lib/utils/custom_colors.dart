@@ -2,6 +2,7 @@ import 'package:allthingscharmaine/model/QA.dart';
 import 'package:allthingscharmaine/model/article.dart';
 import 'package:allthingscharmaine/model/charmainetv.dart';
 import 'package:allthingscharmaine/model/event.dart';
+import 'package:allthingscharmaine/model/purchases.dart';
 import 'package:allthingscharmaine/model/questions_asked.dart';
 import 'package:allthingscharmaine/model/video.dart';
 import 'package:flutter/material.dart';
@@ -164,5 +165,16 @@ class Data {
     data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
     return data;
 
+  }
+
+  static List<Purchases> getMyPurchases(){
+
+    List<Purchases> data = [];
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+
+    return data;
   }
 }
