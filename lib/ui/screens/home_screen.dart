@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import 'otherscreens/notificationscreen.dart';
 import 'tabarscreens/shop_tab_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -77,7 +78,11 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   tooltip: 'Notification',
                   onPressed: () {
-                    _scaffoldKey.currentState.openDrawer();
+                    // _scaffoldKey.currentState.openDrawer();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NotificationScreen()));
                   },
                 ),
               ],
