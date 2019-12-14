@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/ui/screens/forumscreens/utilities/constants.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_reply_screen.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/new_thread_screen.dart';
 
@@ -8,12 +8,20 @@ class SubPostScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'threads',
-          style: kAppBarTextStyle,
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xff656B6E),
         ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
+        title: Text('threads', style: kAppBarTextStyle),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
       body:
       ListView(
@@ -40,7 +48,7 @@ class SubPostScreen extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 radius: 10.0,
-                backgroundImage: AssetImage('images/artboard-2.png'),
+                backgroundImage: AssetImage('assets/artboard-2.png'),
               ),
               Text(
                 'by Anna',
@@ -62,7 +70,7 @@ class SubPostScreen extends StatelessWidget {
               heightFactor: 1.0,
               widthFactor: 1.0,
               child: Image.asset(
-                'images/bottlefur.jpg',
+                'assets/bottlefur.jpg',
                 scale: 2.0,
               ),
             ),

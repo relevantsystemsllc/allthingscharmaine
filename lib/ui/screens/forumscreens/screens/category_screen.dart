@@ -1,24 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/topic_screen.dart';
-import 'package:allthingscharmaine/ui/screens/forumscreens/utilities/constants.dart';
-
-
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
+import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 
 
 class CategoryScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        //Todo: Add menu icon to the appbar
+        key: _scaffoldKey,
         backgroundColor: Colors.white,
-        title: Text(
-          'forum',
-          style: kAppBarTextStyle,
-
+        drawer: Drawer(
+          child: NavigationDrawer(),
         ),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Image.asset('assets/hamb-menu.png'),
+            onPressed: () {
+              _scaffoldKey.currentState.openDrawer();
+            }),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xff656B6E),
+        ),
+        backgroundColor: Colors.transparent,
+        title: Text('forums', style: kAppBarTextStyle),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
+
       body: Container(
         padding: EdgeInsets.only(left: 34.0, bottom: 14.0, top: 19.0),
         child: Column(
@@ -31,18 +48,16 @@ class CategoryScreen extends StatelessWidget {
             SizedBox(
               height: 14.0,
             ),
-            Text('charmaine',
-                style: kSubHeadingTextStyle,
-                ),
+            Text(
+              'charmaine',
+              style: kSubHeadingTextStyle,
+            ),
             SizedBox(
               height: 14.0,
             ),
             FlatButton(
               padding: EdgeInsets.all(0.0),
-              onPressed: () {
-
-
-              },
+              onPressed: () {},
               //Todo: Change all images to correct images, also change to CacheImageNetwork widget
               //Todo: Add functionality to make each list replicate the topic_screen for charmaine when clicked
               child: Row(
@@ -55,22 +70,20 @@ class CategoryScreen extends StatelessWidget {
                       heightFactor: 0.6,
                       widthFactor: 0.6,
                       child: Image.asset(
-                        'images/artboard-2.png',
+                        'assets/artboard-2.png',
                         scale: 2.0,
-
                       ),
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left:9.0, top: 20.0),
+                    padding: EdgeInsets.only(left: 9.0, top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
-
-
                       children: <Widget>[
-                        Text('all things charmaine', style:kPostTitleTextStyle),
-                        Text('last post 1 minute ago by charmaine',style: kPostTimeTextStyle),
+                        Text('all things charmaine',
+                            style: kPostTitleTextStyle),
+                        Text('last post 1 minute ago by charmaine',
+                            style: kPostTimeTextStyle),
                       ],
                     ),
                   )
@@ -80,21 +93,16 @@ class CategoryScreen extends StatelessWidget {
             SizedBox(
               height: 24.0,
             ),
-            Text('general',
-                style: kSubHeadingTextStyle
-                 ),
+            Text('general', style: kSubHeadingTextStyle),
             SizedBox(
               height: 18.0,
             ),
             FlatButton(
               padding: EdgeInsets.all(0.0),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context){
-                      return TopicScreen();
-                    })
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return TopicScreen();
+                }));
               },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,21 +114,19 @@ class CategoryScreen extends StatelessWidget {
                       heightFactor: 0.75,
                       widthFactor: 0.7,
                       child: Image.asset(
-                        'images/brush.jpg',
+                        'assets/brush.jpg',
                         scale: 38.0,
-
                       ),
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left:9.0, top: 20.0),
+                    padding: EdgeInsets.only(left: 9.0, top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
-
                       children: <Widget>[
-                        Text('beauty', style:kPostTitleTextStyle),
-                        Text('last post 1 minute ago by charmaine',style: kPostTimeTextStyle)
+                        Text('beauty', style: kPostTitleTextStyle),
+                        Text('last post 1 minute ago by charmaine',
+                            style: kPostTimeTextStyle)
                       ],
                     ),
                   )
@@ -143,20 +149,19 @@ class CategoryScreen extends StatelessWidget {
                       heightFactor: 0.65,
                       widthFactor: 0.6,
                       child: Image.asset(
-                        'images/beach.jpg',
+                        'assets/beach.jpg',
                         scale: 20.0,
                       ),
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left:9.0, top: 20.0),
+                    padding: EdgeInsets.only(left: 9.0, top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
-
                       children: <Widget>[
-                        Text('life & advice', style:kPostTitleTextStyle),
-                        Text('last post 1 minute ago by charmaine',style: kPostTimeTextStyle)
+                        Text('life & advice', style: kPostTitleTextStyle),
+                        Text('last post 1 minute ago by charmaine',
+                            style: kPostTimeTextStyle)
                       ],
                     ),
                   )
@@ -179,20 +184,19 @@ class CategoryScreen extends StatelessWidget {
                       heightFactor: 0.3,
                       widthFactor: 0.6,
                       child: Image.asset(
-                        'images/faceheadshot.jpg',
+                        'assets/faceheadshot.jpg',
                         scale: 23.0,
                       ),
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left:9.0, top: 20.0),
+                    padding: EdgeInsets.only(left: 9.0, top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
-
                       children: <Widget>[
-                        Text('fashion', style:kPostTitleTextStyle),
-                        Text('last post 1 minute ago by charmaine',style:kPostTimeTextStyle)
+                        Text('fashion', style: kPostTitleTextStyle),
+                        Text('last post 1 minute ago by charmaine',
+                            style: kPostTimeTextStyle)
                       ],
                     ),
                   )
@@ -215,28 +219,26 @@ class CategoryScreen extends StatelessWidget {
                       heightFactor: 0.65,
                       widthFactor: 0.6,
                       child: Image.asset(
-                        'images/Chicago-Illinois.jpg',
+                        'assets/Chicago-Illinois.jpg',
                         scale: 16.0,
                       ),
                     ),
                   ),
                   Padding(
-                      padding:  EdgeInsets.only(left:9.0, top: 20.0),
+                    padding: EdgeInsets.only(left: 9.0, top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
-
                       children: <Widget>[
-                        Text('black ink crew chicago', style:kPostTitleTextStyle),
-                        Text('last post 1 minute ago by charmaine',style: kPostTimeTextStyle)
+                        Text('black ink crew chicago',
+                            style: kPostTitleTextStyle),
+                        Text('last post 1 minute ago by charmaine',
+                            style: kPostTimeTextStyle)
                       ],
                     ),
                   )
                 ],
               ),
             ),
-
-
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/ui/screens/forumscreens/utilities/constants.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_screen.dart';
 
 
@@ -9,8 +9,20 @@ class NewTopicScreen extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xff656B6E),
+        ),
+        backgroundColor: Colors.transparent,
+//        title: Text('topics', style: kAppBarTextStyle),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Container(
 
@@ -98,7 +110,7 @@ class NewTopicScreen extends StatelessWidget {
                           heightFactor: 1.0,
                           widthFactor: 1.0,
                           child: Image.asset(
-                            'images/eyebrush.jpg',
+                            'assets/eyebrush.jpg',
                             scale: 2.0,
                           ),
                         ),
@@ -113,7 +125,7 @@ class NewTopicScreen extends StatelessWidget {
                           heightFactor: 1.0,
                           widthFactor: 1.0,
                           child: Image.asset(
-                            'images/bloom.jpg',
+                            'assets/bloom.jpg',
                             scale: 2.0,
                           ),
                         ),

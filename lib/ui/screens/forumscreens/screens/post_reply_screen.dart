@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/ui/screens/forumscreens/utilities/constants.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
 
 
 class PostReplyScreen extends StatelessWidget {
@@ -7,12 +7,20 @@ class PostReplyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'thread',
-          style: kAppBarTextStyle,
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xff656B6E),
         ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
+        title: Text('threads', style: kAppBarTextStyle),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(left: 34.0, top: 19.0, bottom: 34.0, right: 34.0),
@@ -45,7 +53,7 @@ class PostReplyScreen extends StatelessWidget {
                       children: <Widget>[
                         CircleAvatar(
                           radius: 10.0,
-                          backgroundImage: AssetImage('images/artboard-2.png'),
+                          backgroundImage: AssetImage('assets/artboard-2.png'),
                         ),
                         Text(
                           'by Anna',

@@ -4,6 +4,7 @@ import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:allthingscharmaine/ui/screens/forumscreens/screens/category_screen.dart';
 
 class NavigationDrawer extends StatelessWidget{
 
@@ -41,6 +42,7 @@ class NavigationDrawer extends StatelessWidget{
               // ...
               // Then close the drawer
               Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryScreen()));
             },
           ),
           ListTile(

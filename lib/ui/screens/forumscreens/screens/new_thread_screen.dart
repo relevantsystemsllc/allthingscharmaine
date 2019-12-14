@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/ui/screens/forumscreens/utilities/constants.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_screen.dart';
 
 
@@ -10,8 +10,20 @@ class NewThreadScreen extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xff656B6E),
+        ),
+        backgroundColor: Colors.transparent,
+//        title: Text('topics', style: kAppBarTextStyle),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Container(
 
@@ -99,7 +111,7 @@ class NewThreadScreen extends StatelessWidget {
                           heightFactor: 1.0,
                           widthFactor: 1.0,
                           child: Image.asset(
-                            'images/adult_afro.jpg',
+                            'assets/adult_afro.jpg',
                             scale:1.5,
 
                           ),
@@ -115,7 +127,7 @@ class NewThreadScreen extends StatelessWidget {
                           heightFactor: 1.0,
                           widthFactor: 1.0,
                           child: Image.asset(
-                            'images/bottlefur.jpg',
+                            'assets/bottlefur.jpg',
                             scale: 2.0,
 
                           ),
