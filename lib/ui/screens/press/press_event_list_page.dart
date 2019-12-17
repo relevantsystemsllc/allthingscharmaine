@@ -12,6 +12,7 @@ class PressEventList extends StatefulWidget{
 }
 
 class _PressEventListSate extends State<PressEventList>{
+  int batchSize;
   ScrollController _scrollController =
   ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
 
@@ -19,7 +20,7 @@ class _PressEventListSate extends State<PressEventList>{
   Widget build(BuildContext context) {
     _scrollController.addListener(() {
       if (_scrollController.offset == _scrollController.position.maxScrollExtent ) {
-// We may load more if the list reaches the end
+      // We may load more if the list reaches the end
       //TODO
 
       }
@@ -53,7 +54,7 @@ class _PressEventListSate extends State<PressEventList>{
                 fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
             SizedBox(height: 10.0,),
             Expanded(child:
-            StreamBuilder(stream: Firestore.instance.collection('event').where('eventDate', isGreaterThanOrEqualTo: DateTime.now()).orderBy('eventDate').limit(10).snapshots(),
+            StreamBuilder(stream: Firestore.instance.collection('event').where('eventDate', isGreaterThanOrEqualTo: DateTime.now()).orderBy('eventDate').limit(batchSize).snapshots(),
                 builder: (context, snapShot){
                   if(!snapShot.hasData)return const Center(child: Text('No Event'),);
                   return ListView.builder(
@@ -62,12 +63,20 @@ class _PressEventListSate extends State<PressEventList>{
                       itemBuilder: (context, index){
                         if(snapShot.data.documents.length == index){
                           return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
-                            child: Center(child: Text('view more',
+                            child: InkWell(child: Center(child: Text('view more',
                               style: TextStyle(
                                 color: CustomColors.TEXT_COLOR.withOpacity(0.5),
                                 fontSize: 12.0,
                                 fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,),),),);
+                                fontWeight: FontWeight.w400,),),),
+                            onTap: (){
+                              if(snapShot.data.documents.length == batchSize){
+                                setState(() {
+                                  batchSize += 5;
+                                  print(batchSize);
+                                });
+                              }
+                            },),);
                         }else{
                           return Container(child: PressEventItem(snapShot.data.documents[index]), margin: EdgeInsets.only(bottom: 15.0),);
                         }
@@ -77,5 +86,11 @@ class _PressEventListSate extends State<PressEventList>{
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    batchSize = 3;
   }
 }

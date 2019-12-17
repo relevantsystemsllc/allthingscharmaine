@@ -62,17 +62,6 @@ class MoreRecentArticles extends StatelessWidget {
                       }
                   );
                 }),
-            /*GestureDetector(child: PressArticleItem(listData[0],),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => ArticleDetail(listData[0])));
-              },),
-            SizedBox(height: 15, ),
-            GestureDetector(child: PressArticleItem(listData[1]),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => ArticleDetail(listData[1])));
-              },),*/
           ],
         ));
   }

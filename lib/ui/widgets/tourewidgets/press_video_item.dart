@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/video.dart';
+import 'package:allthingscharmaine/core/model/video.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 

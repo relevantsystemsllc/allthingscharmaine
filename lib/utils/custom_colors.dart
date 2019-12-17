@@ -1,7 +1,7 @@
-import 'package:allthingscharmaine/model/article.dart';
-import 'package:allthingscharmaine/model/charmainetv.dart';
-import 'package:allthingscharmaine/model/event.dart';
-import 'package:allthingscharmaine/model/video.dart';
+import 'package:allthingscharmaine/core/model/article.dart';
+import 'package:allthingscharmaine/core/model/charmainetv.dart';
+import 'package:allthingscharmaine/core/model/event.dart';
+import 'package:allthingscharmaine/core/model/video.dart';
 import 'package:flutter/material.dart';
 
 class CustomColors {

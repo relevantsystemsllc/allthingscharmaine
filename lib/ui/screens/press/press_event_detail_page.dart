@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/event.dart';
+import 'package:allthingscharmaine/core/model/event.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

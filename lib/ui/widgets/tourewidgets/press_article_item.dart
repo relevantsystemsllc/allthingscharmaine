@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/article.dart';
+import 'package:allthingscharmaine/core/model/article.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_article_detail_page.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -50,7 +50,7 @@ class PressArticleItem extends StatefulWidget {
                   CachedNetworkImage(
                       imageUrl: _imageUrl,
                       placeholder: (context, url) =>Image.asset(
-                        _imageUrl,
+                        'assets/placeholder.png',
                         fit: BoxFit.cover,
                       ),
                       height: 133.0,

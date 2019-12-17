@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/charmainetv.dart';
+import 'package:allthingscharmaine/core/model/charmainetv.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/charmaine_tv_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
