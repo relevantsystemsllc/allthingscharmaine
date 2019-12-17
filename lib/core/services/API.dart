@@ -70,5 +70,19 @@ class Api {
         .orderBy('eventDate').startAfterDocument(lastElement).limit(batchSize).getDocuments();
     return _querySnapshot.documents;
   }
+
+  // Get the initial List of articles available in the article collection
+  Future<List<DocumentSnapshot>> getInitialArticleList(int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('article')
+        .orderBy('createdAt').limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get the initial List of events available in the event collection
+  Future<List<DocumentSnapshot>> getMoreArticleList(DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('article')
+        .orderBy('createdAt').startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
 }
 

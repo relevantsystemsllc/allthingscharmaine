@@ -14,7 +14,7 @@ class PressEventList extends StatefulWidget{
 }
 
 class _PressEventListSate extends State<PressEventList>{
-  int _batchSize = 2; // batch size of data loaded
+  int _batchSize = 10; // batch size of data loaded
   Api _api;
   bool _loading = true; // determines if data is still loading
   bool _hasMoreData = true; // check if the collection still has more data to display
