@@ -1,12 +1,12 @@
 class Video {
-  Video({
-    this.id,
-    this.image,
-    this.title,
-    this.description,
-    this.duration,
-    this.viewCount,
-    this.time});
+  Video(
+      {this.id,
+      this.image,
+      this.title,
+      this.description,
+      this.duration,
+      this.viewCount,
+      this.time});
 
   final int id;
   final String title;

@@ -1,3 +1,4 @@
+import 'package:allthingscharmaine/ui/screens/otherscreens/order_history.dart';
 import 'package:allthingscharmaine/utils/bg_containers.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class ConfirmationScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomeScreen()));
+                                      builder: (context) => OrderHistory()));
                             },
                             child: Text(
                               "my order",

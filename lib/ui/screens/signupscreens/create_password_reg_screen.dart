@@ -5,6 +5,8 @@ import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'login_screen.dart';
+
 class PasswordRegScreen extends StatefulWidget {
   @override
   _PasswordRegScreenState createState() => _PasswordRegScreenState();
@@ -22,7 +24,7 @@ class _PasswordRegScreenState extends State<PasswordRegScreen> {
       body: Form(
         key: _formkey,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(24.0),
           child: Stack(
             children: <Widget>[
               Column(
@@ -74,7 +76,14 @@ class _PasswordRegScreenState extends State<PasswordRegScreen> {
                           "Skip",
                           style: TextStyle(color: MyColors().pinkInactive),
                         ),
-                        onTap: null,
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                       ),
                     ),
                     Spacer(),

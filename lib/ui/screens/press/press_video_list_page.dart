@@ -8,8 +8,8 @@ class PressVideoList extends StatefulWidget{
 
   PressVideoList({@required this.title, @required this.category});
 
-  String title;
-  String category;
+  final String title;
+  final String category;
 
   @override
   State createState() {
@@ -65,7 +65,7 @@ class _PressVideoListState extends State<PressVideoList>{
 
             ],
           ),),
-        MoreRecentVideos(),
+        MoreRecentVideos(false),
         SizedBox(height: 46, ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.0),
