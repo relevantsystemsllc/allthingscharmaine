@@ -1,3 +1,5 @@
+import 'package:allthingscharmaine/core/services/API.dart';
+import 'package:allthingscharmaine/locator.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_event_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,7 +14,12 @@ class PressEventList extends StatefulWidget{
 }
 
 class _PressEventListSate extends State<PressEventList>{
-  int batchSize;
+  int _batchSize = 2; // batch size of data loaded
+  Api _api;
+  bool _loading = true; // determines if data is still loading
+  bool _hasMoreData = true; // check if the collection still has more data to display
+  DocumentSnapshot _lastDocument;
+  List<DocumentSnapshot> eventSnapShotList = [];
   ScrollController _scrollController =
   ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
 
@@ -53,34 +60,44 @@ class _PressEventListSate extends State<PressEventList>{
             Text('events', style: TextStyle(color: CustomColors.TITLE_COLOR,
                 fontFamily: 'Poppins', fontSize: 30.0, fontWeight: FontWeight.w600),),
             SizedBox(height: 10.0,),
-            Expanded(child:
-            StreamBuilder(stream: Firestore.instance.collection('event').where('eventDate', isGreaterThanOrEqualTo: DateTime.now()).orderBy('eventDate').limit(batchSize).snapshots(),
-                builder: (context, snapShot){
-                  if(!snapShot.hasData)return const Center(child: Text('No Event'),);
-                  return ListView.builder(
+            Expanded(child: _loading == true?
+                Center(child: Text('loading...'),) :
+                eventSnapShotList.isEmpty?
+                Center(child: Text('No Event')) :
+                    ListView.builder(
                     //controller: _scrollController,
-                      itemCount: snapShot.data.documents.length!=0? snapShot.data.documents.length+1 : 0,
-                      itemBuilder: (context, index){
-                        if(snapShot.data.documents.length == index){
-                          return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
-                            child: InkWell(child: Center(child: Text('view more',
-                              style: TextStyle(
-                                color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                                fontSize: 12.0,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,),),),
+                    itemCount: eventSnapShotList.length!=0? eventSnapShotList.length+1 : 0,
+                    itemBuilder: (context, index){
+                      if(eventSnapShotList.length == index){
+                        return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
+                          child: InkWell(child: Center(child: Text('view more',
+                            style: TextStyle(
+                              color: CustomColors.TEXT_COLOR.withOpacity(0.5),
+                              fontSize: 12.0,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,),),),
                             onTap: (){
-                              if(snapShot.data.documents.length == batchSize){
-                                setState(() {
-                                  batchSize += 5;
-                                  print(batchSize);
+                              if(_api != null && !_loading && _hasMoreData){
+                                _loading = true;
+                                _api.getMoreEventList(_lastDocument, _batchSize)
+                                .then((snapShotList){
+                                  setState(() {
+                                    eventSnapShotList.addAll(snapShotList);
+                                    if(snapShotList!=null && snapShotList.isNotEmpty){
+                                      _lastDocument = snapShotList[snapShotList.length - 1];
+                                    }else{_hasMoreData = false;}
+                                    _loading = false;
+                                    print(eventSnapShotList.length);
+                                  });
+
                                 });
+
                               }
                             },),);
-                        }else{
-                          return Container(child: PressEventItem(snapShot.data.documents[index]), margin: EdgeInsets.only(bottom: 15.0),);
-                        }
-                      });}),
+                      }else{
+                        return Container(child: PressEventItem(eventSnapShotList[index]), margin: EdgeInsets.only(bottom: 15.0),);
+                      }
+                    }),
             ),
           ],
         ),
@@ -91,6 +108,13 @@ class _PressEventListSate extends State<PressEventList>{
   @override
   void initState() {
     super.initState();
-    batchSize = 3;
+    _api = locator<Api>();
+    _api.getInitialEventList(_batchSize).then((snapShotList) {
+      setState(() {
+        eventSnapShotList = snapShotList;
+        if(eventSnapShotList.isNotEmpty){ _lastDocument = eventSnapShotList[eventSnapShotList.length - 1];}
+        _loading = false;
+      });
+    });
   }
 }

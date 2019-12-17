@@ -53,5 +53,22 @@ class Api {
   void signOut() async {
     await FirebaseAuth.instance.signOut();
   }
+
+
+   // Get the initial List of events available in the event collection
+  Future<List<DocumentSnapshot>> getInitialEventList(int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('event')
+        .where('eventDate', isGreaterThanOrEqualTo: DateTime.now())
+        .orderBy('eventDate').limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  /// Load more data from event list. This is used to implement pagination on the List
+  Future<List<DocumentSnapshot>> getMoreEventList(DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('event')
+        .where('eventDate', isGreaterThanOrEqualTo: DateTime.now())
+        .orderBy('eventDate').startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
 }
 
