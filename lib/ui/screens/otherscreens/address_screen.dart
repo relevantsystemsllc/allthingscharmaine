@@ -1,5 +1,6 @@
 import 'package:allthingscharmaine/ui/screens/alertscreens/confirmation_screen.dart';
-import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_cart_appbar.dart';
+import 'package:allthingscharmaine/utils/custom_colors.dart';
+
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -14,15 +15,37 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text("cart"),
+        iconTheme: IconThemeData(
+          color: CustomColors.TITLE_COLOR,
+        ),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: Form(
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              CustomCartAppbar(
-                height: 10,
-                bgColor: Colors.black,
-                title: "cart",
-              ),
+              // CustomCartAppbar(
+              //   height: 10,
+              //   bgColor: Colors.black,
+              //   title: "cart",
+              // ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
@@ -114,7 +137,11 @@ class _AddressScreenState extends State<AddressScreen> {
                             onPressed: () {
                               if (_formKey.currentState.validate()) {
                                 _formKey.currentState.save();
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ConfirmationScreen()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ConfirmationScreen()));
                               }
                             },
                             child: Text(

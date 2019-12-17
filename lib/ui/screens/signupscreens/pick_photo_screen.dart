@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import 'login_screen.dart';
 import 'payment_pick_screen.dart';
 
 class PickPhotoScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _PickPhotoScreenState extends State<PickPhotoScreen> {
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -129,7 +130,14 @@ class _PickPhotoScreenState extends State<PickPhotoScreen> {
                       "Skip",
                       style: TextStyle(color: MyColors().pinkInactive),
                     ),
-                    onTap: () {},
+                    onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                   ),
                 ),
                 Spacer(),

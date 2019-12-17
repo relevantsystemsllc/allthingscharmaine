@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import 'create_password_reg_screen.dart';
+import 'login_screen.dart';
 
 class EmailRegScreen extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _EmailRegScreenState extends State<EmailRegScreen> {
       body: Form(
         key: _formkey,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(24.0),
           child: Stack(
             children: <Widget>[
               Column(
@@ -63,7 +64,14 @@ class _EmailRegScreenState extends State<EmailRegScreen> {
                           "Skip",
                           style: TextStyle(color: MyColors().pinkInactive),
                         ),
-                        onTap: null,
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                        },
                       ),
                     ),
                     Spacer(),
