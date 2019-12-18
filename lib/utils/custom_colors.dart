@@ -72,41 +72,45 @@ class Data {
   static List<Video> getVideoData() {
     List<Video> data = [];
     data.add(Video(
-        id: 1,
+        id: '1',
         image: "assets/artboard.png",
         title: "Charmaine Neque porro quisquam est qui dolorem .",
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.',
-        viewCount: '51K views',
+        viewCount: 51012,//'51K views',
         duration: '9:59',
-        time: '3 hours ago'));
+        time: DateTime.now()//'3 hours ago'
+    ));
     data.add(Video(
-        id: 2,
+        id: '2',
         image: "assets/chicago.jpg",
         title: "Charmaine Neque porro quisquam est qui dolorem .",
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.',
-        viewCount: '200K views',
+        viewCount: 200000,//'200K views',
         duration: '05:50',
-        time: '3 hours ago'));
+        time: DateTime.now()//'3 hours ago'
+         ));
     data.add(Video(
-        id: 3,
+        id: '3',
         image: "assets/chicago-Illinois.jpg",
         title: "Charmaine Neque porro quisquam est qui dolorem .",
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.',
-        viewCount: '78K views',
+        viewCount: 78,//'78K views',
         duration: '10:50',
-        time: '3 hours ago'));
+        time: DateTime.now()//'3 hours ago'
+    ));
     data.add(Video(
-        id: 4,
+        id: '4',
         image: "assets/blur-breakfast-close-up-376464.jpg",
         title: 'Charmaine Neque porro quisquam est qui dolorem .',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat libero tellus, malesuada laoreet metus vulputate quis. Praesent lacinia sagittis dui. Mauris sagittis tincidunt justo, sit amet scelerisque magna sagittis consequat. Sed dui diam, aliquam consectetur aliquam tempus, pharetra et dolor.',
-        viewCount: '1M views',
+        viewCount: 10000010,//'1M views',
         duration: '03:50',
-        time: '3 hours ago'));
+        time: DateTime.now().add(Duration(days: 1))//'3 hours ago'
+    ));
     return data;
   }
 

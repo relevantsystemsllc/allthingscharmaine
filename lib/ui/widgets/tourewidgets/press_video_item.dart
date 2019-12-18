@@ -48,7 +48,7 @@ class PressVideoItem extends StatelessWidget {
                     ),
                 ),),),
                 Text(
-                  video?.viewCount,
+                  video?.viewCount.toString()+ ' views',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -59,7 +59,7 @@ class PressVideoItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  video?.time,
+                  video?.getPublishedDate(),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

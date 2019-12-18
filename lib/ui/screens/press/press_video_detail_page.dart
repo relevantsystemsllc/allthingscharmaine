@@ -1,5 +1,6 @@
 import 'package:allthingscharmaine/core/model/video.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -24,9 +25,7 @@ class VideoDetail extends StatelessWidget {
                   height: 360,
                   child: PhotoView(
                     customSize: Size.fromHeight(360),
-                    imageProvider: AssetImage(
-                      _video.image,
-                    ),
+                    imageProvider: CachedNetworkImageProvider(_video.image,),
                     initialScale: PhotoViewComputedScale.contained * 1.6,
                     minScale: PhotoViewComputedScale.contained * 1.6,
                     maxScale: PhotoViewComputedScale.contained * 2.0,
@@ -194,7 +193,7 @@ class MoreVideoItem extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        video?.viewCount,
+                        video?.viewCount.toString() + ' views',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -204,7 +203,7 @@ class MoreVideoItem extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      Text(video?.time,
+                      Text(video?.getPublishedDate(),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
