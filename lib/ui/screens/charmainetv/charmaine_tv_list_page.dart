@@ -18,14 +18,16 @@ class _CharmaineTvState extends State<CharmaineTv> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
+      drawer: Drawer(
+        child: NavigationDrawer(),
+      ),
       appBar: AppBar(
-
         leading: IconButton(
-            icon: Image.asset('assets/hamb-menu.png'),
-            onPressed: () {
-              _scaffoldKey.currentState.openDrawer();
-            }),
-
+          icon: Image.asset('assets/hamb-menu.png'),
+          onPressed: () {
+            _scaffoldKey.currentState.openDrawer();
+          },
+        ),
         backgroundColor: Colors.white,
         /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
 
@@ -50,11 +52,6 @@ class _CharmaineTvState extends State<CharmaineTv> {
           ),
         ],
       ),
-
-      drawer: Drawer(
-        child: NavigationDrawer(),
-      ),
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

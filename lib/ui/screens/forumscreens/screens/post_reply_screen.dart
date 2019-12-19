@@ -1,6 +1,5 @@
-import 'package:allthingscharmaine/utils/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
 
 
 class PostReplyScreen extends StatelessWidget {
@@ -8,18 +7,12 @@ class PostReplyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-        backgroundColor: Colors.transparent,
-        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
-
         centerTitle: true,
         iconTheme: IconThemeData(
-          color: Color(0xFF656B6E) ,
+          color: Color(0xff656B6E),
         ),
-        title: Text(
-          'threads',
-          style: kAppBarTextStyle,
-        ),
+        backgroundColor: Colors.transparent,
+        title: Text('threads', style: kAppBarTextStyle),
         elevation: 0.0,
         actions: <Widget>[
           IconButton(

@@ -1,26 +1,20 @@
-import 'package:allthingscharmaine/ui/screens/forumscreens/post_screen.dart';
-import 'package:allthingscharmaine/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
+import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_screen.dart';
 
 
-
-
-class NewThreadScreen extends StatelessWidget {
-
+class NewTopicScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       appBar: AppBar(
-
-        backgroundColor: Colors.transparent,
-        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
-
         centerTitle: true,
         iconTheme: IconThemeData(
-          color: Color(0xFF656B6E) ,
+          color: Color(0xff656B6E),
         ),
-
+        backgroundColor: Colors.transparent,
+//        title: Text('topics', style: kAppBarTextStyle),
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
@@ -33,14 +27,14 @@ class NewThreadScreen extends StatelessWidget {
       body: Container(
 
         padding:
-        EdgeInsets.only(left: 34.0, top: 19.0, bottom: 34.0, right: 34.0),
+            EdgeInsets.only(left: 34.0, top: 19.0, bottom: 34.0, right: 34.0),
         child: ListView(
           children: <Widget>[
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'new thread',
+                  'new topic',
                   style: kHeadingTextStyle,
                 ),
                 SizedBox(
@@ -48,7 +42,7 @@ class NewThreadScreen extends StatelessWidget {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      hintText: 'example thread',
+                      hintText: 'example topic',
                       hintStyle: kPlaceholderTextStyle,
                       labelText: 'title',
                       labelStyle: kGeneralBodyTextStyle,
@@ -112,13 +106,12 @@ class NewThreadScreen extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(11.0)),
                         child: Align(
-                          alignment: Alignment.centerRight,
+                          alignment: Alignment.topCenter,
                           heightFactor: 1.0,
                           widthFactor: 1.0,
                           child: Image.asset(
-                            'assets/adult_afro.jpg',
-                            scale:1.5,
-
+                            'assets/eyebrush.jpg',
+                            scale: 2.0,
                           ),
                         ),
                       ),
@@ -128,13 +121,12 @@ class NewThreadScreen extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(11.0)),
                         child: Align(
-                          alignment: Alignment.topCenter,
+                          alignment: Alignment.centerRight,
                           heightFactor: 1.0,
                           widthFactor: 1.0,
                           child: Image.asset(
-                            'assets/bottlefur.jpg',
+                            'assets/bloom.jpg',
                             scale: 2.0,
-
                           ),
                         ),
                       ),
@@ -227,7 +219,7 @@ class _CheckBoxInRowState extends State<CheckBoxInRow> {
         ),
         Text("public"),
         SizedBox(
-          width: 30.0,
+        width: 30.0,
         ),
 
         Checkbox(
@@ -239,7 +231,7 @@ class _CheckBoxInRowState extends State<CheckBoxInRow> {
             });
           },
         ), //
-        Text("private"),
+      Text("private"),
 
       ],
     );
