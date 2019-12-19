@@ -100,35 +100,6 @@ class _PressArticleListState extends State<PressArticleList>{
                       return Container(child: PressArticleItem(articleSnapShotList[index]), margin: EdgeInsets.only(bottom: 15.0),);
                     }
                   }),
-
-              /*StreamBuilder(stream: Firestore.instance.collection('article').orderBy('createdAt').limit(batchSize).snapshots(),
-                  builder: (context, snapShot){
-                    if(!snapShot.hasData)return const Center(child: Text('No Article'),);
-                    return  ListView.builder(
-                      //controller: _scrollController,
-                        itemCount: snapShot.data.documents.length!=0? snapShot.data.documents.length+1 : 0,
-                        itemBuilder: (context, index){
-                          if(snapShot.data.documents.length == index){
-                            return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
-                              child: InkWell(child: Center(child: Text('view more',
-                                style: TextStyle(
-                                  color: CustomColors.TEXT_COLOR.withOpacity(0.5),
-                                  fontSize: 12.0,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w400,),),),
-                              onTap: (){
-                                if(snapShot.data.documents.length == batchSize){
-                                  setState(() {
-                                    batchSize += 5;
-                                    print(batchSize);
-                                  });
-                                }
-                              },),);
-                          }else{
-                            return Container(child: PressArticleItem(snapShot.data.documents[index]), margin: EdgeInsets.only(bottom: 15.0),);
-                          }
-                        });
-                  }),*/
             ),
           ],
         ),

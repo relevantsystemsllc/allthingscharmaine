@@ -61,12 +61,6 @@ class HeaderMovieItem extends StatefulWidget {
                             //height: 133.0,
                             width: screenWidth,
                             fit: BoxFit.cover),
-                       /* Image.asset(
-                          video?.image,
-                          //height: 171.0,
-                          width: screenWidth,
-                          fit: BoxFit.cover,
-                        ),*/
                         Center(child: Container(width: 55.0, height: 55.0,
                           child: Icon(Icons.play_arrow, color: Colors.white,),
                           decoration: new BoxDecoration(

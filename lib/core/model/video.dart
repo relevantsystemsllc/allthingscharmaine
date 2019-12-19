@@ -13,7 +13,7 @@ class Video {
   final String id;
   final String title;
   final String description;
-  final String image;
+        String image;
   final String duration;
   final int viewCount;
   final DateTime time;
@@ -29,9 +29,9 @@ class Video {
 
   String getPublishedDate(){
     if (time ==null) return '';
-    Duration duration = time.difference(DateTime.now());
+    Duration duration = DateTime.now().difference(time);
     if(duration.inMinutes < 60){
-      return duration.inMinutes == 1? duration.inMinutes.toString() +' min ago' : duration.inMinutes.toString() +' mins ago';
+      return duration.inMinutes <= 1? (duration.inMinutes.toString() +' min ago') : duration.inMinutes.toString() +' mins ago';
     }else if(duration.inHours < 24){
       return duration.inHours == 1?duration.inHours.toString() +' hour ago' : duration.inHours.toString() +' hours ago';
     }else if(duration.inDays < 31){

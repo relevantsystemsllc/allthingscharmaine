@@ -10,13 +10,11 @@ class MoreRecentVideos extends StatelessWidget {
   bool _hLoad;
 
   PageController _pageController = PageController(initialPage: 1, viewportFraction: 0.86);
-  List listData;
 
   @override
   Widget build(BuildContext context) {
-    listData = Data.getVideoData();
     return Container(
-        child: StreamBuilder(stream: Firestore.instance.collection('video').orderBy('createdAt').limit(4).snapshots(),
+        child: StreamBuilder(stream: Firestore.instance.collection('video').orderBy('createdAt', descending: true).limit(4).snapshots(),
     builder: (context, snapShot){
     if(!snapShot.hasData)return Container();
         return Column(

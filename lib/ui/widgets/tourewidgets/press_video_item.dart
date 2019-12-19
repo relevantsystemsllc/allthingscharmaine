@@ -1,16 +1,44 @@
 import 'package:allthingscharmaine/core/model/video.dart';
+import 'package:allthingscharmaine/ui/screens/press/press_video_detail_page.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
-class PressVideoItem extends StatelessWidget {
-  final Video video;
+class PressVideoItem extends StatefulWidget {
+  final DocumentSnapshot videoSnapShot;
 
-  PressVideoItem(this.video);
+  PressVideoItem(this.videoSnapShot);
+
+  @override
+  State createState() => _PressVideoItemState();
+}
+
+  class _PressVideoItemState extends State<PressVideoItem>{
+
+    String _imageUrl = 'assets/placeholder.png';
+    Video video;
+
+    @override
+    void initState() {
+      super.initState();
+      video =  Video.fromSnapShot(widget.videoSnapShot, _imageUrl);
+      StorageReference storageReference =
+      FirebaseStorage.instance.ref().child(widget.videoSnapShot['imageUrl']);
+      storageReference.getDownloadURL().then((loc) {
+        if (!mounted) return;
+        setState(() {
+          _imageUrl = loc;
+          video.image = loc;
+        });
+      });
+    }
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    return SizedBox(
+    return GestureDetector(child: SizedBox(
       height: 90.0,
       width: screenWidth,
       child: Card(
@@ -23,8 +51,12 @@ class PressVideoItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            Image.asset(
-            video?.image,
+              CachedNetworkImage(
+                imageUrl: _imageUrl,
+                placeholder: (context, url) =>Image.asset(
+                  'assets/placeholder.png',
+                  fit: BoxFit.cover,
+                ),
             height: 84.0,
             width: 96,
             fit: BoxFit.cover,
@@ -36,7 +68,7 @@ class PressVideoItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(child: Container(width: 185,child: Text(
-                    video?.title,
+                  video?.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
@@ -69,6 +101,7 @@ class PressVideoItem extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-              ]),)],)));
+              ]),)],))),
+    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(Video.fromSnapShot(widget.videoSnapShot, _imageUrl))));},);
   }
 }
