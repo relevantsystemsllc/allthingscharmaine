@@ -1,7 +1,9 @@
-import 'package:allthingscharmaine/ui/screens/press/press_video_detail_page.dart';
+import 'package:allthingscharmaine/core/services/API.dart';
+import 'package:allthingscharmaine/locator.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/more_recent_videos.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/press_video_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PressVideoList extends StatefulWidget{
@@ -18,9 +20,15 @@ class PressVideoList extends StatefulWidget{
 }
 
 class _PressVideoListState extends State<PressVideoList>{
+  int _batchSize = 10; // batch size of data loaded
+  Api _api;
+  bool _loading = true; // determines if data is still loading
+  bool _hasMoreData = true; // check if the collection still has more data to display
+  DocumentSnapshot _lastDocument;
+  List<DocumentSnapshot> videoSnapShotList = [];
   ScrollController _scrollController =
   ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
-  List listData;
+
   @override
   Widget build(BuildContext context) {
     _scrollController.addListener(() {
@@ -69,23 +77,43 @@ class _PressVideoListState extends State<PressVideoList>{
         SizedBox(height: 46, ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.0),
-          child: ListView.builder(
+          child: _loading == true?
+          Center(child: Text('loading...'),) :
+          videoSnapShotList.isEmpty?
+          Center(child: Text('No Video')) :
+          ListView.builder(
             //controller: _scrollController,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: listData.isNotEmpty? listData.length+1 : 0,
+              itemCount: videoSnapShotList.length>4? videoSnapShotList.length-4+1 : 0,
               itemBuilder: (context, index){
-                if((listData.length == index)){
+                if((videoSnapShotList.length-4 == index)){
                   return Container(margin: EdgeInsets.only(top: 15, bottom: 30),
-                    child: Center(child: Text('view more',
+                    child: InkWell(child: Center(child: Text('view more',
                       style: TextStyle(
                         color: CustomColors.TEXT_COLOR.withOpacity(0.5),
                         fontSize: 12.0,
                         fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,),),),);
+                        fontWeight: FontWeight.w400,),),),
+                      onTap: (){
+                        if(_api != null && !_loading && _hasMoreData){
+                          _loading = true;
+                          _api.getMoreVideosList(_lastDocument, _batchSize)
+                              .then((snapShotList){
+                            setState(() {
+                              videoSnapShotList.addAll(snapShotList);
+                              if(snapShotList!=null && snapShotList.isNotEmpty){
+                                _lastDocument = snapShotList[snapShotList.length - 1];
+                              }else{_hasMoreData = false;}
+                              _loading = false;
+                              print(videoSnapShotList.length);
+                            });
+
+                          });
+                        }
+                      },),);
                 }else{
-                  return GestureDetector(child: Container(child: PressVideoItem(listData[index]), margin: EdgeInsets.only(bottom: 15.0),),
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(listData[index])));},);
+                  return Container(child: PressVideoItem(videoSnapShotList[index+4]), margin: EdgeInsets.only(bottom: 15.0),);
                 }
               }),
         )],)
@@ -95,6 +123,14 @@ class _PressVideoListState extends State<PressVideoList>{
 
   @override
   void initState() {
-    listData = Data.getVideoData();
+    super.initState();
+    _api = locator<Api>();
+    _api.getInitialVideoList(_batchSize).then((snapShotList) {
+      setState(() {
+        videoSnapShotList = snapShotList;
+        if(videoSnapShotList.isNotEmpty){ _lastDocument = videoSnapShotList[videoSnapShotList.length - 1];}
+        _loading = false;
+      });
+    });
   }
 }

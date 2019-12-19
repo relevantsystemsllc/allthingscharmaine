@@ -84,5 +84,18 @@ class Api {
         .orderBy('createdAt').startAfterDocument(lastElement).limit(batchSize).getDocuments();
     return _querySnapshot.documents;
   }
+
+  // Get the initial List of videos available in the video collection
+  Future<List<DocumentSnapshot>> getInitialVideoList(int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video').orderBy('createdAt', descending: true).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get more from List of videos available in the video collection
+  Future<List<DocumentSnapshot>> getMoreVideosList(DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video')
+        .orderBy('createdAt', descending: true).startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
 }
 
