@@ -97,5 +97,19 @@ class Api {
         .orderBy('createdAt', descending: true).startAfterDocument(lastElement).limit(batchSize).getDocuments();
     return _querySnapshot.documents;
   }
+
+  // Get the initial List of videos of a specific category available in the video collection
+  Future<List<DocumentSnapshot>> getInitialCategoryVideoList(List<dynamic> category, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video').where('category', arrayContainsAny: category)
+        .orderBy('createdAt', descending: true).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get more from List of videos from this category available in the video collection
+  Future<List<DocumentSnapshot>> getMoreCategoryVideoList(List<dynamic> category, DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video').where('category', arrayContainsAny: category)
+        .orderBy('createdAt', descending: true).startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
 }
 

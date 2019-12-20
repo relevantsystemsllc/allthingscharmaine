@@ -8,7 +8,8 @@ class Video {
       this.description,
       this.duration,
       this.viewCount,
-      this.time});
+      this.time,
+      this.category});
 
   final String id;
   final String title;
@@ -17,6 +18,7 @@ class Video {
   final String duration;
   final int viewCount;
   final DateTime time;
+  final List<String> category;
 
   Video.fromSnapShot(DocumentSnapshot snapshot, String imageUrl)
       : id = snapshot.documentID,
@@ -25,8 +27,18 @@ class Video {
         duration = snapshot['timing'],
         viewCount = snapshot['viewCount'],
         time = DateTime.parse(snapshot['createdAt'].toDate().toString()),
-        image = imageUrl;
+        image = imageUrl,
+        category = snapshot['category']?.cast<String>();
 
+  Video.fromSnapShotOnly(DocumentSnapshot snapshot)
+      : id = snapshot.documentID,
+        title = snapshot['title'],
+        description = snapshot['text'],
+        duration = snapshot['timing'],
+        viewCount = snapshot['viewCount'],
+        time = DateTime.parse(snapshot['createdAt'].toDate().toString()),
+        image = snapshot['imageUrl'],
+        category = snapshot['category']?.cast<String>();
   String getPublishedDate(){
     if (time ==null) return '';
     Duration duration = DateTime.now().difference(time);
