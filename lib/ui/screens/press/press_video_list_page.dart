@@ -8,10 +8,11 @@ import 'package:flutter/material.dart';
 
 class PressVideoList extends StatefulWidget{
 
-  PressVideoList({@required this.title, @required this.category});
+  PressVideoList({@required this.title, @required this.category, this.categoryId});
 
   String title;
   String category;
+  String categoryId;
 
   @override
   State createState() {
@@ -73,7 +74,7 @@ class _PressVideoListState extends State<PressVideoList>{
 
             ],
           ),),
-        MoreRecentVideos(false),
+        MoreRecentVideos(false, widget.categoryId),
         SizedBox(height: 46, ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.0),
@@ -98,18 +99,18 @@ class _PressVideoListState extends State<PressVideoList>{
                       onTap: (){
                         if(_api != null && !_loading && _hasMoreData){
                           _loading = true;
-                          _api.getMoreVideosList(_lastDocument, _batchSize)
-                              .then((snapShotList){
-                            setState(() {
-                              videoSnapShotList.addAll(snapShotList);
-                              if(snapShotList!=null && snapShotList.isNotEmpty){
-                                _lastDocument = snapShotList[snapShotList.length - 1];
-                              }else{_hasMoreData = false;}
-                              _loading = false;
-                              print(videoSnapShotList.length);
+                          if (widget.categoryId == null) {
+                            _api.getMoreVideosList(_lastDocument, _batchSize)
+                                .then((snapShotList){
+                              setData(snapShotList);
                             });
+                          }else{
+                            _api.getMoreCategoryVideoList([widget.categoryId], _lastDocument, _batchSize)
+                                .then((snapShotList){
+                              setData(snapShotList);
+                            });
+                          }
 
-                          });
                         }
                       },),);
                 }else{
@@ -125,12 +126,27 @@ class _PressVideoListState extends State<PressVideoList>{
   void initState() {
     super.initState();
     _api = locator<Api>();
+    _loading = true;
+    if (widget.categoryId == null) {
     _api.getInitialVideoList(_batchSize).then((snapShotList) {
-      setState(() {
-        videoSnapShotList = snapShotList;
-        if(videoSnapShotList.isNotEmpty){ _lastDocument = videoSnapShotList[videoSnapShotList.length - 1];}
-        _loading = false;
-      });
+      setData(snapShotList);
+    });
+  }else{
+        _api.getInitialCategoryVideoList([widget.categoryId], _batchSize).then((snapShotList) {
+          setData(snapShotList);
+        });
+    }
+  }
+
+  void setData(List<DocumentSnapshot> snapShotList){
+
+    setState(() {
+      print(snapShotList.length);
+      if(snapShotList!=null && snapShotList.isNotEmpty){
+        videoSnapShotList.addAll(snapShotList);
+        _lastDocument = snapShotList[snapShotList.length - 1];
+      }else{_hasMoreData = false;}
+      _loading = false;
     });
   }
 }

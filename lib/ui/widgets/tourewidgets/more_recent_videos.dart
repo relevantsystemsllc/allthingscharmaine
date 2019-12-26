@@ -5,16 +5,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentVideos extends StatelessWidget {
-  MoreRecentVideos(this._hLoad);
+  MoreRecentVideos(this._hLoad, this._categoryId);
 
   bool _hLoad;
+  String _categoryId;
 
   PageController _pageController = PageController(initialPage: 1, viewportFraction: 0.86);
 
   @override
   Widget build(BuildContext context) {
+    print(_categoryId);
     return Container(
-        child: StreamBuilder(stream: Firestore.instance.collection('video').orderBy('createdAt', descending: true).limit(4).snapshots(),
+        child: StreamBuilder(stream: (_categoryId==null)?
+        Firestore.instance.collection('video').orderBy('createdAt', descending: true).limit(4).snapshots():
+        Firestore.instance.collection('video').where('category', arrayContains: _categoryId).orderBy('createdAt', descending: true).limit(4).snapshots(),
     builder: (context, snapShot){
     if(!snapShot.hasData)return Container();
         return Column(

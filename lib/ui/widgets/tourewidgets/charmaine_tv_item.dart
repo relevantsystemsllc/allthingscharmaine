@@ -1,3 +1,4 @@
+import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -28,7 +29,7 @@ class CharmaineTvItem extends StatefulWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
 
-    return SizedBox(
+    return GestureDetector(child: SizedBox(
       height: 105.0,
       width: screenWidth,
       child: Card(
@@ -54,6 +55,9 @@ class CharmaineTvItem extends StatefulWidget {
 
         ],
       ),),
-    );
+    ),
+      onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'charmaine tv', category: widget.snapShot['categoryName'], categoryId: widget.snapShot.documentID,)));
+    },);
   }
 }

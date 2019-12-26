@@ -1,5 +1,3 @@
-import 'package:allthingscharmaine/core/model/charmainetv.dart';
-import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/charmaine_tv_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,7 +14,7 @@ class _CharmaineTvState extends State<CharmaineTv>{
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    List<Charmainetv> data = Data.getTVData();
+
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
@@ -60,10 +58,7 @@ class _CharmaineTvState extends State<CharmaineTv>{
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index){
-                    return GestureDetector(child: Container(child: CharmaineTvItem(snapShot: snapShot.data.documents[index]), padding: EdgeInsets.only(bottom: 10.0),),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => PressVideoList(title: 'charmaine tv', category: data[index].name,)));
-                      },);
+                    return Container(child: CharmaineTvItem(snapShot: snapShot.data.documents[index]), padding: EdgeInsets.only(bottom: 10.0),);
                   },);
               },)
 

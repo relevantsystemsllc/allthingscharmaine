@@ -47,6 +47,7 @@ class _VideoDetailState extends State<VideoDetail>{
 
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

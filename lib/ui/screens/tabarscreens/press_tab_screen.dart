@@ -28,7 +28,7 @@ class PressTabScreen extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            MoreRecentVideos(true),
+            MoreRecentVideos(true, null),
             SizedBox(
               height: 46,
             ),
