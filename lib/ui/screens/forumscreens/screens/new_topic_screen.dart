@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_screen.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
+import 'package:flutter/material.dart';
 
 
 class NewTopicScreen extends StatelessWidget {

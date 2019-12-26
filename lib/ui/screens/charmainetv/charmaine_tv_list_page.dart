@@ -30,7 +30,6 @@ class _CharmaineTvState extends State<CharmaineTv> {
         ),
         backgroundColor: Colors.white,
         /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
-
         centerTitle: true,
         iconTheme: IconThemeData(
           color: CustomColors.TITLE_COLOR,

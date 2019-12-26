@@ -1,6 +1,5 @@
 import 'package:allthingscharmaine/ui/screens/otherscreens/pick_card_sceen.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
-
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 

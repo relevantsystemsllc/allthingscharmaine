@@ -4,7 +4,6 @@ import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/utils/imageClipper.dart';
 import 'package:allthingscharmaine/utils/margin_utils.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
-
 import 'package:flutter/material.dart';
 
 class MyAccount extends StatefulWidget {

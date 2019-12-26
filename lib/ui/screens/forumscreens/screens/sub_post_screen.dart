@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
-import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_reply_screen.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/screens/new_thread_screen.dart';
+import 'package:allthingscharmaine/ui/screens/forumscreens/screens/post_reply_screen.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
+import 'package:flutter/material.dart';
 
 class SubPostScreen extends StatelessWidget {
   @override
