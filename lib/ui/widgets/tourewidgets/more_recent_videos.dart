@@ -1,22 +1,27 @@
-import 'package:allthingscharmaine/ui/screens/press/press_video_detail_page.dart';
 import 'package:allthingscharmaine/ui/screens/press/press_video_list_page.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/header_video_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MoreRecentVideos extends StatelessWidget {
-  MoreRecentVideos(this._hLoad);
+  MoreRecentVideos(this._hLoad, this._categoryId);
 
   bool _hLoad;
+  String _categoryId;
 
   PageController _pageController = PageController(initialPage: 1, viewportFraction: 0.86);
-  List listData;
 
   @override
   Widget build(BuildContext context) {
-    listData = Data.getVideoData();
+    print(_categoryId);
     return Container(
-        child: Column(
+        child: StreamBuilder(stream: (_categoryId==null)?
+        Firestore.instance.collection('video').orderBy('createdAt', descending: true).limit(4).snapshots():
+        Firestore.instance.collection('video').where('category', arrayContains: _categoryId).orderBy('createdAt', descending: true).limit(4).snapshots(),
+    builder: (context, snapShot){
+    if(!snapShot.hasData)return Container();
+        return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -68,18 +73,18 @@ class MoreRecentVideos extends StatelessWidget {
               child: PageView.builder(
                   scrollDirection: Axis.horizontal,
                   controller: _pageController,
-                  itemCount: listData.length,
+                  itemCount: snapShot.data.documents.length,
                   itemBuilder: (context, position){
-                    return GestureDetector(child: imageSlider(position),
-                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(listData[position])));},);
+                    return imageSlider(position, snapShot.data.documents[position]);
                   }),)
-          ],
-        ));
+          ],);
+
+    }));
   }
 
-  Widget imageSlider(int index){
+  Widget imageSlider(int index, DocumentSnapshot snapShot){
     return AnimatedBuilder(
-        child: HeaderMovieItem(listData[index]),
+        child: HeaderMovieItem(snapShot),
         animation: _pageController,
         builder: (context, widget){
           double bias = 1;

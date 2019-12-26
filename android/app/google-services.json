@@ -38,6 +38,13 @@
             {
               "client_id": "961505671060-goii04hcacshdd2k8gnu25isar0domqg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "961505671060-6en7cn4ro9djklsjo27f50gjubi61obf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.relevantsys.allthingscharmaine"
+              }
             }
           ]
         }
@@ -51,6 +58,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "961505671060-j492sfmct14c5pabe7oikb1aa2n1a4ma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.relevantsys.allthingscharmaine",
+            "certificate_hash": "61a906f6e900f646adb733b8c548a9f8a1cda5c5"
+          }
+        },
         {
           "client_id": "961505671060-rorqjv5ahhpofcsp0sq78s6elrk5mbdh.apps.googleusercontent.com",
           "client_type": 1,
@@ -75,6 +90,13 @@
             {
               "client_id": "961505671060-goii04hcacshdd2k8gnu25isar0domqg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "961505671060-6en7cn4ro9djklsjo27f50gjubi61obf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.relevantsys.allthingscharmaine"
+              }
             }
           ]
         }

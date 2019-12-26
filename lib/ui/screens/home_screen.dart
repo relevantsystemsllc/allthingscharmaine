@@ -1,5 +1,4 @@
 import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
-import 'package:allthingscharmaine/ui/screens/shopscreens/shop2.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/cart_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/home_tab_screen.dart';
 import 'package:allthingscharmaine/ui/screens/tabarscreens/press_tab_screen.dart';

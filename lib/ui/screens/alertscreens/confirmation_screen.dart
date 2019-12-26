@@ -4,8 +4,6 @@ import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../home_screen.dart';
-
 class ConfirmationScreen extends StatelessWidget {
   
   @override
