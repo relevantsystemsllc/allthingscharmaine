@@ -1,25 +1,50 @@
 import 'package:allthingscharmaine/ui/screens/forumscreens/topic_screen.dart';
 import 'package:allthingscharmaine/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 
 
 
 
 
 class CategoryScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      backgroundColor: Colors.white,
+      drawer: Drawer(
+        child: NavigationDrawer(),
+      ),
       appBar: AppBar(
+        leading: IconButton(
+          icon: Image.asset('assets/hamb-menu.png'),
+          onPressed: () {
+            _scaffoldKey.currentState.openDrawer();
+          },
+        ),
+        backgroundColor: Colors.transparent,
+        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
 
-        //Todo: Add menu icon to the appbar
-        backgroundColor: Colors.white,
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xFF656B6E) ,
+        ),
         title: Text(
           'forum',
           style: kAppBarTextStyle,
-
         ),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
+
       body: Container(
         padding: EdgeInsets.only(left: 34.0, bottom: 14.0, top: 19.0),
         child: Column(

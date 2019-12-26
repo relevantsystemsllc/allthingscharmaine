@@ -1,3 +1,4 @@
+import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'bg_clip_path.dart';
@@ -78,7 +79,7 @@ class CurveProfileContainer extends StatelessWidget {
       clipper: CurveProfileContainerClipPath(),
       child: Container(
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(color: Colors.pink[200]),
+        decoration: BoxDecoration(color: MyColors().pinkActive),
       ),
     );
   }

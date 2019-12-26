@@ -1,8 +1,7 @@
-import 'package:allthingscharmaine/ui/screens/forumscreens/sub_post_screen.dart';
-import 'package:allthingscharmaine/utils/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'new_topic_screen.dart';
+import 'package:allthingscharmaine/ui/widgets/colewidgets/constants.dart';
+import 'package:allthingscharmaine/ui/screens/forumscreens/screens/sub_post_screen.dart';
+import 'package:allthingscharmaine/ui/screens/forumscreens/screens/new_topic_screen.dart';
 
 
 class TopicScreen extends StatelessWidget {
@@ -10,18 +9,12 @@ class TopicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-        backgroundColor: Colors.transparent,
-        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
-
         centerTitle: true,
         iconTheme: IconThemeData(
-          color: Color(0xFF656B6E) ,
+          color: Color(0xff656B6E),
         ),
-        title: Text(
-          'topics',
-          style: kAppBarTextStyle,
-        ),
+        backgroundColor: Colors.transparent,
+        title: Text('topics', style: kAppBarTextStyle),
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
@@ -31,6 +24,7 @@ class TopicScreen extends StatelessWidget {
           ),
         ],
       ),
+//
       body: Container(
         padding: EdgeInsets.only(left: 34.0, bottom: 14.0, top: 19.0, right:34.0),
         child: Column(

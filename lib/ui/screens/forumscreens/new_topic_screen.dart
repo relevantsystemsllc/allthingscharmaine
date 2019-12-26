@@ -10,8 +10,23 @@ class NewTopicScreen extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+
+        backgroundColor: Colors.transparent,
+        /* leading: IconButton(icon: Image.asset('assets/hamb-menu.png'), onPressed: () { _scaffoldKey.currentState.openDrawer();}),*/
+
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Color(0xFF656B6E) ,
+        ),
+
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Container(
 

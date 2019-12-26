@@ -2,6 +2,9 @@ import 'package:allthingscharmaine/core/model/article.dart';
 import 'package:allthingscharmaine/core/model/charmainetv.dart';
 import 'package:allthingscharmaine/core/model/event.dart';
 import 'package:allthingscharmaine/core/model/video.dart';
+import 'package:allthingscharmaine/model/QA.dart';
+import 'package:allthingscharmaine/model/purchases.dart';
+import 'package:allthingscharmaine/model/questions_asked.dart';
 import 'package:flutter/material.dart';
 
 class CustomColors {
@@ -128,10 +131,54 @@ class Data {
     data.add(Charmainetv(
         imagePath: 'assets/blur-bokeh-community-5156.jpg',
         name: 'specials events'));
-    data.add(Charmainetv(imagePath: 'assets/headshot1.jpg', name: 'bey talk'));
+    data.add(Charmainetv(imagePath: 'assets/headshot1.JPG', name: 'bey talk'));
     data.add(Charmainetv(
         imagePath: 'assets/dogs_french_bulldog_bench_black.jpg',
         name: 'seven & eleven'));
+    return data;
+  }
+
+  static List<QA> getQAData() {
+    List<QA> data = [];
+
+    data.add(QA(imagePath: "assets/finegirl.png", name: "Q/A by CHarmaine"));
+    data.add(QA(imagePath: "assets/girlinkitchen.png", name: "questions asked"));
+    data.add(QA(
+        imagePath: "assets/adult-afro-black-woman-texting.jpg",
+        name: "ask a question"));
+    data.add(
+        QA(imagePath: "assets/woman-on-smartphone.jpg", name: "my questions"));
+
+    return data;
+  }
+
+  static List<QuestionsAsked> getAskedQuestions(){
+    List<QuestionsAsked> data = [];
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite movie"));
+    data.add(QuestionsAsked(imagePath: "assets/girlinkitchen.png", question: "what's your favorite food"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
+    return data;
+
+  }
+
+  static List<QuestionsAsked> getMyAskedQuestions(){
+    List<QuestionsAsked> data = [];
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite movie"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite food"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
+    data.add(QuestionsAsked(imagePath: "assets/finegirl.png", question: "what's your favorite song"));
+    return data;
+
+  }
+
+  static List<Purchases> getMyPurchases(){
+
+    List<Purchases> data = [];
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+    data.add(Purchases(imagePath: "assets/approns 1.png", date: "11 Novermber 2018 ",purchaseNumber: 123));
+
     return data;
   }
 }

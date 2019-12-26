@@ -1,6 +1,9 @@
 import 'package:allthingscharmaine/core/viewmodels/loginviewmodel.dart';
+import 'package:allthingscharmaine/ui/screens/QA/qascreen.dart';
 import 'package:allthingscharmaine/ui/screens/charmainetv/charmaine_tv_list_page.dart';
 import 'package:allthingscharmaine/ui/screens/forumscreens/category_screen.dart';
+import 'package:allthingscharmaine/ui/screens/otherscreens/order_history.dart';
+import 'package:allthingscharmaine/ui/screens/profilescreens/my_account.dart';
 import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
@@ -90,6 +93,8 @@ class NavigationDrawer extends StatelessWidget {
                   // ...
                   // Then close the drawer
                   Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => QAScreen()));
                 },
               ),
               ListTile(
@@ -124,6 +129,12 @@ class NavigationDrawer extends StatelessWidget {
                   // ...
                   // Then close the drawer
                   Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyAccount(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -141,6 +152,8 @@ class NavigationDrawer extends StatelessWidget {
                   // ...
                   // Then close the drawer
                   Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OrderHistory()));
                 },
               ),
               ListTile(
