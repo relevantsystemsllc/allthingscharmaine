@@ -3,18 +3,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Video {
   Video(
       {this.id,
-      this.image,
-      this.title,
-      this.description,
-      this.duration,
-      this.viewCount,
-      this.time,
-      this.category});
+        this.image,
+        this.videoUrl,
+        this.title,
+        this.description,
+        this.duration,
+        this.viewCount,
+        this.time,
+        this.category});
 
   final String id;
   final String title;
   final String description;
-        String image;
+  String image;
+  final String videoUrl;
   final String duration;
   final int viewCount;
   final DateTime time;
@@ -28,6 +30,7 @@ class Video {
         viewCount = snapshot['viewCount'],
         time = DateTime.parse(snapshot['createdAt'].toDate().toString()),
         image = imageUrl,
+        videoUrl = snapshot['videoUrl'],
         category = snapshot['category']?.cast<String>();
 
   Video.fromSnapShotOnly(DocumentSnapshot snapshot)
@@ -38,7 +41,9 @@ class Video {
         viewCount = snapshot['viewCount'],
         time = DateTime.parse(snapshot['createdAt'].toDate().toString()),
         image = snapshot['imageUrl'],
+        videoUrl = snapshot['videoUrl'],
         category = snapshot['category']?.cast<String>();
+
   String getPublishedDate(){
     if (time ==null) return '';
     Duration duration = DateTime.now().difference(time);
