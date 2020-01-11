@@ -7,7 +7,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:screen/screen.dart';
 import 'package:video_player/video_player.dart';
 
 
@@ -156,11 +155,18 @@ class _VideoDetailState extends State<VideoDetail>{
   }
 
   @override
+  void deactivate() {
+    super.deactivate();
+    if (controller.value.initialized && controller.value.isPlaying) {
+      controller.pause(); // Pause the player when moving to another page
+    }
+  }
+  @override
   void initState() {
     super.initState();
     _api = locator<Api>();
     controller = VideoPlayerController.network(
-        widget._video.videoUrl);Screen.keepOn(true);
+        widget._video.videoUrl);
     if(widget._video.category != null){
       _api.getInitialCategoryVideoList(widget._video.category, _batchSize).then((snapShotList) {
         setData(snapShotList);
@@ -171,12 +177,12 @@ class _VideoDetailState extends State<VideoDetail>{
       });
     }
   }
+
 @override
   void dispose() {
 
     super.dispose();
-    Screen.keepOn(false);
-    controller.dispose();
+  //controller.dispose();
   }
   void setData(List<DocumentSnapshot> snapShotList){
     setState(() {
