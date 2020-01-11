@@ -1,12 +1,14 @@
 import 'package:allthingscharmaine/core/model/video.dart';
 import 'package:allthingscharmaine/core/services/API.dart';
 import 'package:allthingscharmaine/locator.dart';
+import 'package:allthingscharmaine/ui/widgets/tourewidgets/chewie_video_item.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
+import 'package:video_player/video_player.dart';
+
 
 class VideoDetail extends StatefulWidget {
   VideoDetail(@required this._video) : assert(_video != null);
@@ -26,6 +28,7 @@ class _VideoDetailState extends State<VideoDetail>{
   List<Video> videoList = [];
   ScrollController _scrollController =
   ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
+  VideoPlayerController controller;
 
 
   @override
@@ -48,56 +51,31 @@ class _VideoDetailState extends State<VideoDetail>{
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
+      body: SafeArea(child: Column(
           children: <Widget>[
             Stack(children: <Widget>[
-              SizedBox(
-                  width: screenWidth,
-                  height: 360,
-                  child: PhotoView(
-                    customSize: Size.fromHeight(360),
-                    imageProvider: CachedNetworkImageProvider(widget._video.image,),
-                    initialScale: PhotoViewComputedScale.contained * 1.6,
-                    minScale: PhotoViewComputedScale.contained * 1.6,
-                    maxScale: PhotoViewComputedScale.contained * 2.0,
-                    basePosition: Alignment.topCenter,
-                  )),
+              Container(
+                margin: EdgeInsets.only(bottom: 5.0),
+                color:Colors.black,
+                  child: ChewieVideo(videoPlayerController: controller),
+              ),
               AppBar(
                 brightness: Brightness.dark,
                 iconTheme: IconThemeData(color: Colors.white),
                 elevation: 0.0,
                 backgroundColor: Colors.transparent,
               ),
-              Container(
-                margin: EdgeInsets.only(top: 360),
-                width: screenWidth,
-                height: 35,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25.0),
-                        topRight: Radius.circular(25.0))),
-              ),
-              Positioned.fill(child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Center(child: Container(width: 55.0, height: 55.0,
-                    child: Icon(Icons.play_arrow, color: Colors.white,),
-                    decoration: new BoxDecoration(
-                      color: Color(0xff7e583e).withOpacity(.97),
-                      shape: BoxShape.circle,
-                    ),))))
             ]),
-            //Expanded(
-            //child:
-            Container(
+
+            Expanded(child: SingleChildScrollView(child: Column(children: [
+              Container(
               color: Colors.white,
               width: screenWidth,
               padding: EdgeInsets.only(left: 35.0, right: 35.0, bottom: 5.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  /*Text(
                     widget._video.duration,
                     style: TextStyle(
                         color: CustomColors.TEXT_COLOR,
@@ -105,7 +83,7 @@ class _VideoDetailState extends State<VideoDetail>{
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         height: 1.3),
-                  ),
+                  ),*/
                   SizedBox(height: 4.0),
                   Text(
                     widget._video.title,
@@ -168,23 +146,27 @@ class _VideoDetailState extends State<VideoDetail>{
 
                   }),
                 )):Container(),
-            SizedBox(height: 50.0),
+            SizedBox(height: 30.0),
+              ],)))
           ],
         ),
       ),
     );
   }
 
-  /*void _getColorPalette(String imagePath) async{
-    PaletteGenerator generator = await PaletteGenerator
-        .fromImageProvider(AssetImage(imagePath), size: Size(200,200));
-    if(generator.darkMutedColor != null) _playerColor = generator.darkMutedColor;
-
-  }*/
+  @override
+  void deactivate() {
+    super.deactivate();
+    if (controller.value.initialized && controller.value.isPlaying) {
+      controller.pause(); // Pause the player when moving to another page
+    }
+  }
   @override
   void initState() {
     super.initState();
     _api = locator<Api>();
+    controller = VideoPlayerController.network(
+        widget._video.videoUrl);
     if(widget._video.category != null){
       _api.getInitialCategoryVideoList(widget._video.category, _batchSize).then((snapShotList) {
         setData(snapShotList);
@@ -196,6 +178,12 @@ class _VideoDetailState extends State<VideoDetail>{
     }
   }
 
+@override
+  void dispose() {
+
+    super.dispose();
+  //controller.dispose();
+  }
   void setData(List<DocumentSnapshot> snapShotList){
     setState(() {
       _loading = false;
