@@ -32,6 +32,8 @@ dependencies:
   carousel_widget: ^0.1.1
   page_indicator: ^0.3.0
   flutter_slidable: ^0.5.4
+  cache_image: ^1.0.5
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -57,35 +59,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/blur-breakfast-close-up-376464.jpg
-    - assets/notification.png
-    - assets/hamb-menu.png
-    - assets/attachment.png
-    - assets/gallery.png
-    - assets/ICON 2.png
-    - assets/ICON 4.png
-    - assets/ICON 3.png
-    - assets/android pay.png
-    - assets/apple pay logo.png
-    - assets/book 2.png
-    - assets/book.png
-    - assets/Charmaine.png
-    - assets/icons/play.png
-    - assets/artboard.png
-    - assets/chicago.jpg
-    - assets/chicago-Illinois.jpg
-    - assets/adult-attractive-beautiful-871495.jpg
-    - assets/artboard–3.png
-    - assets/artboard–4.png
-    - assets/beach-daylight-fun-1430675.jpg
-    - assets/buffet-chicken-delicious-5916.jpg
-    - assets/assortment-autumn-background-1400172.jpg
-    - assets/assorted-beauty-blur-457702.jpg
-    - assets/behind-the-scenes-camera.png
-    - assets/headshot1.jpg
-    - assets/dogs_french_bulldog_bench_black.jpg
-    - assets/blur-bokeh-community-5156.jpg
-    -  assets/
+    - assets/icons/
+    - assets/
 
 
 

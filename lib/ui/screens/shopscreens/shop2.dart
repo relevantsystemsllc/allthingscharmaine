@@ -1,7 +1,9 @@
 
 import 'package:allthingscharmaine/core/model/shop.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
+import 'package:allthingscharmaine/utils/sizeConfig.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
+import 'package:cache_image/cache_image.dart';
 import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/background.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/bottomNavBar.dart';
@@ -31,9 +33,9 @@ class Shop2State extends State<Shop2> {
     color = UIData.shopColors;
     colors = UIData.shopItemColors;
     super.initState();
-    sc = new ScrollController(initialScrollOffset: 40.0);
+    sc = new ScrollController(initialScrollOffset: SizeConfig.blockSizeHorizontal*15.66);
     WidgetsBinding.instance.addPostFrameCallback((_){
-      sc.animateTo(85.0, duration:Duration(milliseconds: 500), curve: Curves.linear);
+      sc.animateTo(SizeConfig.blockSizeHorizontal*25.67, duration:Duration(milliseconds: 500), curve: Curves.linear);
     });
   }
 
@@ -70,9 +72,9 @@ class Shop2State extends State<Shop2> {
                           SingleChildScrollView(
                             child: Row(
                               children: <Widget>[
-                                Image.asset(UIData.apron1,fit: BoxFit.fitHeight,height: 200.0),
-                                Image.asset(widget.item.image,fit: BoxFit.fitHeight,height: 350.0),
-                                Image.asset(UIData.apron3,fit: BoxFit.fitHeight,height: 200.0),
+                                Image(image: CacheImage('${UIData.storage}${UIData.apron1}'),fit: BoxFit.fitHeight,height: 200.0),
+                                Image(image: CacheImage(widget.item.image),fit: BoxFit.fitHeight,height: 200.0),
+                                Image(image: CacheImage('${UIData.storage}${UIData.apron3}'),fit: BoxFit.fitHeight,height: 200.0),
                               ],mainAxisAlignment: MainAxisAlignment.center,
                             ),scrollDirection: Axis.horizontal,controller: sc,primary: false,
                           ),

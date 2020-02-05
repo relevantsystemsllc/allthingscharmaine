@@ -3,6 +3,7 @@ import 'package:allthingscharmaine/core/model/shop.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/bottomNavBar.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
+import 'package:cache_image/cache_image.dart';
 import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/background.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/bookCard.dart';
@@ -40,7 +41,7 @@ class Shop7 extends StatelessWidget{
                          SizedBox(child:Stack(children:[
                            SizedBox(height:20.0),
                            Align(child:Padding(child:Text(UIData.bookTab,style: TextStyle(fontSize: 30.0,color: Colors.white,fontWeight: FontWeight.bold),),padding: EdgeInsets.only(left: 40.0)),alignment: Alignment.topLeft),
-                           Positioned(child: Image.asset(UIData.bookHeader,height:400.0,fit: BoxFit.cover),top: -30.0,left: -10.0,right: -10.0)]),height: 350.0),
+                           Positioned(child: Image(image:CacheImage("${UIData.storage}${UIData.bookHeader}"),height:400.0,fit: BoxFit.cover),top: -30.0,left: -10.0,right: -10.0)]),height: 350.0),
                                 SizedBox(height:10.0),
                                 Padding(padding: EdgeInsets.only(left: 30.0),child: Text(book.info,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold,color: Colors.black87))),
                                 SizedBox(height:10.0),

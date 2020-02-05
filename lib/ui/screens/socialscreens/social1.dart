@@ -1,4 +1,5 @@
 import 'package:allthingscharmaine/model/social.dart';
+import 'package:cache_image/cache_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
@@ -22,7 +23,7 @@ class Social1 extends StatelessWidget{
           widthFactor: 1.0,
           heightFactor: 0.8,
        child: PhotoView(customSize: Size.fromHeight(400),
-          imageProvider: AssetImage(social.image), initialScale: PhotoViewComputedScale.contained *1.6, minScale: PhotoViewComputedScale.contained *1.6, maxScale: PhotoViewComputedScale.contained *2.0, basePosition: Alignment.topCenter,
+          imageProvider: CacheImage(social.image), initialScale: PhotoViewComputedScale.contained *1.6, minScale: PhotoViewComputedScale.contained *1.6, maxScale: PhotoViewComputedScale.contained *2.0, basePosition: Alignment.topCenter,
         )),
           Column(
             children: <Widget>[ Padding(child:Align(child:GestureDetector(child:Icon(Icons.keyboard_backspace,color: Colors.white),onTap: ()=>Navigator.of(context).pop()),alignment: Alignment.topLeft),padding: EdgeInsets.only(top: 50.0,left: 25.0),),

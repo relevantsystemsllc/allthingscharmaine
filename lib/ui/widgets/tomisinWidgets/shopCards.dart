@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/core/model/shop.dart';
+import 'package:cache_image/cache_image.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/shopBottomSheet.dart';
 
 
@@ -19,7 +20,7 @@ Widget build(BuildContext context) {
   ),Padding(
   child:Column(
      children:[
-       Image.asset(item.image),
+       Image(image:CacheImage(item.image)),
        Text("\$${item.cost}",style: TextStyle(color: color),),
        SizedBox(height: 5.0),
        Text(item.info,style: TextStyle(fontSize: 12.0),),
