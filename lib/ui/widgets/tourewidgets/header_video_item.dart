@@ -1,16 +1,43 @@
-import 'package:allthingscharmaine/model/video.dart';
+import 'package:allthingscharmaine/core/model/video.dart';
+import 'package:allthingscharmaine/ui/screens/press/press_video_detail_page.dart';
 import 'package:allthingscharmaine/utils/custom_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
-class HeaderMovieItem extends StatelessWidget {
-  final Video video;
+class HeaderMovieItem extends StatefulWidget {
+  //final Video video;
+  final DocumentSnapshot videoSnapShot;
 
-  HeaderMovieItem(this.video);
+  HeaderMovieItem(this.videoSnapShot);
+
+  @override
+  _HeaderMovieItemState createState() => _HeaderMovieItemState();
+
+}
+
+  class _HeaderMovieItemState extends State<HeaderMovieItem>{
+    String _imageUrl = 'assets/placeholder.png';
+
+    @override
+    void initState() {
+      super.initState();
+      StorageReference storageReference =
+      FirebaseStorage.instance.ref().child(widget.videoSnapShot['imageUrl']);
+      storageReference.getDownloadURL().then((loc) {
+        if (!mounted) return;
+        setState(() {
+          _imageUrl = loc;
+        });
+      });
+    }
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    return SizedBox(height: 260.0,
+    return GestureDetector(
+        child: SizedBox(height: 260.0,
         width: screenWidth,child:Card(
             clipBehavior: Clip.antiAliasWithSaveLayer,
             elevation: 3.0,
@@ -25,12 +52,15 @@ class HeaderMovieItem extends StatelessWidget {
                   Flexible(
                       flex:2,
                       child: Stack(children: [
-                        Image.asset(
-                          video?.image,
-                          //height: 171.0,
-                          width: screenWidth,
-                          fit: BoxFit.cover,
-                        ),
+                        CachedNetworkImage(
+                            imageUrl: _imageUrl,
+                            placeholder: (context, url) =>Image.asset(
+                              'assets/placeholder.png',
+                              fit: BoxFit.cover,
+                            ),
+                            //height: 133.0,
+                            width: screenWidth,
+                            fit: BoxFit.cover),
                         Center(child: Container(width: 55.0, height: 55.0,
                           child: Icon(Icons.play_arrow, color: Colors.white,),
                           decoration: new BoxDecoration(
@@ -47,7 +77,7 @@ class HeaderMovieItem extends StatelessWidget {
 
                           Flexible(
                               child: Text(
-                                video?.duration,
+                                widget.videoSnapShot['timing'] ?? '',
                                 style: TextStyle(
                                   color: CustomColors.TEXT_COLOR,
                                   fontSize: 14.0,
@@ -58,7 +88,7 @@ class HeaderMovieItem extends StatelessWidget {
 
                           Flexible(
                             child: Text(
-                              video?.title,
+                              widget.videoSnapShot['title'] ,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -71,6 +101,7 @@ class HeaderMovieItem extends StatelessWidget {
                         ],
                       )))
                 ])
-        ));
+        )),
+    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => VideoDetail(Video.fromSnapShot(widget.videoSnapShot, _imageUrl))));},);
   }
 }

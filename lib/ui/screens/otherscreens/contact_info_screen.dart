@@ -1,5 +1,5 @@
 import 'package:allthingscharmaine/ui/screens/otherscreens/pick_card_sceen.dart';
-import 'package:allthingscharmaine/ui/widgets/nwagbawidgets/custom_cart_appbar.dart';
+import 'package:allthingscharmaine/utils/custom_colors.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +18,28 @@ class _ContactInfoScreen extends State<ContactInfoScreen> {
   Widget build(BuildContext context) {
     // var userProvider = Provider.of<UserViewModel>(context);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text("cart"),
+        iconTheme: IconThemeData(
+          color: CustomColors.TITLE_COLOR,
+        ),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/notification.png'),
+            tooltip: 'Notification',
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: Form(
         key: _formkey,
         child: Padding(
@@ -27,11 +49,11 @@ class _ContactInfoScreen extends State<ContactInfoScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  CustomCartAppbar(
-                    height: 10,
-                    bgColor: Colors.black,
-                    title: "cart",
-                  ),
+                  // CustomCartAppbar(
+                  //   height: 10,
+                  //   bgColor: Colors.black,
+                  //   title: "cart",
+                  // ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(

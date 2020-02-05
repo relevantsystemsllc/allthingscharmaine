@@ -53,5 +53,63 @@ class Api {
   void signOut() async {
     await FirebaseAuth.instance.signOut();
   }
+
+
+   // Get the initial List of events available in the event collection
+  Future<List<DocumentSnapshot>> getInitialEventList(int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('event')
+        .where('eventDate', isGreaterThanOrEqualTo: DateTime.now())
+        .orderBy('eventDate').limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  /// Load more data from event list. This is used to implement pagination on the List
+  Future<List<DocumentSnapshot>> getMoreEventList(DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('event')
+        .where('eventDate', isGreaterThanOrEqualTo: DateTime.now())
+        .orderBy('eventDate').startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get the initial List of articles available in the article collection
+  Future<List<DocumentSnapshot>> getInitialArticleList(int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('article')
+        .orderBy('createdAt').limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get the initial List of events available in the event collection
+  Future<List<DocumentSnapshot>> getMoreArticleList(DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('article')
+        .orderBy('createdAt').startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get the initial List of videos available in the video collection
+  Future<List<DocumentSnapshot>> getInitialVideoList(int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video').orderBy('createdAt', descending: true).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get more from List of videos available in the video collection
+  Future<List<DocumentSnapshot>> getMoreVideosList(DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video')
+        .orderBy('createdAt', descending: true).startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get the initial List of videos of a specific category available in the video collection
+  Future<List<DocumentSnapshot>> getInitialCategoryVideoList(List<dynamic> category, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video').where('category', arrayContainsAny: category)
+        .orderBy('createdAt', descending: true).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
+
+  // Get more from List of videos from this category available in the video collection
+  Future<List<DocumentSnapshot>> getMoreCategoryVideoList(List<dynamic> category, DocumentSnapshot lastElement, int batchSize) async {
+    QuerySnapshot _querySnapshot = await _db.collection('video').where('category', arrayContainsAny: category)
+        .orderBy('createdAt', descending: true).startAfterDocument(lastElement).limit(batchSize).getDocuments();
+    return _querySnapshot.documents;
+  }
 }
 
