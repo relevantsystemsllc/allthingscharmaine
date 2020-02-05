@@ -1,5 +1,6 @@
 import 'package:allthingscharmaine/model/social.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
+import 'package:cache_image/cache_image.dart';
 import 'package:flutter/material.dart';
 
 
@@ -19,7 +20,7 @@ class SocialViewCard extends StatelessWidget {
               SizedBox(width: 40.0),
               CircleAvatar(
                 maxRadius: 20.0,
-                backgroundImage: AssetImage('assets/${social.author}.png'),
+                backgroundImage: CacheImage('${UIData.storage}social/author/${social.author}.png'),
                 foregroundColor: Colors.transparent,
                 backgroundColor: Colors.black12,
               ),
@@ -34,7 +35,7 @@ class SocialViewCard extends StatelessWidget {
           SizedBox(height: 20.0),
           Padding(padding: EdgeInsets.only(left: 40.0,right: 30.0) ,child:ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
-              child: GestureDetector(child:Image.asset(social.image??"assets/blur-breakfast-close-up-376464.jpg",),onTap: ()=> Navigator.of(context).pushNamed(UIData.socialCommentRoute,arguments: social),),
+              child: GestureDetector(child:Image(image:CacheImage(social.image)),onTap: ()=> Navigator.of(context).pushNamed(UIData.socialCommentRoute,arguments: social),),
           ))
         ]);
   }

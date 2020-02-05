@@ -27,21 +27,27 @@ class UIData {
   //images
   static const String hambMenu = "assets/hamb-menu.png";
   static const String notification = "assets/notification.png";
-  static const String apron1 = "assets/approns 1.png";
-  static const String apron2 = "assets/approns 2.png";
-  static const String apron3 = "assets/approns 3.png";
-  static const String bookHeader = "assets/book.png";
+  static const String apron1 = "shop/approns1.png";
+  static const String apron2 = "shop/approns2.png";
+  static const String apron3 = "shop/approns3.png";
+  static const String apron4 = "shop/approns4.png";
+  static const String book2 = "shop/book2.png";
+  static const String bookHeader = "shop/book2Header.png";
   static const String error = "assets/ICON 2.png";
   static const String library ="assets/ICON 4.png";
   static const String cartIcon = "assets/ICON 3.png";
   static const String applePay = "assets/apple pay logo.png";
   static const String androidPay = 'assets/android pay.png';
-  static const String commentHeader = 'assets/blur-breakfast-close-up-376464.jpg';
+  static const String commentHeader = 'social/blur-breakfast-close-up-376464.jpg';
   static const String attachment ='assets/attachment.png';
   static const String gallery = "assets/gallery.png";
-  static const String author = 'assets/Charmaine.png';
+  static const String author = 'social/author/Charmaine.png';
   //login
 
+
+  //firebase storage location
+
+  static const String storage = "gs://charmaine-defe5.appspot.com/";
 
   //navbar
   static const String home = "Home";

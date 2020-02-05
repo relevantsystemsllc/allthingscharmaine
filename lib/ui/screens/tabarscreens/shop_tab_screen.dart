@@ -1,6 +1,5 @@
 import 'package:allthingscharmaine/core/model/shop.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
-import 'package:allthingscharmaine/utils/sizeConfig.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
