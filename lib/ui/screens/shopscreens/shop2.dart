@@ -35,12 +35,13 @@ class Shop2State extends State<Shop2> {
     super.initState();
     sc = new ScrollController(initialScrollOffset: SizeConfig.blockSizeHorizontal*15.66);
     WidgetsBinding.instance.addPostFrameCallback((_){
-      sc.animateTo(SizeConfig.blockSizeHorizontal*25.67, duration:Duration(milliseconds: 500), curve: Curves.linear);
+      sc.animateTo(SizeConfig.blockSizeHorizontal*28.67, duration:Duration(milliseconds: 500), curve: Curves.linear);
     });
   }
 
   @override
   void dispose() {
+    sc.dispose();
     super.dispose();
   }
 
@@ -65,7 +66,7 @@ class Shop2State extends State<Shop2> {
         ),padding: EdgeInsets.only(right:15.0,left: 15.0,top: 15.0)),elevation: 40.0,color: Colors.transparent,shadowColor: Colors.transparent,),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Column(
+                      child: ConstrainedBox(constraints: BoxConstraints(minHeight: 500.0,maxHeight: SizeConfig.blockSizeVertical*90>500.0?SizeConfig.blockSizeVertical*90:500.0),child:Column(
                         children: <Widget>[
                           SizedBox(height:30.0),
                           Align(child:Padding(child:Text(UIData.apronTab,style: TextStyle(fontSize: 30.0,color: Colors.white,fontWeight: FontWeight.bold),),padding: EdgeInsets.only(left: 40.0),),alignment: Alignment.centerLeft,),
@@ -75,8 +76,8 @@ class Shop2State extends State<Shop2> {
                                 Image(image: CacheImage('${UIData.storage}${UIData.apron1}'),fit: BoxFit.fitHeight,height: 200.0),
                                 Image(image: CacheImage(widget.item.image),fit: BoxFit.fitHeight,height: 200.0),
                                 Image(image: CacheImage('${UIData.storage}${UIData.apron3}'),fit: BoxFit.fitHeight,height: 200.0),
-                              ],mainAxisAlignment: MainAxisAlignment.center,
-                            ),scrollDirection: Axis.horizontal,controller: sc,primary: false,
+                              ],mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            ),scrollDirection: Axis.horizontal,controller: sc,padding: null,
                           ),
                           Center(
                               child:Container(
@@ -94,6 +95,7 @@ class Shop2State extends State<Shop2> {
                               )
                           ),
                           SizedBox(height: 20.0),
+                          Spacer(),
                           Padding(padding: EdgeInsets.only(left: 30.0),child: Text("\$${widget.item.cost}",style: TextStyle(color: Colors.green[200],fontSize: 22.0,fontWeight: FontWeight.bold))),
                           Padding(padding: EdgeInsets.only(left: 30.0),child: Text(widget.item.info,style: TextStyle(color: Colors.black,fontSize: 20.0,fontWeight: FontWeight.normal))),
                           Padding(padding: EdgeInsets.only(left: 30.0,right: 50.0),child: Text(widget.item.description,style: TextStyle(color: Colors.black26,fontSize: 13.0,fontWeight: FontWeight.normal))),
@@ -112,7 +114,7 @@ class Shop2State extends State<Shop2> {
                             ),
                           ),
                           SizedBox(height: 20.0),
-
+                          Spacer(),
                           InkWell(
                             child: Container(
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0),color: Colors.green[200]),
@@ -122,8 +124,10 @@ class Shop2State extends State<Shop2> {
                             onTap: ()=>_settingModalBottomSheet(context),
                           ),
                           SizedBox(height: 20.0),
+                          Spacer(flex: 2),
                         ],crossAxisAlignment: CrossAxisAlignment.start
                       ),
+                      )
                     ),
                   )
       ],crossAxisAlignment: CrossAxisAlignment.start),flex: 9),

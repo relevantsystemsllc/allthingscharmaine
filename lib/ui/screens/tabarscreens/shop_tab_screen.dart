@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/background.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/shopCards.dart';
-import 'package:allthingscharmaine/core/services/shopData.dart';
+import 'package:allthingscharmaine/core/viewmodels/shopVM.dart';
 import 'package:provider/provider.dart';
 
 class ShopTabScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _ShopTabScreenState extends State<ShopTabScreen>
   int active = 0;
   Color _color;
   var items;
-  List<Shop> _categories;
+  List<Shop> _categories = [];
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
@@ -28,8 +28,11 @@ class _ShopTabScreenState extends State<ShopTabScreen>
     _tabBarController =
         new TabController(vsync: this, length: 4, initialIndex: 0);
     _color = UIData.shopColor;
-    items = Provider.of<ShopData>(context, listen: false);
-    _categories = items.getMenuItems();
+    items =  Provider.of<ShopVM>(context, listen: false);
+    items.shopItems().then((value)=>
+    setState((){
+      _categories=value[0];
+    }));
   }
 
   @override
@@ -40,13 +43,11 @@ class _ShopTabScreenState extends State<ShopTabScreen>
 
   @override
   Widget build(BuildContext context) {
-    // SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       body: Stack(children: [
         Base(topFlex: 3, color: _color),
-        SafeArea(
-            child: Column(
+        SafeArea(child:Column(
               children: <Widget>[
                 Padding(
                     child: Row(
@@ -181,10 +182,10 @@ class _ShopTabScreenState extends State<ShopTabScreen>
                       .toList(),
                   shrinkWrap: true,
                 )),
+                SizedBox(height: 3.0)
               ],
               crossAxisAlignment: CrossAxisAlignment.start,
-            ),
-            bottom: true)
+            ),bottom: false),
       ]),
       backgroundColor: Colors.white,
       drawer: Drawer(child: NavigationDrawer()),

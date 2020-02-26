@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/social.dart';
+import 'package:allthingscharmaine/core/model/social.dart';
 import 'package:cache_image/cache_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -7,7 +7,7 @@ import 'package:photo_view/photo_view.dart';
 
 
 class Social1 extends StatelessWidget{
-  final formatDate = new DateFormat.yMMMMd("en_US");
+  final formatDate = new DateFormat.jm("en_US");
   final  Social social;
 
   Social1({@required this.social});
@@ -15,6 +15,7 @@ class Social1 extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    var header = social.header.split("/");
     return
       Scaffold(
     body: Stack(
@@ -33,7 +34,7 @@ class Social1 extends StatelessWidget{
                     child: Padding(
                         child:Column(
                      children:[
-                       Text(social.header,style: TextStyle(color:Colors.black87,fontSize: 18.0,height: 1.3),),
+                       Text('${header[0]}\n${header[1]}\n${header[2]}',style: TextStyle(color:Colors.black87,fontSize: 18.0,height: 1.3),),
                        SizedBox(height: 10.0),
                       Expanded(child:SingleChildScrollView(child: Text(social.content,
                        style: TextStyle(color: Colors.black26,fontSize: 13.0,height: 1.5)))),
@@ -42,7 +43,7 @@ class Social1 extends StatelessWidget{
                          children: <Widget>[
                            Icon(Icons.access_time,color: Colors.black38,),
                            SizedBox(width: 5.0),
-                           Text(formatDate.format(DateTime.now()),style:TextStyle(color: Colors.black38,fontSize: 12.0,height: 1.5))
+                           Text(formatDate.format(social.time),style:TextStyle(color: Colors.black38,fontSize: 12.0,height: 1.5))
                          ],
                        ),
                        SizedBox(height: 25.0),

@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/socialPlatform.dart';
+import 'package:allthingscharmaine/core/model/socialPlatform.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/carousel.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
 
 import 'core/services/API.dart';
-import 'core/services/shopData.dart';
-import 'core/services/socialData.dart';
+import 'core/viewmodels/shopVM.dart';
+import 'core/viewmodels/socialVM.dart';
 import 'core/viewmodels/loginviewmodel.dart';
 import 'core/viewmodels/user_creditcard_viewmodel.dart';
 import 'core/viewmodels/userviewmodel.dart';
@@ -13,6 +13,6 @@ setupLocator() {
   locator.registerLazySingleton(() => Api());
   locator.registerLazySingleton(() => LoginViewmodel());
   locator.registerLazySingleton(() => UserCreditCardViewmodel());
-  locator.registerLazySingleton(()=> ShopData());
-  locator.registerLazySingleton(()=> SocialData());
+  locator.registerLazySingleton(()=> ShopVM());
+  locator.registerLazySingleton(()=> SocialVM());
 }
