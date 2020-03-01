@@ -1,6 +1,11 @@
 # allthingscharmaine
 
 A new Flutter application.
+![app](assets/screenshots/IMG_7182.GIF).
+
+
+
+
 
 ![shop1](assets/screenshots/shop1.png). ![social1](assets/screenshots/social1.png).
 ![shopBottomSheet](assets/screenshots/shopBottomSheet.png).
