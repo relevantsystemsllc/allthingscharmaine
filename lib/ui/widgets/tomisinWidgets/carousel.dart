@@ -1,4 +1,4 @@
-import 'package:allthingscharmaine/model/social.dart';
+import 'package:allthingscharmaine/core/model/social.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:page_indicator/page_indicator.dart';

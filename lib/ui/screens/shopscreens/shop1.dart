@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/background.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/shopCards.dart';
-import 'package:allthingscharmaine/core/services/shopData.dart';
+import 'package:allthingscharmaine/core/viewmodels/shopVM.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/bottomNavBar.dart';
 import 'package:provider/provider.dart';
 
@@ -31,8 +31,8 @@ class Shop1State extends State<Shop1>
     super.initState();
     _tabController = new TabController(vsync: this, length: 4, initialIndex: 0);
     _color= UIData.shopColor;
-    items = Provider.of<ShopData>(context, listen: false);
-    _categories = items.getMenuItems();
+    items = Provider.of<ShopVM>(context, listen: false);
+    _categories = items.shopItems()[0];
   }
 
 
@@ -93,7 +93,6 @@ class Shop1State extends State<Shop1>
           children: _categories.map<Widget>((value)=> GestureDetector(child:ShopCard(item:value,color: _color),onTap:()=> shopItem(_tabController.index,value))).toList()
           ,shrinkWrap: true,
         )),
-              SizedBox(height: 50.0)
             ],crossAxisAlignment: CrossAxisAlignment.start,
           ),bottom: true
           ),BottomNavBar(color: _color,)

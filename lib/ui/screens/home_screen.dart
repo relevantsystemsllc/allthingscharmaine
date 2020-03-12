@@ -5,6 +5,7 @@ import 'package:allthingscharmaine/ui/screens/tabarscreens/press_tab_screen.dart
 import 'package:allthingscharmaine/ui/screens/tabarscreens/social_tab_screen.dart';
 import 'package:allthingscharmaine/ui/widgets/tourewidgets/drawer_widget.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
+import 'package:allthingscharmaine/utils/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<LoginViewmodel>(context);
+    SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       appBar: _tabController.index == 2

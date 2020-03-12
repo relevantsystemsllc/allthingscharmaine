@@ -1,6 +1,9 @@
-import 'package:allthingscharmaine/model/social.dart';
-import 'package:allthingscharmaine/core/services/socialData.dart';
+import 'package:allthingscharmaine/core/model/social.dart';
+import 'package:allthingscharmaine/core/viewmodels/socialVM.dart';
+import 'package:allthingscharmaine/core/viewmodels/userviewmodel.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
+import 'package:allthingscharmaine/core/model/user_signup_dto.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +13,7 @@ class Social2 extends StatelessWidget{
   final Social social;
   final TextEditingController _textController = TextEditingController();
   static final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   Social2({@required this.social});
 
@@ -19,12 +23,18 @@ class Social2 extends StatelessWidget{
     ));
   }
 
+  Future<FirebaseUser> getFirebaseUser() async {
+    FirebaseUser user = await firebaseAuth.currentUser().timeout(Duration(seconds:20)).catchError((error){
+      print(error);
+      showInSnackBar("Authentication Error");
+    });
+    return user != null ? user : null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    var socialController = Provider.of<SocialData>(context, listen: false);
-
-    return
+    var socialController = Provider.of<SocialVM>(context, listen: false);
+     return
       Scaffold(
         key:_scaffoldKey,
         body:SafeArea(
@@ -66,12 +76,17 @@ class Social2 extends StatelessWidget{
                       child: Center(child:Text(UIData.send,style: TextStyle(color:Colors.white,fontSize: 13.0),)),width: MediaQuery.of(context).size.width,
                       height: 40.0
                     ),onTap: () {
-                    socialController.submitReply(_textController.text);
+                    getFirebaseUser().then((value)=> socialController.submitReply(_textController.text,social.documentRef,value.email)).then((status){
+                      if(status){
+                        showInSnackBar("Reply has been submitted");
+                        _textController.text="";
+                      }else{
+                       showInSnackBar("Reply was not submitted successfully");
+                         }});
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     if (!currentFocus.hasPrimaryFocus) {
                       currentFocus.unfocus();
                     }
-                   showInSnackBar("Reply has been submitted");
                   }),padding: EdgeInsets.only(left: 40.0,right: 40.0),),alignment: Alignment.center
                   ),flex: 2),
                 ],crossAxisAlignment: CrossAxisAlignment.start,

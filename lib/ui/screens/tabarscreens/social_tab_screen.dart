@@ -1,6 +1,6 @@
 
-import 'package:allthingscharmaine/model/socialPlatform.dart';
-import 'package:allthingscharmaine/core/services/socialData.dart';
+import 'package:allthingscharmaine/core/model/socialPlatform.dart';
+import 'package:allthingscharmaine/core/viewmodels/socialVM.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/socialPlatfromView.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +13,15 @@ class SocialTabScreen extends StatefulWidget{
 }
 
 class _SocialTabScreenState extends State<SocialTabScreen> {
-  List<SocialPlatform> platforms;
+  List<SocialPlatform> platforms=[];
 
 
 
 
   @override
   void initState() {
-    platforms = Provider.of<SocialData>(context, listen: false).getSocialPlatforms();
+    var platform = Provider.of<SocialVM>(context, listen: false);
+    platform.fetchSocialPlatforms().then((value)=>setState(()=>platforms=value));
     super.initState();
   }
 

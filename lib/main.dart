@@ -1,7 +1,7 @@
 
 import 'package:allthingscharmaine/router/router.dart';
-import 'package:allthingscharmaine/core/services/shopData.dart';
-import 'package:allthingscharmaine/core/services/socialData.dart';
+import 'package:allthingscharmaine/core/viewmodels/shopVM.dart';
+import 'package:allthingscharmaine/core/viewmodels/socialVM.dart';
 import 'package:allthingscharmaine/ui/screens/home_screen.dart';
 import 'package:allthingscharmaine/ui/screens/signupscreens/name_reg_screen.dart';
 import 'package:allthingscharmaine/utils/my_colors.dart';
@@ -31,19 +31,19 @@ class MyApp extends StatelessWidget {
           return MultiProvider(
             providers: [
               ChangeNotifierProvider(
-                builder: (_) => locator<UserViewModel>(),
+                create: (_) => locator<UserViewModel>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<LoginViewmodel>(),
+                create: (_) => locator<LoginViewmodel>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<UserCreditCardViewmodel>(),
+                create: (_) => locator<UserCreditCardViewmodel>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<ShopData>(),
+                create: (_) => locator<ShopVM>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<SocialData>(),
+                create: (_) => locator<SocialVM>(),
               )
             ],
             child: MaterialApp(
@@ -61,19 +61,19 @@ onUnknownRoute: Router.unknownRoute,
           return MultiProvider(
             providers: [
               ChangeNotifierProvider(
-                builder: (_) => locator<UserViewModel>(),
+                create: (_) => locator<UserViewModel>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<LoginViewmodel>(),
+                create: (_) => locator<LoginViewmodel>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<UserCreditCardViewmodel>(),
+                create: (_) => locator<UserCreditCardViewmodel>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<ShopData>(),
+                create: (_) => locator<ShopVM>(),
               ),
               ChangeNotifierProvider(
-                builder: (_) => locator<SocialData>(),
+                create: (_) => locator<SocialVM>(),
               )
 
             ],

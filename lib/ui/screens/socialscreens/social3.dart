@@ -1,6 +1,6 @@
 
-import 'package:allthingscharmaine/model/socialPlatform.dart';
-import 'package:allthingscharmaine/core/services/socialData.dart';
+import 'package:allthingscharmaine/core/model/socialPlatform.dart';
+import 'package:allthingscharmaine/core/viewmodels/socialVM.dart';
 import 'package:allthingscharmaine/utils/uiData.dart';
 import 'package:allthingscharmaine/ui/widgets/tomisinWidgets/socialPlatfromView.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class Social3State extends State<Social3> {
 
   @override
   void initState() {
-    platforms = Provider.of<SocialData>(context, listen: false).getSocialPlatforms();
+   // platforms = Provider.of<SocialData>(context, listen: false).getSocialPlatforms();
     super.initState();
   }
 
